@@ -1,0 +1,671 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity</title>
+<!--Generated on Tue Mar  5 10:41:31 2024 by LaTeXML (version 0.8.6) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on .-->
+
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-article.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Jamuna Bodduna, Chandra Shekar Balla<math id="m1" class="ltx_Math" alttext="\!\!{}^{,}" display="inline"><mpadded lspace="-3.3pt" width="-3.3pt"><msup><mi></mi><mo>,</mo></msup></mpadded></math> and M P Mallesh
+</span></span>
+</div>
+
+<div class="ltx_abstract">
+<h6 class="ltx_title ltx_title_abstract">Abstract</h6>
+<p class="ltx_p">This paper focuses on the result of inclined angle on bioconvection of porous media bounded by cavity wall square enclosure filled with both nanofluid and gyrotactic microorganisms passing through the media with pores. The dimensionless velocity, temperature, concentration, and mass transformation equations are solved by using the weighted residual Galerkin’s finite element method. The result of the inclination angle from <math id="m2" class="ltx_Math" alttext="\delta=0^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><msup><mn>0</mn><mo>∘</mo></msup></mrow></math> to <math id="m3" class="ltx_Math" alttext="\delta=180^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></math> in a square cavity is interpreted. The outcomes of inclination on various key parameters, such as Rayleigh number, bioconvective Rayleigh number, Peclet number, Brownian motion, and the ratio of buoyancy, are discussed. Furthermore, the mean Nusselt number, Sherwood number, and density number are discussed at vertical walls.</p>
+</div>
+<div id="p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Keywords:</span> Nanofluid, Inclination angle, Buoyancy ratio, Peclet number, Square cavity, Bioconvection.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">The present problem is dealing with the nanofluid flow through the porous square cavity with temperature difference, which has a wide range of applications in recent years, such as geophysics, geothermal energy utilization, and many technologies. The bioconvection of the nanofluid containing gyrotactic microorganisms has a wide range of practical applications, such as chemical catalytic converters, buried electronic cables, pollutant dispersion in aquifers, food industrial forms, and so on. These types of many areas of applications are documented in these references <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib10" title="" class="ltx_ref">10</a>, <a href="#bib.bib24" title="" class="ltx_ref">24</a>, <a href="#bib.bib14" title="" class="ltx_ref">14</a>, <a href="#bib.bib15" title="" class="ltx_ref">15</a>, <a href="#bib.bib31" title="" class="ltx_ref">31</a>]</cite>.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">The properties and utilization of the nanofluid were first introduced by Choi and Eastman <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib11" title="" class="ltx_ref">11</a>]</cite> at ASME annual meeting. Many people have described the properties of nanofluids, such as <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib13" title="" class="ltx_ref">13</a>, <a href="#bib.bib30" title="" class="ltx_ref">30</a>, <a href="#bib.bib24" title="" class="ltx_ref">24</a>, <a href="#bib.bib23" title="" class="ltx_ref">23</a>, <a href="#bib.bib26" title="" class="ltx_ref">26</a>]</cite>. In many electronic devices, like computers, boilers, converters, and so on, the angle of inclination to the surface affects the gravity force on the fluid, temperature gradient, and velocity of the fluid flow. In <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib32" title="" class="ltx_ref">32</a>]</cite>, the author expressed the free convection of the composite wall enclosure. Kuyper et al. <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib20" title="" class="ltx_ref">20</a>]</cite> studied the effect of inclined angle on different flows in square cavity walls. Kuznetsov <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib21" title="" class="ltx_ref">21</a>]</cite> explained the microscopic convection motion of the oxytactic microorganisms due to the temperature effect. Shermet and Pop <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib28" title="" class="ltx_ref">28</a>]</cite> expressed that the result of the thermal movement of microorganisms in the nanofluid having gyrotactic microorganisms is a closed porous square cavity. Aziz, Khan, and Pop <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib5" title="" class="ltx_ref">5</a>]</cite> presented the flow behavior of the nanofluid with gyrotactic microorganisms on a flat plate. At viscous dissipation, the behavior of oxytactic microorganisms in porous square cavities was discussed <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib2" title="" class="ltx_ref">2</a>, <a href="#bib.bib3" title="" class="ltx_ref">3</a>]</cite>. Jamuna and Balla <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib17" title="" class="ltx_ref">17</a>]</cite> discussed the behavior of the heat source and sink of the gyrotactic microorganisms in the square cavity. The activation energy effect on the gyrotactic microorganisms was discussed in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib18" title="" class="ltx_ref">18</a>]</cite>. The influence of Soret and Dufour on free convection of the fluid flow in the inclined four-side closed walls was explained in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib8" title="" class="ltx_ref">8</a>]</cite>. The MHD double-diffusion in the porous square enclosure with radiation and chemical reaction and the outcome inclination of the porous square cavity filled with gyrotactic microorganisms with the heat transformation was discussed in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib6" title="" class="ltx_ref">6</a>, <a href="#bib.bib7" title="" class="ltx_ref">7</a>]</cite>. Nanofluid movement in an inclined square cavity with gyrotactic microorganisms at MHD free convection was reported in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib27" title="" class="ltx_ref">27</a>]</cite>.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The effect of angle movement of the square adiabatic wall on mixed convection of the nanofluid was explored in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib16" title="" class="ltx_ref">16</a>]</cite>. Aounallah et al. <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib4" title="" class="ltx_ref">4</a>]</cite> explained the turbulent flow behavior of the nanofluid in an inclined square cavity on free convection, and Sheremet, Grosan, and Pop <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib27" title="" class="ltx_ref">27</a>]</cite> investigated the free convective flow of nanofluid in inclined four-sided chamber with gyrotactic microorganisms. Tsai, Li, and Lin <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib29" title="" class="ltx_ref">29</a>]</cite> discussed the inclination of the plate shield, and Aboueian-Jahromi, Hossein Nezhad, and Behzadmehr <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib1" title="" class="ltx_ref">1</a>]</cite> studied the steady flow in inclined cylinders.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">Rajarathinam and Nithyadevi <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib25" title="" class="ltx_ref">25</a>]</cite> examined the movement of Cu-water nanofluid in inclined cavity walls with pores. The thermosolutal Maragoni effects of the bioconvective fluid flow with gyrotactic microorganisms on inclined sheets were explained in <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib19" title="" class="ltx_ref">19</a>]</cite>. Recently, Varol, Oztop, and Koca <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib34" title="" class="ltx_ref">34</a>]</cite> explained different fluids’ laminar flow in the different inclined enclosures.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Since, from the above literature survey, we note that many authors concentrated on the inclined angle of different geometries with convection of nanofluid with gyrotactic microorganisms. The novelty of this paper contains the square-shaped cavity enclosure with fluid containing nanoparticles and gyrotactic microorganisms. Galerkin’s finite-element method is used to solve the nondimensional governing equations.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>Mathematical modeling</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">We consider the bioconvection flow in an inclined two-dimensional porous four-sided square cavity of dimension <math id="S2.p1.m1" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> containing nanofluid with gyrotactic microorganisms. Let us assume that <math id="S2.p1.m2" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> is the inclination angle of the cavity wall with the horizontal surface. The vertical walls are maintained in various temperatures <math id="S2.p1.m3" class="ltx_Math" alttext="T_{C}" display="inline"><msub><mi>T</mi><mi>C</mi></msub></math> and <math id="S2.p1.m4" class="ltx_Math" alttext="T_{H}" display="inline"><msub><mi>T</mi><mi>H</mi></msub></math>, respectively ( <math id="S2.p1.m5" class="ltx_Math" alttext="T_{H}" display="inline"><msub><mi>T</mi><mi>H</mi></msub></math><math id="S2.p1.m6" class="ltx_Math" alttext="&gt;" display="inline"><mo>&gt;</mo></math><math id="S2.p1.m7" class="ltx_Math" alttext="T_{C}" display="inline"><msub><mi>T</mi><mi>C</mi></msub></math> ). The remaining walls were kept perfectly insulated. The direction of gravity force <math id="S2.p1.m8" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> acts opposite to the vertical axis (Y-axis).</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">The steady-state Darcy–Boussinesq approximation governing equations are</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<table id="S2.E1" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E1.m1" class="ltx_Math" alttext="\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0," display="block"><mrow><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>u</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>v</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow><mo>=</mo><mn>0</mn></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(1)</span></td>
+</tr>
+</table>
+<table id="S2.E2" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E2.m1" class="ltx_Math" alttext="\frac{\mu}{k}u=-\frac{\partial p}{\partial x}-[(\rho_{p}-\rho_{f})(C-C_{\min})%
+-(1-C_{\min})\rho_{f}\beta(T-T_{C})+\gamma n\Delta\rho]g\sin\delta," display="block"><mrow><mrow><mrow><mfrac><mi>μ</mi><mi>k</mi></mfrac><mo>⁢</mo><mi>u</mi></mrow><mo>=</mo><mrow><mrow><mo>-</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>p</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac></mrow><mo>-</mo><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ρ</mi><mi>p</mi></msub><mo>-</mo><msub><mi>ρ</mi><mi>f</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>C</mi><mo>-</mo><msub><mi>C</mi><mi>min</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>-</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>-</mo><msub><mi>C</mi><mi>min</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>ρ</mi><mi>f</mi></msub><mo>⁢</mo><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>-</mo><msub><mi>T</mi><mi>C</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mi>γ</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>ρ</mi></mrow></mrow><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(2)</span></td>
+</tr>
+</table>
+<table id="S2.E3" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E3.m1" class="ltx_Math" alttext="\frac{\mu}{k}v=-\frac{\partial p}{\partial y}-[(\rho_{p}-\rho_{f})(C-C_{\min})%
+-(1-C_{\min})\rho_{f}\beta(T-T_{C})+\gamma n\Delta\rho]g\cos\delta," display="block"><mrow><mrow><mrow><mfrac><mi>μ</mi><mi>k</mi></mfrac><mo>⁢</mo><mi>v</mi></mrow><mo>=</mo><mrow><mrow><mo>-</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>p</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow><mo>-</mo><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ρ</mi><mi>p</mi></msub><mo>-</mo><msub><mi>ρ</mi><mi>f</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>C</mi><mo>-</mo><msub><mi>C</mi><mi>min</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>-</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>-</mo><msub><mi>C</mi><mi>min</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>ρ</mi><mi>f</mi></msub><mo>⁢</mo><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>-</mo><msub><mi>T</mi><mi>C</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mi>γ</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>ρ</mi></mrow></mrow><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(3)</span></td>
+</tr>
+</table>
+<table id="S2.E4" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E4.m1" class="ltx_Math" alttext="\begin{split}u\frac{\partial T}{\partial x}+v\frac{\partial T}{\partial y}=&amp;%
+\alpha_{m}(\frac{\partial^{2}T}{\partial x^{2}}+\frac{\partial^{2}T}{\partial y%
+^{2}})+\tau D_{B}(\frac{\partial C}{\partial x}\frac{\partial T}{\partial x}+%
+\frac{\partial C}{\partial y}\frac{\partial T}{\partial y})\\
+&amp;+\frac{\tau D_{T}}{T_{C}}[(\frac{\partial T}{\partial x})^{2}+(\frac{\partial
+T%
+}{\partial y})^{2}],\end{split}" display="block"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd columnalign="right"><mrow><mrow><mrow><mi>u</mi><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mi>v</mi><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow></mrow><mo>=</mo><mi></mi></mrow></mtd><mtd columnalign="left"><mrow><mrow><msub><mi>α</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>τ</mi><mo>⁢</mo><msub><mi>D</mi><mi>B</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd></mtr><mtr><mtd></mtd><mtd columnalign="left"><mrow><mrow><mo>+</mo><mrow><mfrac><mrow><mi>τ</mi><mo>⁢</mo><msub><mi>D</mi><mi>T</mi></msub></mrow><msub><mi>T</mi><mi>C</mi></msub></mfrac><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>,</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(4)</span></td>
+</tr>
+</table>
+<table id="S2.E5" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E5.m1" class="ltx_Math" alttext="u\frac{\partial C}{\partial x}+v\frac{\partial C}{\partial y}=D_{m}(\frac{%
+\partial^{2}C}{\partial x^{2}}+\frac{\partial^{2}C}{\partial y^{2}})+\frac{D_{%
+T}}{T_{c}}(\frac{\partial^{2}T}{\partial x^{2}}+\frac{\partial^{2}T}{\partial y%
+^{2}})," display="block"><mrow><mrow><mrow><mrow><mi>u</mi><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mi>v</mi><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>D</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mfrac><msub><mi>D</mi><mi>T</mi></msub><msub><mi>T</mi><mi>c</mi></msub></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>T</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(5)</span></td>
+</tr>
+</table>
+<table id="S2.E6" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E6.m1" class="ltx_Math" alttext="\frac{\partial}{\partial x}(un+\tilde{u}n-D_{n}\frac{\partial n}{\partial x})+%
+\frac{\partial}{\partial y}(vn+\tilde{v}n-D_{n}\frac{\partial n}{\partial y})=0." display="block"><mrow><mrow><mrow><mrow><mfrac><mo>∂</mo><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><mi>u</mi><mo>⁢</mo><mi>n</mi></mrow><mo>+</mo><mrow><mover accent="true"><mi>u</mi><mo stretchy="false">~</mo></mover><mo>⁢</mo><mi>n</mi></mrow></mrow><mo>-</mo><mrow><msub><mi>D</mi><mi>n</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>n</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mfrac><mo>∂</mo><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><mi>v</mi><mo>⁢</mo><mi>n</mi></mrow><mo>+</mo><mrow><mover accent="true"><mi>v</mi><mo stretchy="false">~</mo></mover><mo>⁢</mo><mi>n</mi></mrow></mrow><mo>-</mo><mrow><msub><mi>D</mi><mi>n</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>n</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(6)</span></td>
+</tr>
+</table>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Here <math id="S2.p4.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> is the mean volume for microorganisms, <math id="S2.p4.m2" class="ltx_Math" alttext="\Delta\rho=\rho_{cell}-\rho_{f}" display="inline"><mrow><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>ρ</mi></mrow><mo>=</mo><mrow><msub><mi>ρ</mi><mrow><mi>c</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>l</mi></mrow></msub><mo>-</mo><msub><mi>ρ</mi><mi>f</mi></msub></mrow></mrow></math> is the density difference of cell, <math id="S2.p4.m3" class="ltx_Math" alttext="T_{C}" display="inline"><msub><mi>T</mi><mi>C</mi></msub></math> is the cold wall temperature, <math id="S2.p4.m4" class="ltx_Math" alttext="T_{H}" display="inline"><msub><mi>T</mi><mi>H</mi></msub></math> is the hot wall temperature, <math id="S2.p4.m5" class="ltx_Math" alttext="\alpha_{m}" display="inline"><msub><mi>α</mi><mi>m</mi></msub></math> is porous medium thermal diffusivity, <math id="S2.p4.m6" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> is the concentration of nanoparticles, <math id="S2.p4.m7" class="ltx_Math" alttext="C_{0}" display="inline"><msub><mi>C</mi><mn>0</mn></msub></math> is nanoparticles average density, <math id="S2.p4.m8" class="ltx_Math" alttext="C_{\min}" display="inline"><msub><mi>C</mi><mi>min</mi></msub></math> is minimum concentration of oxygen essential for microorganisms, <math id="S2.p4.m9" class="ltx_Math" alttext="C_{p}" display="inline"><msub><mi>C</mi><mi>p</mi></msub></math> is specific heat at constant pressure, <math id="S2.p4.m10" class="ltx_Math" alttext="D_{n}" display="inline"><msub><mi>D</mi><mi>n</mi></msub></math> is microorganisms diffusion coefficient, <math id="S2.p4.m11" class="ltx_Math" alttext="D_{B}" display="inline"><msub><mi>D</mi><mi>B</mi></msub></math> is the Brownian diffusion constant, <math id="S2.p4.m12" class="ltx_Math" alttext="D_{T}" display="inline"><msub><mi>D</mi><mi>T</mi></msub></math> is the thermophoretic diffusion coefficient, <math id="S2.p4.m13" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is motile density number of microorganisms, <math id="S2.p4.m14" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is the gravity force, chemotaxis constant is <math id="S2.p4.m15" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, and the maximum speed of cell swims is <math id="S2.p4.m16" class="ltx_Math" alttext="w_{C}" display="inline"><msub><mi>w</mi><mi>C</mi></msub></math>.
+The average swimming velocities of microorganisms are <math id="S2.p4.m17" class="ltx_Math" alttext="\widetilde{u}" display="inline"><mover accent="true"><mi>u</mi><mo>~</mo></mover></math> and <math id="S2.p4.m18" class="ltx_Math" alttext="\widetilde{v}" display="inline"><mover accent="true"><mi>v</mi><mo>~</mo></mover></math> given as</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<table id="S2.E7" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E7.m1" class="ltx_Math" alttext="\widetilde{u}=\frac{bw_{C}}{\Delta C}\frac{\partial C}{\partial x},\hskip 11.3%
+81102pt\widetilde{v}=\frac{bw_{C}}{\Delta C}\frac{\partial C}{\partial y}." display="block"><mrow><mrow><mrow><mover accent="true"><mi>u</mi><mo>~</mo></mover><mo>=</mo><mrow><mfrac><mrow><mi>b</mi><mo>⁢</mo><msub><mi>w</mi><mi>C</mi></msub></mrow><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>C</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac></mrow></mrow><mo rspace="13.9pt">,</mo><mrow><mover accent="true"><mi>v</mi><mo>~</mo></mover><mo>=</mo><mrow><mfrac><mrow><mi>b</mi><mo>⁢</mo><msub><mi>w</mi><mi>C</mi></msub></mrow><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>C</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>C</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(7)</span></td>
+</tr>
+</table>
+<p class="ltx_p">Consider dimensional stream function <math id="S2.p5.m1" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math>. Then <math id="S2.p5.m2" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> and <math id="S2.p5.m3" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> in <math id="S2.p5.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and <math id="S2.p5.m5" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> directions are
+considered as <math id="S2.p5.m6" class="ltx_Math" alttext="u=\frac{\partial\psi}{\partial y}" display="inline"><mrow><mi>u</mi><mo>=</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>y</mi></mrow></mfrac></mrow></math> and <math id="S2.p5.m7" class="ltx_Math" alttext="v=\frac{\partial\psi}{\partial x}" display="inline"><mrow><mi>v</mi><mo>=</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>x</mi></mrow></mfrac></mrow></math>
+by introducing the boundedless variables
+<math id="S2.p5.m8" class="ltx_Math" alttext="X=\frac{x}{H}" display="inline"><mrow><mi>X</mi><mo>=</mo><mfrac><mi>x</mi><mi>H</mi></mfrac></mrow></math>, <math id="S2.p5.m9" class="ltx_Math" alttext="Y=\frac{y}{H}" display="inline"><mrow><mi>Y</mi><mo>=</mo><mfrac><mi>y</mi><mi>H</mi></mfrac></mrow></math>, <math id="S2.p5.m10" class="ltx_Math" alttext="\Psi=\frac{\psi}{\alpha_{m}}" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mfrac><mi>ψ</mi><msub><mi>α</mi><mi>m</mi></msub></mfrac></mrow></math>,<math id="S2.p5.m11" class="ltx_Math" alttext="\theta=\frac{T-T_{C}}{T_{H}-T_{C}}" display="inline"><mrow><mi>θ</mi><mo>=</mo><mfrac><mrow><mi>T</mi><mo>-</mo><msub><mi>T</mi><mi>C</mi></msub></mrow><mrow><msub><mi>T</mi><mi>H</mi></msub><mo>-</mo><msub><mi>T</mi><mi>C</mi></msub></mrow></mfrac></mrow></math>, <math id="S2.p5.m12" class="ltx_Math" alttext="\phi=\frac{C-C_{\min}}{\Delta C}" display="inline"><mrow><mi>ϕ</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mo>-</mo><msub><mi>C</mi><mi>min</mi></msub></mrow><mrow><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>C</mi></mrow></mfrac></mrow></math>, and <math id="S2.p5.m13" class="ltx_Math" alttext="N=\frac{n}{n_{0}}" display="inline"><mrow><mi>N</mi><mo>=</mo><mfrac><mi>n</mi><msub><mi>n</mi><mn>0</mn></msub></mfrac></mrow></math>,
+where <math id="S2.p5.m14" class="ltx_Math" alttext="n_{0}" display="inline"><msub><mi>n</mi><mn>0</mn></msub></math> is the microorganism averaged density.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Substituting above unbounded variables into equation (<a href="#S2.E1" title="(1) ‣ 2 Mathematical modeling ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>)–(<a href="#S2.E7" title="(7) ‣ 2 Mathematical modeling ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7</span></a>), then we get the following partial differential equations:</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<table id="S2.E8" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E8.m1" class="ltx_Math" alttext="\begin{split}\frac{\partial^{2}\Psi}{\partial X^{2}}+\frac{\partial^{2}\Psi}{%
+\partial Y^{2}}=&amp;RaNr(\frac{\partial\phi}{\partial X}\cos\delta-\frac{\partial%
+\phi}{\partial Y}\sin\delta)-Ra(\frac{\partial\theta}{\partial X}\cos\delta-%
+\frac{\partial\theta}{\partial Y}\sin\delta)\\
+&amp;+RaRb(\frac{\partial N}{\partial X}\cos\delta-\frac{\partial N}{\partial Y}%
+\sin\delta),\end{split}" display="block"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd columnalign="right"><mrow><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>X</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>Y</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo>=</mo><mi></mi></mrow></mtd><mtd columnalign="left"><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>N</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow><mo>-</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>-</mo><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow><mo>-</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd></mtr><mtr><mtd></mtd><mtd columnalign="left"><mrow><mrow><mo>+</mo><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>R</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow><mo>-</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(8)</span></td>
+</tr>
+</table>
+<table id="S2.E9" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E9.m1" class="ltx_Math" alttext="\begin{split}(\frac{\partial\Psi}{\partial Y}\frac{\partial\theta}{\partial X}%
+-\frac{\partial\Psi}{\partial X}\frac{\partial\theta}{\partial Y})=&amp;(\frac{%
+\partial^{2}\theta}{\partial X}+\frac{\partial^{2}\theta}{\partial Y})+Nb(%
+\frac{\partial\phi}{\partial X}\frac{\partial\theta}{\partial X}+\frac{%
+\partial\phi}{\partial Y}\frac{\partial\theta}{\partial Y})\\
+&amp;+Nt[(\frac{\partial\theta}{\partial X})^{2}+(\frac{\partial\theta}{\partial Y%
+})^{2}],\end{split}" display="block"><mtable columnspacing="0pt" displaystyle="true" rowspacing="0pt"><mtr><mtd columnalign="right"><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>-</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mi></mi></mrow></mtd><mtd columnalign="left"><mrow><mrow><mo stretchy="false">(</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mi>N</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd></mtr><mtr><mtd></mtd><mtd columnalign="left"><mrow><mrow><mo>+</mo><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>,</mo></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(9)</span></td>
+</tr>
+</table>
+<table id="S2.E10" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E10.m1" class="ltx_Math" alttext="Le(\frac{\partial\Psi}{\partial Y}\frac{\partial\phi}{\partial X}-\frac{%
+\partial\Psi}{\partial X}\frac{\partial\phi}{\partial Y})=\frac{\partial^{2}%
+\phi}{\partial X^{2}}+\frac{\partial^{2}\phi}{\partial Y^{2}}+\frac{Nt}{Nb}(%
+\frac{\partial^{2}\theta}{\partial X^{2}}+\frac{\partial^{2}\theta}{\partial Y%
+^{2}})," display="block"><mrow><mrow><mrow><mi>L</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>-</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>X</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>Y</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mrow><mfrac><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi></mrow><mrow><mi>N</mi><mo>⁢</mo><mi>b</mi></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>X</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>Y</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(10)</span></td>
+</tr>
+</table>
+<table id="S2.E11" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.E11.m1" class="ltx_Math" alttext="\frac{\partial\Psi}{\partial X}\frac{\partial N}{\partial Y}-\frac{\partial%
+\Psi}{\partial Y}\frac{\partial N}{\partial X}+\frac{PrPe}{Sc}(\frac{\partial^%
+{2}\phi}{\partial X^{2}}+\frac{\partial^{2}\phi}{\partial Y^{2}})=\frac{Pr}{Sc%
+}(\frac{\partial^{2}N}{\partial X^{2}}+\frac{\partial^{2}N}{\partial Y^{2}})," display="block"><mrow><mrow><mrow><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow><mo>-</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow></mrow><mo>+</mo><mrow><mfrac><mrow><mi>P</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mi>e</mi></mrow><mrow><mi>S</mi><mo>⁢</mo><mi>c</mi></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>X</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>Y</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mfrac><mrow><mi>P</mi><mo>⁢</mo><mi>r</mi></mrow><mrow><mi>S</mi><mo>⁢</mo><mi>c</mi></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>X</mi><mn>2</mn></msup></mrow></mfrac><mo>+</mo><mfrac><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><msup><mi>Y</mi><mn>2</mn></msup></mrow></mfrac></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(11)</span></td>
+</tr>
+</table>
+<p class="ltx_p">where <math id="S2.p7.m1" class="ltx_Math" alttext="Ra=\frac{gK\beta(1-C_{0})\Delta TL}{v\alpha_{m}}" display="inline"><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mfrac><mrow><mi>g</mi><mo>⁢</mo><mi>K</mi><mo>⁢</mo><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>-</mo><msub><mi>C</mi><mn>0</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi>L</mi></mrow><mrow><mi>v</mi><mo>⁢</mo><msub><mi>α</mi><mi>m</mi></msub></mrow></mfrac></mrow></math>, <math id="S2.p7.m2" class="ltx_Math" alttext="Rb=\frac{\gamma\Delta\rho n_{0}}{\rho_{f}\beta(1-C_{0})\Delta T}" display="inline"><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mfrac><mrow><mi>γ</mi><mo>⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>ρ</mi><mo>⁢</mo><msub><mi>n</mi><mn>0</mn></msub></mrow><mrow><msub><mi>ρ</mi><mi>f</mi></msub><mo>⁢</mo><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>-</mo><msub><mi>C</mi><mn>0</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>T</mi></mrow></mfrac></mrow></math>, <math id="S2.p7.m3" class="ltx_Math" alttext="Le=\frac{\alpha_{m}}{D_{B}}" display="inline"><mrow><mrow><mi>L</mi><mo>⁢</mo><mi>e</mi></mrow><mo>=</mo><mfrac><msub><mi>α</mi><mi>m</mi></msub><msub><mi>D</mi><mi>B</mi></msub></mfrac></mrow></math>, <math id="S2.p7.m4" class="ltx_Math" alttext="Pe=\frac{bw_{C}}{D_{n}}" display="inline"><mrow><mrow><mi>P</mi><mo>⁢</mo><mi>e</mi></mrow><mo>=</mo><mfrac><mrow><mi>b</mi><mo>⁢</mo><msub><mi>w</mi><mi>C</mi></msub></mrow><msub><mi>D</mi><mi>n</mi></msub></mfrac></mrow></math>, <math id="S2.p7.m5" class="ltx_Math" alttext="Nb=\frac{\tau D_{B}\Delta C}{\alpha_{m}}" display="inline"><mrow><mrow><mi>N</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mfrac><mrow><mi>τ</mi><mo>⁢</mo><msub><mi>D</mi><mi>B</mi></msub><mo>⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>C</mi></mrow><msub><mi>α</mi><mi>m</mi></msub></mfrac></mrow></math>, <math id="S2.p7.m6" class="ltx_Math" alttext="Nt=\frac{\tau D_{T}(T_{H}-T_{C})}{\alpha_{m}T_{C}}," display="inline"><mrow><mrow><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi></mrow><mo>=</mo><mfrac><mrow><mi>τ</mi><mo>⁢</mo><msub><mi>D</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>T</mi><mi>H</mi></msub><mo>-</mo><msub><mi>T</mi><mi>C</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><msub><mi>α</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>T</mi><mi>C</mi></msub></mrow></mfrac></mrow><mo>,</mo></mrow></math> <math id="S2.p7.m7" class="ltx_Math" alttext="\Pr=\frac{\mu_{f}}{\rho_{f}\alpha_{f}}" display="inline"><mrow><mi>Pr</mi><mo>=</mo><mfrac><msub><mi>μ</mi><mi>f</mi></msub><mrow><msub><mi>ρ</mi><mi>f</mi></msub><mo>⁢</mo><msub><mi>α</mi><mi>f</mi></msub></mrow></mfrac></mrow></math>, <math id="S2.p7.m8" class="ltx_Math" alttext="Sc=\frac{\mu_{f}}{\rho_{f}D_{n}}" display="inline"><mrow><mrow><mi>S</mi><mo>⁢</mo><mi>c</mi></mrow><mo>=</mo><mfrac><msub><mi>μ</mi><mi>f</mi></msub><mrow><msub><mi>ρ</mi><mi>f</mi></msub><mo>⁢</mo><msub><mi>D</mi><mi>n</mi></msub></mrow></mfrac></mrow></math>, and <math id="S2.p7.m9" class="ltx_Math" alttext="Nr=\frac{(\rho_{p}-\rho_{f})C_{0}}{\rho_{f}\beta(1-C_{0})\Delta T}" display="inline"><mrow><mrow><mi>N</mi><mo>⁢</mo><mi>r</mi></mrow><mo>=</mo><mfrac><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ρ</mi><mi>p</mi></msub><mo>-</mo><msub><mi>ρ</mi><mi>f</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>C</mi><mn>0</mn></msub></mrow><mrow><msub><mi>ρ</mi><mi>f</mi></msub><mo>⁢</mo><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>-</mo><msub><mi>C</mi><mn>0</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi mathvariant="normal">Δ</mi><mo>⁢</mo><mi>T</mi></mrow></mfrac></mrow></math>.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">The dimensionless form of conditions at boundary is expressed in Figure <a href="#S2.F1" title="Figure 1 ‣ 2 Mathematical modeling ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1</span></a>.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">We have
+<math id="S2.p9.m1" class="ltx_Math" alttext="\Psi=0" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mn>0</mn></mrow></math> for all sides,</p>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p"><math id="S2.p10.m1" class="ltx_Math" alttext="\phi=1" display="inline"><mrow><mi>ϕ</mi><mo>=</mo><mn>1</mn></mrow></math>, <math id="S2.p10.m2" class="ltx_Math" alttext="\theta=1" display="inline"><mrow><mi>θ</mi><mo>=</mo><mn>1</mn></mrow></math>, <math id="S2.p10.m3" class="ltx_Math" alttext="N=1" display="inline"><mrow><mi>N</mi><mo>=</mo><mn>1</mn></mrow></math> at <math id="S2.p10.m4" class="ltx_Math" alttext="X=0" display="inline"><mrow><mi>X</mi><mo>=</mo><mn>0</mn></mrow></math>,
+</p>
+</div>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p"><math id="S2.p11.m1" class="ltx_Math" alttext="\phi=1" display="inline"><mrow><mi>ϕ</mi><mo>=</mo><mn>1</mn></mrow></math>, <math id="S2.p11.m2" class="ltx_Math" alttext="\theta=0" display="inline"><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow></math>, <math id="S2.p11.m3" class="ltx_Math" alttext="N=1" display="inline"><mrow><mi>N</mi><mo>=</mo><mn>1</mn></mrow></math> at <math id="S2.p11.m4" class="ltx_Math" alttext="X=1" display="inline"><mrow><mi>X</mi><mo>=</mo><mn>1</mn></mrow></math>,</p>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p"><math id="S2.p12.m1" class="ltx_Math" alttext="\phi=1" display="inline"><mrow><mi>ϕ</mi><mo>=</mo><mn>1</mn></mrow></math>, <math id="S2.p12.m2" class="ltx_Math" alttext="\frac{\partial\theta}{\partial Y}=0" display="inline"><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow></math>, <math id="S2.p12.m3" class="ltx_Math" alttext="Pe.N\frac{\partial\phi}{\partial Y}=\frac{\partial N}{\partial Y}" display="inline"><mrow><mrow><mi>P</mi><mo>⁢</mo><mi>e</mi></mrow><mo>.</mo><mrow><mrow><mi>N</mi><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow><mo>=</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow></math> at <math id="S2.p12.m4" class="ltx_Math" alttext="Y=0" display="inline"><mrow><mi>Y</mi><mo>=</mo><mn>0</mn></mrow></math>, and</p>
+<table id="S2.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="S2.Ex1.m1" class="ltx_Math" alttext="\frac{\partial\phi}{\partial Y}=\frac{\partial\theta}{\partial Y}=\frac{%
+\partial N}{\partial Y}=0\qquad at\ Y=1." display="block"><mrow><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>=</mo><mn>0</mn></mrow><mo mathvariant="italic" separator="true">  </mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mpadded width="+5pt"><mi>t</mi></mpadded><mo>⁢</mo><mi>Y</mi></mrow><mo>=</mo><mn>1</mn></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+<figure id="S2.F1" class="ltx_figure"><img src="Picture1.jpg" id="S2.F1.g1" class="ltx_graphics ltx_centering" width="360" height="271" alt="Physical geometry and coordinate system.">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 1: </span>Physical geometry and coordinate system.</figcaption>
+</figure>
+<div id="S2.p13" class="ltx_para">
+<p class="ltx_p">Local solid Nusselt number, Sherwood number of
+nano particles and Sherwood microorganism are defined as</p>
+</div>
+<div id="S2.p14" class="ltx_para">
+<p class="ltx_p"><math id="S2.p14.m1" class="ltx_Math" alttext="Nu_{Y}=-(\frac{\partial\theta}{\partial X})_{X=0,1}" display="inline"><mrow><mrow><mi>N</mi><mo>⁢</mo><msub><mi>u</mi><mi>Y</mi></msub></mrow><mo>=</mo><mrow><mo>-</mo><msub><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><mrow><mi>X</mi><mo>=</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow></mrow></msub></mrow></mrow></math>, <math id="S2.p14.m2" class="ltx_Math" alttext="Sh_{Y}=-(\frac{\partial\phi}{\partial X})_{X=0,1}" display="inline"><mrow><mrow><mi>S</mi><mo>⁢</mo><msub><mi>h</mi><mi>Y</mi></msub></mrow><mo>=</mo><mrow><mo>-</mo><msub><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><mrow><mi>X</mi><mo>=</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow></mrow></msub></mrow></mrow></math>, and <math id="S2.p14.m3" class="ltx_Math" alttext="Nn_{Y}=-(\frac{\partial N}{\partial X})_{X=0,1}" display="inline"><mrow><mrow><mi>N</mi><mo>⁢</mo><msub><mi>n</mi><mi>Y</mi></msub></mrow><mo>=</mo><mrow><mo>-</mo><msub><mrow><mo stretchy="false">(</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>N</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo stretchy="false">)</mo></mrow><mrow><mi>X</mi><mo>=</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn></mrow></mrow></msub></mrow></mrow></math>.</p>
+</div>
+<div id="S2.p15" class="ltx_para">
+<p class="ltx_p">The average quantities of Nusselt number, nanoparticle Sherwood
+number, and microorganism Sherwood number is defined as</p>
+</div>
+<div id="S2.p16" class="ltx_para">
+<p class="ltx_p"><math id="S2.p16.m1" class="ltx_Math" alttext="Nu_{avg}=" display="inline"><mrow><mrow><mi>N</mi><mo>⁢</mo><msub><mi>u</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow><mo>=</mo><mi></mi></mrow></math><math id="S2.p16.m2" class="ltx_Math" alttext="\int_{0}^{1}Nu_{Y}\,dY," display="inline"><mrow><mrow><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><mi>N</mi><mo>⁢</mo><mpadded width="+1.7pt"><msub><mi>u</mi><mi>Y</mi></msub></mpadded><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow><mo>,</mo></mrow></math></p>
+</div>
+<div id="S2.p17" class="ltx_para">
+<p class="ltx_p"><math id="S2.p17.m1" class="ltx_Math" alttext="Sh_{avg}=" display="inline"><mrow><mrow><mi>S</mi><mo>⁢</mo><msub><mi>h</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow><mo>=</mo><mi></mi></mrow></math><math id="S2.p17.m2" class="ltx_Math" alttext="\int_{0}^{1}Sh_{Y}\,dY," display="inline"><mrow><mrow><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><mi>S</mi><mo>⁢</mo><mpadded width="+1.7pt"><msub><mi>h</mi><mi>Y</mi></msub></mpadded><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow><mo>,</mo></mrow></math>
+</p>
+</div>
+<div id="S2.p18" class="ltx_para">
+<p class="ltx_p"><math id="S2.p18.m1" class="ltx_Math" alttext="Nn_{avg}=" display="inline"><mrow><mrow><mi>N</mi><mo>⁢</mo><msub><mi>n</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow><mo>=</mo><mi></mi></mrow></math><math id="S2.p18.m2" class="ltx_Math" alttext="\int_{0}^{1}Nn_{Y}\,dY." display="inline"><mrow><mrow><msubsup><mo largeop="true" symmetric="true">∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><mi>N</mi><mo>⁢</mo><mpadded width="+1.7pt"><msub><mi>n</mi><mi>Y</mi></msub></mpadded><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow><mo>.</mo></mrow></math></p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>Numerical method</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">To find the numerical solution to (<a href="#S2.E8" title="(8) ‣ 2 Mathematical modeling ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>)–(<a href="#S2.E11" title="(11) ‣ 2 Mathematical modeling ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">11</span></a>), partial differential equations with boundary conditions Galerkin’s weighted residuals finite element method are solved with the help of MATLAB <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib9" title="" class="ltx_ref">9</a>]</cite>. In this method, a two-dimensional field is divided into small triangular parts, in which each part is named an element. Over each element, assume a piecewise trial function.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p2.m1" class="ltx_Math" alttext="\Psi" display="inline"><mi mathvariant="normal">Ψ</mi></math>, <math id="S3.p2.m2" class="ltx_Math" alttext="\theta" display="inline"><mi>θ</mi></math>, <math id="S3.p2.m3" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>, and <math id="S3.p2.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> be approximated by
+<math id="S3.p2.m5" class="ltx_Math" alttext="\Psi=\sum_{i=1}^{3}{\Psi_{i}\xi_{i}}" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mo>=</mo><mrow><msubsup><mo largeop="true" symmetric="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></msubsup><mrow><msub><mi mathvariant="normal">Ψ</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow></mrow></mrow></math>, <math id="S3.p2.m6" class="ltx_Math" alttext="\theta=\sum_{i=1}^{3}{\theta_{i}\xi_{i}}" display="inline"><mrow><mi>θ</mi><mo>=</mo><mrow><msubsup><mo largeop="true" symmetric="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></msubsup><mrow><msub><mi>θ</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow></mrow></mrow></math>, <math id="S3.p2.m7" class="ltx_Math" alttext="\phi=\sum_{i=1}^{3}{\phi_{i}\xi_{i}}" display="inline"><mrow><mi>ϕ</mi><mo>=</mo><mrow><msubsup><mo largeop="true" symmetric="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></msubsup><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow></mrow></mrow></math>, and <math id="S3.p2.m8" class="ltx_Math" alttext="N=\sum_{i=1}^{3}{N_{i}\xi_{i}}" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><msubsup><mo largeop="true" symmetric="true">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>3</mn></msubsup><mrow><msub><mi>N</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow></mrow></mrow></math>, where
+<math id="S3.p2.m9" class="ltx_Math" alttext="\xi_{i}" display="inline"><msub><mi>ξ</mi><mi>i</mi></msub></math> is the linear interpolating functions over each triangular element. The FEM model matrix is as follows:</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p"><math id="S3.p3.m1" class="ltx_Math" alttext="\begin{bmatrix}[L^{11}]&amp;[L^{12}]&amp;[L^{13}]&amp;[L^{14}]\\
+[L^{21}]&amp;[L^{22}]&amp;[L^{23}]&amp;[L^{24}]\\
+[L^{31}]&amp;[L^{32}]&amp;[L^{33}]&amp;[L^{34}]\\
+[L^{41}]&amp;[L^{42}]&amp;[L^{43}]&amp;[L^{44}]\\
+\end{bmatrix}\begin{bmatrix}\{\Psi\}\\
+\{T\}\\
+\{C\}\\
+\{N\}\\
+\end{bmatrix}=\begin{bmatrix}\{M^{1}\}\\
+\{M^{2}\}\\
+\{M^{3}\}\\
+\{M^{4}\}\\
+\end{bmatrix}" display="inline"><mrow><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>11</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>12</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>13</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>14</mn></msup><mo stretchy="false">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>21</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>22</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>23</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>24</mn></msup><mo stretchy="false">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>31</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>32</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>33</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>34</mn></msup><mo stretchy="false">]</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>41</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>42</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>43</mn></msup><mo stretchy="false">]</mo></mrow></mtd><mtd columnalign="center"><mrow><mo stretchy="false">[</mo><msup><mi>L</mi><mn>44</mn></msup><mo stretchy="false">]</mo></mrow></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable rowspacing="0pt"><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><mi>T</mi><mo stretchy="false">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><mi>C</mi><mo stretchy="false">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><mi>N</mi><mo stretchy="false">}</mo></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mo>[</mo><mtable rowspacing="0pt"><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><msup><mi>M</mi><mn>1</mn></msup><mo stretchy="false">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><msup><mi>M</mi><mn>2</mn></msup><mo stretchy="false">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><msup><mi>M</mi><mn>3</mn></msup><mo stretchy="false">}</mo></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mo stretchy="false">{</mo><msup><mi>M</mi><mn>4</mn></msup><mo stretchy="false">}</mo></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>,
+
+<br class="ltx_break">where
+
+<br class="ltx_break"><math id="S3.p3.m2" class="ltx_Math" alttext="L^{11}=\iint_{\Omega_{e}}[\frac{\partial\xi_{j}}{\partial X}\frac{\partial\xi_%
+{i}}{\partial X}+\frac{\partial\xi_{j}}{\partial Y}\frac{\partial\xi_{i}}{%
+\partial Y}]\,dx\,dy" display="inline"><mrow><msup><mi>L</mi><mn>11</mn></msup><mo>=</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo rspace="4.2pt" stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>x</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>y</mi></mrow></mrow></mrow></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m3" class="ltx_Math" alttext="L^{12}=-Ra\iint_{\Omega_{e}}(\xi_{j}\frac{\partial\xi_{i}}{\partial X}\cos%
+\delta-\xi_{j}\frac{\partial\xi_{i}}{\partial Y}\sin\delta)\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>12</mn></msup><mo>=</mo><mrow><mo>-</mo><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow><mo>-</mo><mrow><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow><mo rspace="4.2pt" stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></mrow></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m4" class="ltx_Math" alttext="L^{13}=RaNr\iint_{\Omega_{e}}(\xi_{j}\frac{\partial\xi_{i}}{\partial X}\cos%
+\delta-\xi_{j}\frac{\partial\xi_{i}}{\partial Y}\sin\delta)\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>13</mn></msup><mo>=</mo><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>N</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow><mo>-</mo><mrow><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow><mo rspace="4.2pt" stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m5" class="ltx_Math" alttext="L^{14}=RaRb\iint_{\Omega_{e}}(\xi_{j}\frac{\partial\xi_{i}}{\partial X}\cos%
+\delta-\xi_{j}\frac{\partial\xi_{i}}{\partial Y}\sin\delta)\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>14</mn></msup><mo>=</mo><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>R</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow><mo>-</mo><mrow><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mi>δ</mi></mrow></mrow></mrow><mo rspace="4.2pt" stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m6" class="ltx_Math" alttext="M^{1}=0" display="inline"><mrow><msup><mi>M</mi><mn>1</mn></msup><mo>=</mo><mn>0</mn></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m7" class="ltx_Math" alttext="L^{21}=0" display="inline"><mrow><msup><mi>L</mi><mn>21</mn></msup><mo>=</mo><mn>0</mn></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m8" class="ltx_Math" alttext="L^{22}=\iint_{\Omega_{e}}[\bar{\frac{\partial\Psi}{\partial Y}}\xi_{j}\frac{%
+\partial\xi_{i}}{\partial X}-\bar{\frac{\partial\Psi}{\partial X}}\xi_{j}\frac%
+{\partial\xi_{i}}{\partial Y}+\frac{\partial\xi_{i}}{\partial X}\frac{\partial%
+\xi_{j}}{\partial X}+\frac{\partial\xi_{i}}{\partial Y}\frac{\partial\xi_{i}}{%
+\partial Y}-Nt(\bar{\frac{\partial\theta}{\partial X}}\xi_{j}\frac{\partial\xi%
+_{i}}{\partial X}+\bar{\frac{\partial\theta}{\partial Y}}\xi_{j}\frac{\partial%
+\xi_{i}}{\partial Y})]\,dX\,dY" display="inline"><mrow><msup><mi mathsize="90%">L</mi><mn mathsize="90%">22</mn></msup><mo mathsize="90%" stretchy="false">=</mo><mrow><msub><mo largeop="true" mathsize="90%" stretchy="false" symmetric="true">∬</mo><msub><mi mathsize="90%" mathvariant="normal">Ω</mi><mi mathsize="90%">e</mi></msub></msub><mrow><mrow><mo maxsize="90%" minsize="90%">[</mo><mrow><mrow><mrow><mrow><mover accent="true"><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%" mathvariant="normal">Ψ</mi></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">Y</mi></mrow></mfrac><mo mathsize="90%" stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">j</mi></msub><mo>⁢</mo><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">i</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">X</mi></mrow></mfrac></mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mover accent="true"><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%" mathvariant="normal">Ψ</mi></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">X</mi></mrow></mfrac><mo mathsize="90%" stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">j</mi></msub><mo>⁢</mo><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">i</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">Y</mi></mrow></mfrac></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mrow><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">i</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">j</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">X</mi></mrow></mfrac></mrow><mo mathsize="90%" stretchy="false">+</mo><mrow><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">i</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">i</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">Y</mi></mrow></mfrac></mrow></mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mi mathsize="90%">N</mi><mo>⁢</mo><mi mathsize="90%">t</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mrow><mover accent="true"><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">θ</mi></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">X</mi></mrow></mfrac><mo mathsize="90%" stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">j</mi></msub><mo>⁢</mo><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">i</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">X</mi></mrow></mfrac></mrow><mo mathsize="90%" stretchy="false">+</mo><mrow><mover accent="true"><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">θ</mi></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">Y</mi></mrow></mfrac><mo mathsize="90%" stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">j</mi></msub><mo>⁢</mo><mfrac><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><msub><mi mathsize="90%">ξ</mi><mi mathsize="90%">i</mi></msub></mrow><mrow><mo mathsize="90%" stretchy="false">∂</mo><mo>⁡</mo><mi mathsize="90%">Y</mi></mrow></mfrac></mrow></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow><mo maxsize="90%" minsize="90%" rspace="4.2pt">]</mo></mrow><mo>⁢</mo><mrow><mo mathsize="90%" rspace="0pt" stretchy="false">𝑑</mo><mpadded width="+1.7pt"><mi mathsize="90%">X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo mathsize="90%" rspace="0pt" stretchy="false">𝑑</mo><mi mathsize="90%">Y</mi></mrow></mrow></mrow></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m9" class="ltx_Math" alttext="L^{23}=-Nb\ \iint_{\Omega_{e}}[\bar{\frac{\partial\theta}{\partial X}}\xi_{j}%
+\frac{\partial\xi_{i}}{\partial X}+\bar{\frac{\partial\theta}{\partial Y}}\xi_%
+{j}\frac{\partial\xi_{i}}{\partial Y}]\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>23</mn></msup><mo>=</mo><mrow><mo>-</mo><mrow><mi>N</mi><mo>⁢</mo><mpadded width="+5pt"><mi>b</mi></mpadded><mo>⁢</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mover accent="true"><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mover accent="true"><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>θ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo rspace="4.2pt" stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></mrow></mrow></math>, 
+<br class="ltx_break"><math id="S3.p3.m10" class="ltx_Math" alttext="L^{24}=0" display="inline"><mrow><msup><mi>L</mi><mn>24</mn></msup><mo>=</mo><mn>0</mn></mrow></math>, <math id="S3.p3.m11" class="ltx_Math" alttext="M^{2}=0" display="inline"><mrow><msup><mi>M</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m12" class="ltx_Math" alttext="L^{31}=0" display="inline"><mrow><msup><mi>L</mi><mn>31</mn></msup><mo>=</mo><mn>0</mn></mrow></math>, 
+<br class="ltx_break"><math id="S3.p3.m13" class="ltx_Math" alttext="L^{32}=-\frac{Nt}{Nb}\iint_{\Omega_{e}}[\frac{\partial\xi_{i}}{\partial X}%
+\frac{\partial\xi_{j}}{\partial X}+\frac{\partial\xi_{i}}{\partial Y}\frac{%
+\partial\xi_{j}}{\partial Y}]\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>32</mn></msup><mo>=</mo><mrow><mo>-</mo><mrow><mfrac><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi></mrow><mrow><mi>N</mi><mo>⁢</mo><mi>b</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo rspace="4.2pt" stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></mrow></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m14" class="ltx_Math" alttext="L^{33}=\ \iint_{\Omega_{e}}[Le\left(\bar{\frac{\partial\Psi}{\partial Y}}\frac%
+{\partial\phi}{\partial X}-\bar{\frac{\partial\Psi}{\partial X}}\frac{\partial%
+\phi}{\partial Y}\right)+\frac{\partial\xi_{i}}{\partial X}\frac{\partial\xi_{%
+j}}{\partial X}+\frac{\partial\xi_{i}}{\partial Y}\frac{\partial\xi_{j}}{%
+\partial Y}]\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>33</mn></msup><mo rspace="7.5pt">=</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>L</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mover accent="true"><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo stretchy="false">¯</mo></mover><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>-</mo><mrow><mover accent="true"><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo stretchy="false">¯</mo></mover><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi>ϕ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo>)</mo></mrow></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo rspace="4.2pt" stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></math> , 
+<br class="ltx_break"><math id="S3.p3.m15" class="ltx_Math" alttext="L^{34}=0" display="inline"><mrow><msup><mi>L</mi><mn>34</mn></msup><mo>=</mo><mn>0</mn></mrow></math>, <math id="S3.p3.m16" class="ltx_Math" alttext="M^{3}=0" display="inline"><mrow><msup><mi>M</mi><mn>3</mn></msup><mo>=</mo><mn>0</mn></mrow></math>,
+<br class="ltx_break"><math id="S3.p3.m17" class="ltx_Math" alttext="L^{41}=0" display="inline"><mrow><msup><mi>L</mi><mn>41</mn></msup><mo>=</mo><mn>0</mn></mrow></math>, <math id="S3.p3.m18" class="ltx_Math" alttext="L^{42}=0" display="inline"><mrow><msup><mi>L</mi><mn>42</mn></msup><mo>=</mo><mn>0</mn></mrow></math>, 
+<br class="ltx_break"><math id="S3.p3.m19" class="ltx_Math" alttext="L^{43}=\iint_{\Omega_{e}}\frac{PePr}{Sc}(\frac{\partial\xi_{i}}{\partial X}%
+\frac{\partial\xi_{j}}{\partial X}+\frac{\partial\xi_{i}}{\partial Y}\frac{%
+\partial\xi_{j}}{\partial Y})\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>43</mn></msup><mo>=</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mfrac><mrow><mi>P</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mi>r</mi></mrow><mrow><mi>S</mi><mo>⁢</mo><mi>c</mi></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo rspace="4.2pt" stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></math>, 
+<br class="ltx_break"><math id="S3.p3.m20" class="ltx_Math" alttext="L^{44}=\iint_{\Omega_{e}}[\bar{\frac{\partial\Psi}{\partial Y}}\xi_{j}\frac{%
+\partial\xi_{i}}{\partial X}-\bar{\frac{\partial\Psi}{\partial X}}\xi_{i}\frac%
+{\partial\xi_{j}}{\partial Y}+\frac{Pr}{Sc}(\frac{\partial\xi_{i}}{\partial X}%
+\frac{\partial\xi_{j}}{\partial X}+\frac{\partial\xi_{i}}{\partial Y}\frac{%
+\partial\xi_{j}}{\partial Y})]\,dX\,dY" display="inline"><mrow><msup><mi>L</mi><mn>44</mn></msup><mo>=</mo><mrow><msub><mo largeop="true" symmetric="true">∬</mo><msub><mi mathvariant="normal">Ω</mi><mi>e</mi></msub></msub><mrow><mrow><mo stretchy="false">[</mo><mrow><mrow><mrow><mover accent="true"><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi>ξ</mi><mi>j</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>-</mo><mrow><mover accent="true"><mfrac><mrow><mo>∂</mo><mo>⁡</mo><mi mathvariant="normal">Ψ</mi></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo stretchy="false">¯</mo></mover><mo>⁢</mo><msub><mi>ξ</mi><mi>i</mi></msub><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo>+</mo><mrow><mfrac><mrow><mi>P</mi><mo>⁢</mo><mi>r</mi></mrow><mrow><mi>S</mi><mo>⁢</mo><mi>c</mi></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>X</mi></mrow></mfrac></mrow><mo>+</mo><mrow><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac><mo>⁢</mo><mfrac><mrow><mo>∂</mo><mo>⁡</mo><msub><mi>ξ</mi><mi>j</mi></msub></mrow><mrow><mo>∂</mo><mo>⁡</mo><mi>Y</mi></mrow></mfrac></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="4.2pt" stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mpadded width="+1.7pt"><mi>X</mi></mpadded></mrow><mo>⁢</mo><mrow><mo rspace="0pt">𝑑</mo><mi>Y</mi></mrow></mrow></mrow></mrow></math>, 
+<br class="ltx_break"><math id="S3.p3.m21" class="ltx_Math" alttext="M^{4}=0" display="inline"><mrow><msup><mi>M</mi><mn>4</mn></msup><mo>=</mo><mn>0</mn></mrow></math>. 
+<br class="ltx_break">To linearize the system of equations, the functions are incorporated, which are assumed to be known. After applying the boundary conditions, a matrix of system of linear equations is formed, which is solved by using the Gauss–Seidel iteration method. The convergence of the solution is assumed when the relative error for each variable between two consecutive iterations is observed below the convergence criteria such that <math id="S3.p3.m22" class="ltx_Math" alttext="|\psi^{n+1}-\psi^{n}|\leq 10^{-5}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msup><mi>ψ</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>-</mo><msup><mi>ψ</mi><mi>n</mi></msup></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><msup><mn>10</mn><mrow><mo>-</mo><mn>5</mn></mrow></msup></mrow></math>,
+where <math id="S3.p3.m23" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is the number of iterations and <math id="S3.p3.m24" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math> stands for <math id="S3.p3.m25" class="ltx_Math" alttext="\Psi,\theta,C" display="inline"><mrow><mi mathvariant="normal">Ψ</mi><mo>,</mo><mi>θ</mi><mo>,</mo><mi>C</mi></mrow></math>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">To choose the grid size, the grid independence test is performed for <math id="S3.p4.m1" class="ltx_Math" alttext="21\times 21,41\times 41,61\times 61,71\times 71,81\times 81,91\times 91" display="inline"><mrow><mrow><mn>21</mn><mo>×</mo><mn>21</mn></mrow><mo>,</mo><mrow><mn>41</mn><mo>×</mo><mn>41</mn></mrow><mo>,</mo><mrow><mn>61</mn><mo>×</mo><mn>61</mn></mrow><mo>,</mo><mrow><mn>71</mn><mo>×</mo><mn>71</mn></mrow><mo>,</mo><mrow><mn>81</mn><mo>×</mo><mn>81</mn></mrow><mo>,</mo><mrow><mn>91</mn><mo>×</mo><mn>91</mn></mrow></mrow></math> grid sizes. The grid independence test reveals that the grid size <math id="S3.p4.m2" class="ltx_Math" alttext="81\times 81" display="inline"><mrow><mn>81</mn><mo>×</mo><mn>81</mn></mrow></math> is sufficient to study in the the bioconvection phenomena.</p>
+</div>
+<figure id="S3.T1" class="ltx_table">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_table">Table 1: </span>Accuracy test of mean Nusselt numbers with the literature.</figcaption>
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_l ltx_border_r ltx_border_t">Authors</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><math id="S3.T1.m1" class="ltx_Math" alttext="Ra=10" display="inline"><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mn>10</mn></mrow></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><math id="S3.T1.m2" class="ltx_Math" alttext="Ra=100" display="inline"><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mn>100</mn></mrow></math></th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t"><math id="S3.T1.m3" class="ltx_Math" alttext="Ra=1000" display="inline"><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mn>1000</mn></mrow></math></th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">Varol, Oztop, and Pop <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib33" title="" class="ltx_ref">33</a>]</cite>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">-</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">-</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">13.564</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">Cross, Bear, and Hickox <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib12" title="" class="ltx_ref">12</a>]</cite>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">-</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">-</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">13.470</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">Manole <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib22" title="" class="ltx_ref">22</a>]</cite>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">-</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">3.118</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">13.637</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">Sheremet and Pop <cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib28" title="" class="ltx_ref">28</a>]</cite>
+</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">1.079</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">3.115</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">13.667</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l ltx_border_r ltx_border_t">Present results</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">1.081</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">3.1271</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r ltx_border_t">13.715</td>
+</tr>
+</tbody>
+</table>
+</figure>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">4 </span>Result and discussion</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">The present equations (<a href="#S2.E8" title="(8) ‣ 2 Mathematical modeling ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8</span></a>)–(<a href="#S2.E11" title="(11) ‣ 2 Mathematical modeling ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">11</span></a>) are numerically investigated and analyzed in the porous square cavity filled with nanofluid and gyrotactic microorganisms at different inclination angles. The numerical investigation is carried out with the following parameters considered Rayleigh number <math id="S4.p1.m1" class="ltx_Math" alttext="(Ra=25)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mn>25</mn></mrow><mo stretchy="false">)</mo></mrow></math>, bioconvection Rayleigh number <math id="S4.p1.m2" class="ltx_Math" alttext="(Rb=15)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>R</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mn>15</mn></mrow><mo stretchy="false">)</mo></mrow></math>, Lewis number <math id="S4.p1.m3" class="ltx_Math" alttext="(Le=1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>L</mi><mo>⁢</mo><mi>e</mi></mrow><mo>=</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>, Peclet number, thermophoresis parameter, Brownian parameter, buoyancy ratio parameter, Schmidt number 0.1, Prandtl number 6.9, and inclination angle (<math id="S4.p1.m4" class="ltx_Math" alttext="\delta={30}^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><msup><mn>30</mn><mo>∘</mo></msup></mrow></math>) unless when it is mentioned.</p>
+</div>
+<figure id="S4.F2" class="ltx_figure"><img src="Picture2.jpg" id="S4.F2.g1" class="ltx_graphics ltx_centering" width="360" height="541" alt="Streamlines for the inclination angle ">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2: </span>Streamlines for the inclination angle <math id="S4.F2.m2" class="ltx_Math" alttext="\delta=0^{\circ}-{180}^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>-</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></mrow></math></figcaption>
+</figure>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Streamlines are presented in Figure <a href="#S4.F2" title="Figure 2 ‣ 4 Result and discussion ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2</span></a> for various values of inclination angle (<math id="S4.p2.m1" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>). When <math id="S4.p2.m2" class="ltx_Math" alttext="\delta=0^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><msup><mn>0</mn><mo>∘</mo></msup></mrow></math>, the cells moved in the clockwise direction in the square enclosure. The absolute maximum of the stream function is <math id="S4.p2.m3" class="ltx_Math" alttext="|\Psi_{\max}|=1.56" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mi>max</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>1.56</mn></mrow></math>. At <math id="S4.p2.m4" class="ltx_Math" alttext="{30}^{\circ}" display="inline"><msup><mn>30</mn><mo>∘</mo></msup></math>, inclination angle the maximum stream function value is <math id="S4.p2.m5" class="ltx_Math" alttext="|\Psi_{\max}|=2.0435" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mi>max</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>2.0435</mn></mrow></math>, and the rotation of the cell moves in the same direction. The inclination angle increased to <math id="S4.p2.m6" class="ltx_Math" alttext="{90}^{\circ}" display="inline"><msup><mn>90</mn><mo>∘</mo></msup></math>, and the velocity of the fluid flow is reduced. At <math id="S4.p2.m7" class="ltx_Math" alttext="{120}^{\circ}" display="inline"><msup><mn>120</mn><mo>∘</mo></msup></math>, the intensity of the flow increased to <math id="S4.p2.m8" class="ltx_Math" alttext="|\Psi_{\max}|=2.0421" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mi>max</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>2.0421</mn></mrow></math>. In this, the cell moves to the center regime with the intensity of the gravitational force. At <math id="S4.p2.m9" class="ltx_Math" alttext="{150}^{\circ}" display="inline"><msup><mn>150</mn><mo>∘</mo></msup></math> inclination angle, the flow strength is low and the cell moves near to corners of the left down wall and right top walls. At <math id="S4.p2.m10" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>, the fluid flow velocity is less with the strength of cell <math id="S4.p2.m11" class="ltx_Math" alttext="|\Psi_{\max}|=1.5629" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mi>max</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>1.5629</mn></mrow></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Isotherms are demonstrated in Figure <a href="#S4.F3" title="Figure 3 ‣ 4 Result and discussion ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">3</span></a> for various inclination angles from <math id="S4.p3.m1" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> to <math id="S4.p3.m2" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>. At inclination <math id="S4.p3.m3" class="ltx_Math" alttext="{30}^{\circ}" display="inline"><msup><mn>30</mn><mo>∘</mo></msup></math>, the temperature distribution is indicating the stratified diagonally. At <math id="S4.p3.m4" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>, isotherms are parallel to the vertical walls, which shows the transfer of heat in the mode of heat conduction.</p>
+</div>
+<figure id="S4.F3" class="ltx_figure"><img src="Picture3.jpg" id="S4.F3.g1" class="ltx_graphics ltx_centering" width="360" height="541" alt=" Isotherms for the inclination angle ">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 3: </span> Isotherms for the inclination angle <math id="S4.F3.m2" class="ltx_Math" alttext="\delta=0^{\circ}-{180}^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>-</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></mrow></math></figcaption>
+</figure>
+<figure id="S4.F4" class="ltx_figure"><img src="Picture4.jpg" id="S4.F4.g1" class="ltx_graphics ltx_centering" width="360" height="541" alt="Isoconcentration of nanoparticle volume fraction for the inclination angle ">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 4: </span>Isoconcentration of nanoparticle volume fraction for the inclination angle <math id="S4.F4.m2" class="ltx_Math" alttext="\delta=0^{\circ}-{180}^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>-</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></mrow></math></figcaption>
+</figure>
+<figure id="S4.F5" class="ltx_figure"><img src="Picture5.jpg" id="S4.F5.g1" class="ltx_graphics ltx_centering" width="360" height="541" alt=" Microorganism isoconcentrations for the inclination angle ">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 5: </span> Microorganism isoconcentrations for the inclination angle <math id="S4.F5.m2" class="ltx_Math" alttext="\delta=0^{\circ}-{180}^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>-</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></mrow></math></figcaption>
+</figure>
+<figure id="S4.F6" class="ltx_figure"><img src="Picture6.jpg" id="S4.F6.g1" class="ltx_graphics ltx_centering" width="360" height="541" alt="Representation of (a) Average Nusselt number (b) Average nanoparticle Sherwood number (c) Average Microorganism Sherwood number for angle versus ">
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 6: </span>Representation of (a) Average Nusselt number (b) Average nanoparticle Sherwood number (c) Average Microorganism Sherwood number for angle versus <math id="S4.F6.m3" class="ltx_Math" alttext="Rb" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mi>b</mi></mrow></math> and angle versus <math id="S4.F6.m4" class="ltx_Math" alttext="Nt" display="inline"><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi></mrow></math></figcaption>
+</figure>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Nanoparticle isoconcentrations of the fluid for various angles are expressed in Figure <a href="#S4.F4" title="Figure 4 ‣ 4 Result and discussion ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4</span></a>. At <math id="S4.p4.m1" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> to <math id="S4.p4.m2" class="ltx_Math" alttext="{30}^{\circ}" display="inline"><msup><mn>30</mn><mo>∘</mo></msup></math> inclination angle, the nanoparticle volume fraction was raised near the bottom cavity wall. When the square enclosure was moved from angle <math id="S4.p4.m3" class="ltx_Math" alttext="{90}^{\circ}" display="inline"><msup><mn>90</mn><mo>∘</mo></msup></math> to <math id="S4.p4.m4" class="ltx_Math" alttext="120^{\circ}" display="inline"><msup><mn>120</mn><mo>∘</mo></msup></math>, the nanoparticle isoconcentration decreased. When the angle is <math id="S4.p4.m5" class="ltx_Math" alttext="{120}^{\circ}" display="inline"><msup><mn>120</mn><mo>∘</mo></msup></math> to <math id="S4.p4.m6" class="ltx_Math" alttext="{150}^{\circ}" display="inline"><msup><mn>150</mn><mo>∘</mo></msup></math>, again the concentration of nanoparticles increases. When the angle of inclination is inclined from <math id="S4.p4.m7" class="ltx_Math" alttext="{150}^{\circ}" display="inline"><msup><mn>150</mn><mo>∘</mo></msup></math> to <math id="S4.p4.m8" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>, the concentration of nanoparticles is decreased. In these all angles, the cell is divided into two different parts: one is formed near the bottom adiabatic wall and the other part is formed as a semi-opened vertex close to the top adiabatic wall.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Figure <a href="#S4.F5" title="Figure 5 ‣ 4 Result and discussion ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5</span></a> displays isoconcentrations of microorgnisms for the various inclination angles. At <math id="S4.p5.m1" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> to <math id="S4.p5.m2" class="ltx_Math" alttext="{30}^{\circ}" display="inline"><msup><mn>30</mn><mo>∘</mo></msup></math> inclination angle, two types of cells are formed: one cell is near the bottom adiabatic wall and the cell moves from the cold wall to the hot wall, the second is an open semi vertex formed at the top cavity wall, and it moves from the hot wall to the cold wall. When the inclination varies from <math id="S4.p5.m3" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> to <math id="S4.p5.m4" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>, the movement of cells in the isoconcentrations of microorganisms and nanoparticle volume fraction is the same. The concentration of microorganisms’ maximum value is found at <math id="S4.p5.m5" class="ltx_Math" alttext="\delta={30}^{\circ}" display="inline"><mrow><mi>δ</mi><mo>=</mo><msup><mn>30</mn><mo>∘</mo></msup></mrow></math>, <math id="S4.p5.m6" class="ltx_Math" alttext="{120}^{\circ}" display="inline"><msup><mn>120</mn><mo>∘</mo></msup></math>.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">In Figure <a href="#S4.F6" title="Figure 6 ‣ 4 Result and discussion ‣ Impact of inclination angle on thermo-bioconvection of nanofluid containing gyrotactic microorganisms saturated in porous square cavity" class="ltx_ref"><span class="ltx_text ltx_ref_tag">6</span></a>, the effect of <math id="S4.p6.m1" class="ltx_Math" alttext="Rb" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mi>b</mi></mrow></math> and <math id="S4.p6.m2" class="ltx_Math" alttext="Nt" display="inline"><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi></mrow></math> on average Nusselt number, Sherwood numbers of nanoparticles, and Sherwood number of microorganisms is discussed. Moreover, <math id="S4.p6.m3" class="ltx_Math" alttext="Rb" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mi>b</mi></mrow></math> increases <math id="S4.p6.m4" class="ltx_Math" alttext="{Nu}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>u</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> and <math id="S4.p6.m5" class="ltx_Math" alttext="{Sh}_{avg}" display="inline"><mrow><mi>S</mi><mo>⁢</mo><msub><mi>h</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> from <math id="S4.p6.m6" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> <math id="S4.p6.m7" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math> <math id="S4.p6.m8" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> <math id="S4.p6.m9" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math> <math id="S4.p6.m10" class="ltx_Math" alttext="{90}^{\circ}" display="inline"><msup><mn>90</mn><mo>∘</mo></msup></math>, <math id="S4.p6.m11" class="ltx_Math" alttext="{90}^{\circ}" display="inline"><msup><mn>90</mn><mo>∘</mo></msup></math> <math id="S4.p6.m12" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math> <math id="S4.p6.m13" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> <math id="S4.p6.m14" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math> <math id="S4.p6.m15" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>, and it reaches high. Indeed, at <math id="S4.p6.m16" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math>, <math id="S4.p6.m17" class="ltx_Math" alttext="{90}^{\circ}" display="inline"><msup><mn>90</mn><mo>∘</mo></msup></math>, and <math id="S4.p6.m18" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math> the average Nusselt number and average Sherwood number values are low. Also, <math id="S4.p6.m19" class="ltx_Math" alttext="Rb" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mi>b</mi></mrow></math> increases <math id="S4.p6.m20" class="ltx_Math" alttext="{Nn}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>n</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> from <math id="S4.p6.m21" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> to <math id="S4.p6.m22" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>. In addition, <math id="S4.p6.m23" class="ltx_Math" alttext="Nt" display="inline"><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi></mrow></math> increases <math id="S4.p6.m24" class="ltx_Math" alttext="{Nu}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>u</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> from <math id="S4.p6.m25" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> to <math id="S4.p6.m26" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>, and it shows wavy behavior, and <math id="S4.p6.m27" class="ltx_Math" alttext="{Sh}_{avg}" display="inline"><mrow><mi>S</mi><mo>⁢</mo><msub><mi>h</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> and <math id="S4.p6.m28" class="ltx_Math" alttext="{Nn}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>n</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> are also increased with the increase of thermophoresis parameter.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5 </span>Conclusion</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">The effect of porous square cavity inclination with the horizontal surface with nanofluid and gyrotactic microorganisms was analyzed with the streamlines, isotherms, nanoparticle volume fraction, and microorganism isoconcentration from <math id="S5.p1.m1" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> to<math id="S5.p1.m2" class="ltx_Math" alttext="{180}^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math>.</p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">1. The velocity of the nanofluid flow is high at the angle <math id="S5.p2.m1" class="ltx_Math" alttext="{30}^{\circ}" display="inline"><msup><mn>30</mn><mo>∘</mo></msup></math>, <math id="S5.p2.m2" class="ltx_Math" alttext="{120}^{\circ}" display="inline"><msup><mn>120</mn><mo>∘</mo></msup></math> and in the remaining angles, the flow intensity is low.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">2. The temperature distribution of the nanofluid is affected by the square cavity inclination.</p>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">3. Nanoparticle isoconcentration and microorganism isoconcentrations are high at the <math id="S5.p4.m1" class="ltx_Math" alttext="{30}^{\circ}" display="inline"><msup><mn>30</mn><mo>∘</mo></msup></math> and <math id="S5.p4.m2" class="ltx_Math" alttext="{120}^{\circ}" display="inline"><msup><mn>120</mn><mo>∘</mo></msup></math>, and at the remaining angles, the value is low.
+</p>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">4. Thermophoresis parameter increases <math id="S5.p5.m1" class="ltx_Math" alttext="{Nu}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>u</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math>, <math id="S5.p5.m2" class="ltx_Math" alttext="{Sh}_{avg}" display="inline"><mrow><mi>S</mi><mo>⁢</mo><msub><mi>h</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math>, and <math id="S5.p5.m3" class="ltx_Math" alttext="{Nn}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>n</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> from <math id="S5.p5.m4" class="ltx_Math" alttext="0^{\circ}\leq\delta\leq{180}^{\circ}" display="inline"><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>≤</mo><mi>δ</mi><mo>≤</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></math>. Also, <math id="S5.p5.m5" class="ltx_Math" alttext="Nt" display="inline"><mrow><mi>N</mi><mo>⁢</mo><mi>t</mi></mrow></math> increases <math id="S5.p5.m6" class="ltx_Math" alttext="{Nu}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>u</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math> from <math id="S5.p5.m7" class="ltx_Math" alttext="0^{\circ}\leq\delta\leq{180}^{\circ}" display="inline"><mrow><msup><mn>0</mn><mo>∘</mo></msup><mo>≤</mo><mi>δ</mi><mo>≤</mo><msup><mn>180</mn><mo>∘</mo></msup></mrow></math>, but at <math id="S5.p5.m8" class="ltx_Math" alttext="0^{\circ}" display="inline"><msup><mn>0</mn><mo>∘</mo></msup></math> and <math id="S5.p5.m9" class="ltx_Math" alttext="{\ 180}^{\circ}" display="inline"><msup><mn> 180</mn><mo>∘</mo></msup></math>, the value is low.
+5. Bioconvection Rayleigh number increases <math id="S5.p5.m10" class="ltx_Math" alttext="{Nu}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>u</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math>, <math id="S5.p5.m11" class="ltx_Math" alttext="{Sh}_{avg}" display="inline"><mrow><mi>S</mi><mo>⁢</mo><msub><mi>h</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math>, and <math id="S5.p5.m12" class="ltx_Math" alttext="{Nn}_{avg}" display="inline"><mrow><mi>N</mi><mo>⁢</mo><msub><mi>n</mi><mrow><mi>a</mi><mo>⁢</mo><mi>v</mi><mo>⁢</mo><mi>g</mi></mrow></msub></mrow></math>.</p>
+</div>
+</section>
+<section id="Sx1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">Acknowledgements</h2>
+
+<div id="Sx1.p1" class="ltx_para">
+<p class="ltx_p">Authors are grateful to there anonymous referees and editor for their constructive comments.</p>
+</div>
+</section>
+<section id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+
+<ul class="ltx_biblist">
+<li id="bib.bib1" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[1]</span>
+<span class="ltx_bibblock">Aboueian-Jahromi, J., Hossein Nezhad, A. and Behzadmehr, A.<span class="ltx_text ltx_font_italic">Effects of inclination angle on the steady flow and heat transfer of power-law fluids around a heated inclined square cylinder in a plane channel</span>, J. Nonnewton Fluid Mech., 166 (23-24) (2011) 1406–1414.
+
+</span>
+</li>
+<li id="bib.bib2" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[2]</span>
+<span class="ltx_bibblock">Alluguvelli, R., Balla, C.S. and Naikoti, K. <span class="ltx_text ltx_font_italic">Bioconvection in porous square cavity containing oxytactic microorganisms in the presence of viscous dissipation</span>, Discontinuity, Nonlinearity, and Complexity, 11(02) (2022) 301–313.
+
+</span>
+</li>
+<li id="bib.bib3" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[3]</span>
+<span class="ltx_bibblock">Alluguvelli, R., Balla, C.S., Naikoti, K. and Makinde, O.D. <span class="ltx_text ltx_font_italic">Nanofluid bioconvection in porous enclosure with viscous dissipation</span>, Indian J. Pure Appl. Phys. 60(1) (2022) 78–89.
+
+</span>
+</li>
+<li id="bib.bib4" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[4]</span>
+<span class="ltx_bibblock">Aounallah, M., Addad, Y., Benhamadouche, S., Imine, O., Adjloit, L. and Laure, D. <span class="ltx_text ltx_font_italic">Numerical investigation of turbulent natural convection in an inclined square cavity with a hot wavy wall</span>, Int. J. Heat Mass Transf. 50(9) (2007) 1683–1693.
+
+</span>
+</li>
+<li id="bib.bib5" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[5]</span>
+<span class="ltx_bibblock">Aziz, A., Khan, W.A. and Pop, I. <span class="ltx_text ltx_font_italic">Free convection boundary layer flow past a horizontal flat plate embedded in porous medium filled by nanofluid containing gyrotactic microorganisms</span>, Int. J. Therm. Sci. 56 (2012) 48–57.
+
+</span>
+</li>
+<li id="bib.bib6" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[6]</span>
+<span class="ltx_bibblock"> Balla, C.S., Chinthapally Haritha and Kishan, N. <span class="ltx_text ltx_font_italic">Magnetohydrodynamic double-diffusive convection in fluid saturated inclined porous cavity with thermal radiation and chemical reaction</span>, J. Chem. Technol. Metall. 53 (2018) 518–536.
+
+</span>
+</li>
+<li id="bib.bib7" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[7]</span>
+<span class="ltx_bibblock">Balla, C.S., Jamuna, B., Krishna Kumari, S.V.H.N. and Rashad, A.M. <span class="ltx_text ltx_font_italic">Effect of inclination angle on bioconvection in porous square cavity containing gyrotactic microorganisms and nanofluid</span>, J. Mech. Eng. Sci. 236(9)(2021), 4731–47470.
+
+</span>
+</li>
+<li id="bib.bib8" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[8]</span>
+<span class="ltx_bibblock">Balla, C.S. and Kishan, N. <span class="ltx_text ltx_font_italic">Soret and Dufour effects on free convective heat and solute transfer in fluid saturated inclined porous cavity</span>, Int. J. Eng. Sci. Technol. 18(4) (2015) 543–554.
+
+</span>
+</li>
+<li id="bib.bib9" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[9]</span>
+<span class="ltx_bibblock">Balla, C.S., Ramesh, A., Kishan, N. and Rashad, A.M. <span class="ltx_text ltx_font_italic">Impact of Soret and Dufour on bioconvective flow of nanofluid in porous square cavity</span>, J. Heat transfer, 50(5) (2021) 5123–5147.
+
+</span>
+</li>
+<li id="bib.bib10" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[10]</span>
+<span class="ltx_bibblock"> Bejan, A. <span class="ltx_text ltx_font_italic">On the boundary layer regime in a vertical enclosure filled with a porous medium</span>, Lett. Heat Mass Transf. 6(2) (1979) 93–102.
+
+</span>
+</li>
+<li id="bib.bib11" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[11]</span>
+<span class="ltx_bibblock">Choi, S.U.S. and Eastman, J A. <span class="ltx_text ltx_font_italic">Enhancing thermal conductivity of fluids with nanoparticles</span>, International mechanical engineering congress and exhibition, San Francisco, CA . United States, 1995.
+
+</span>
+</li>
+<li id="bib.bib12" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[12]</span>
+<span class="ltx_bibblock">Cross, R.J., Bear, M.R. and Hickox, C.E. <span class="ltx_text ltx_font_italic">The application of flux-corrected transport (FCT) to high Rayleigh number natural convection in a porous medium</span>. Proceedings of 8th International Heat Transfer Conference, San Francisco (1986).
+
+</span>
+</li>
+<li id="bib.bib13" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[13]</span>
+<span class="ltx_bibblock">Das, S.K., Choi, S.U.S., YU, W., and Pradeep, T. <span class="ltx_text ltx_font_italic">Nanofluids: Science and Technology</span>, Mater. Manuf. Process. 24(5) (2009) 600–601.
+
+</span>
+</li>
+<li id="bib.bib14" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[14]</span>
+<span class="ltx_bibblock">Ingham, D.B., Bejan, A., Mamut, E. and Pop, I. <span class="ltx_text ltx_font_italic">Emerging technologies and techniques in porous media</span>, 3rd Edition, Kluwer, Dordrecht, 2004, 93–117.
+
+</span>
+</li>
+<li id="bib.bib15" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[15]</span>
+<span class="ltx_bibblock">Ingham, D.B. and Pop, I. <span class="ltx_text ltx_font_italic">Transport phenomenon in porous media</span>, Pergamon, Oxford, 1998.
+
+</span>
+</li>
+<li id="bib.bib16" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[16]</span>
+<span class="ltx_bibblock">Izadi, M., Behzadmehr, A. and Shahmardan, M.M. <span class="ltx_text ltx_font_italic">Effect on inclination angle on mixed convection heat transfer of a nanofluid in a square cavity</span>, International Journal for Computational Methods in Engineering Science and Mechanics, 16(1) (2015) 11–12.
+
+</span>
+</li>
+<li id="bib.bib17" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[17]</span>
+<span class="ltx_bibblock">Jamuna, B. and Balla, C.S. <span class="ltx_text ltx_font_italic">Bioconvection in a porous square cavity containing gyrotactic microorganisms under the effects of heat generation/absorption,</span> Proc. Inst. Mech. Eng. E: J. Process Mech. Eng. 235(5) (2021), 1534–1544.
+
+</span>
+</li>
+<li id="bib.bib18" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[18]</span>
+<span class="ltx_bibblock">Jamuna, B., Mallesh, M.P. and Balla, C.S. <span class="ltx_text ltx_font_italic">Activation energy process in bioconvection nanofluid flow through porous cavity</span>, Journal of Porous Media, 25(4) (2022) 37–51.
+
+</span>
+</li>
+<li id="bib.bib19" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[19]</span>
+<span class="ltx_bibblock">Kairi, R.R., Roy, S. and Raut, S. <span class="ltx_text ltx_font_italic">Thermosolutal Marangoni impact on bioconvection in suspension of Gyrotactic microorganisms over an inclined stretching sheet</span>, J. Heat Transfer, 143(3) (2021) 031201 (10 pages).
+
+</span>
+</li>
+<li id="bib.bib20" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[20]</span>
+<span class="ltx_bibblock">Kuyper, R.A., Van Der Meer, TH.H., Hoogendoorn, C.J. and Henkes, R.A.W.M. <span class="ltx_text ltx_font_italic">Numerical study of laminar and turbulent natural convection in an inclined square cavity</span>, Int. J. Heat Mass Transf. 36 (11)(1993) 2899–2911.
+
+</span>
+</li>
+<li id="bib.bib21" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[21]</span>
+<span class="ltx_bibblock">Kuznetsov, A.V. <span class="ltx_text ltx_font_italic">Thermo-bioconvection in a suspension of oxytactic bacteria</span>, Int. Commun. Heat Mass Transf. 32 (8) (2005) 991–999.
+
+</span>
+</li>
+<li id="bib.bib22" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[22]</span>
+<span class="ltx_bibblock">Manole, D.M. <span class="ltx_text ltx_font_italic">Numerical benchmark results for natural convection in a porous medium cavity</span>. Heat and Mass Transfer in Porous Media, ASME Conference 1992, vol. 216 (1992) 55–60.
+
+</span>
+</li>
+<li id="bib.bib23" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[23]</span>
+<span class="ltx_bibblock">Minkowycz, W.J., Sparrow, E.M. and Abraham, J.P. <span class="ltx_text ltx_font_italic">Nanoparticle neat transfer and fluid flow</span>, CRC Press, New York,2013.
+
+</span>
+</li>
+<li id="bib.bib24" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[24]</span>
+<span class="ltx_bibblock">Nield, D.A., and Bejan, A. <span class="ltx_text ltx_font_italic">Convection in porous media</span>, 4th ed., Springer, New York, 2013.
+
+</span>
+</li>
+<li id="bib.bib25" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[25]</span>
+<span class="ltx_bibblock">Rajarathinam, M. and Nithyadevi ,N.<span class="ltx_text ltx_font_italic">Heat transfer enhancement of Cu-water nanofluid in an inclined porous square cavity with internal heat generation</span>, Therm. Sci. Eng. Prog. 4 (2017) 35–44.
+
+</span>
+</li>
+<li id="bib.bib26" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[26]</span>
+<span class="ltx_bibblock">Shenoy, A., Sheremet, M. and Pop, I. <span class="ltx_text ltx_font_italic">Convective flow and heat transfer from wavy surfaces: Viscous fluids, porous media and nanofluids</span>, CRC Press, New York, 2016.
+
+</span>
+</li>
+<li id="bib.bib27" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[27]</span>
+<span class="ltx_bibblock">Sheremet, M., Grosan, T. and Pop, I.<span class="ltx_text ltx_font_italic">MHD free convection flow in an inclined square cavity filled with both nanofluids and gyrotactic microorganisms</span>, Int. J. Numer. Methods Heat Fluid Flow. 29(12) (2019) 4642–4659.
+
+</span>
+</li>
+<li id="bib.bib28" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[28]</span>
+<span class="ltx_bibblock">Sheremet, M.A. and Pop, I.<span class="ltx_text ltx_font_italic">Thermobioconvection in a square porous cavity filled by oxy-tactic microorganisms</span>, Transp. Porous Media, 103 (2014) 191–205.
+
+</span>
+</li>
+<li id="bib.bib29" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[29]</span>
+<span class="ltx_bibblock">Tsai, G.-L., Li, H.-Y. and Lin, C.-C. <span class="ltx_text ltx_font_italic">Effect of the angle of inclination of a plate shield on the thermal and hydraulic performance of a plate-fin heat sink</span>, Int. Commun. Heat Mass Transf. 37(4) (2010) 364–371.
+
+</span>
+</li>
+<li id="bib.bib30" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[30]</span>
+<span class="ltx_bibblock">Vadasz, P. <span class="ltx_text ltx_font_italic">Heat conduction in nanofluid suspensions</span>, J. Heat Transf. 128(5) (2006) 465–477.
+
+</span>
+</li>
+<li id="bib.bib31" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[31]</span>
+<span class="ltx_bibblock">Vafai, K. <span class="ltx_text ltx_font_italic">Hand book of Porous media</span>, 2nd Edition, Taylor and Francis, New York, 2005.
+
+</span>
+</li>
+<li id="bib.bib32" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[32]</span>
+<span class="ltx_bibblock">Varol, Y., Oztop, H. and Koca, A. <span class="ltx_text ltx_font_italic">Effect of inclination angle on natural convection in composite walled enclosures</span>, Heat Transf. Eng. 32(1)(2011) 57–68.
+
+</span>
+</li>
+<li id="bib.bib33" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[33]</span>
+<span class="ltx_bibblock">Varol, Y., Oztop, H. and Pop, I. <span class="ltx_text ltx_font_italic">Influence of inclination angle on buoyancy-driven convection in triangular enclosure filled with a fluid-saturated porous medium</span>, Heat Mass Transf. 44(5) (2008) 617–624.
+
+</span>
+</li>
+<li id="bib.bib34" class="ltx_bibitem">
+<span class="ltx_tag ltx_tag_bibitem">[34]</span>
+<span class="ltx_bibblock">Varol, Y., Oztop, H.F. and Koca, A. <span class="ltx_text ltx_font_italic">Effects of inclination angle on conduction—natural convection in divided enclosures filled with different fluids</span>, Int. Commun. Heat Mass Transf. 37(2) (2010) 182–191.
+
+</span>
+</li>
+</ul>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Tue Mar  5 10:41:31 2024 
+</div></footer>
+</div>
+</body>
+</html>
