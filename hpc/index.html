@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>راهنمای استفاده از سرویس‌های محاسباتی و هوش مصنوعی دانشکده علوم کامپیوتر</title>
+    <title>راهنمای استفاده از سرویس‌های محاسباتی و هوش مصنوعی دانشکده علوم ریاضی</title>
     <style>
         * {
             margin: 0;
@@ -214,9 +214,9 @@
                     <h3>🔗 روش‌های دسترسی</h3>
                     <div class="method-grid">
                         <div class="method-box">
-                            <h4>🏫 از داخل دانشکده</h4>
+                            <h4>🏫 از داخل دانشگاه</h4>
                             <p>از روی سیستم اداری خود (متصل به شبکه دانشگاه) آدرس زیر را وارد کنید:</p>
-                            <div class="url">http://172.21.129.16:8000/</div>
+                            <div class="url"><a href="http://172.21.129.16:8000/">http://172.21.129.16:8000/</a></div>
                             <p>سپس با <strong>نام کاربری و رمز عبور ویندوز دانشگاهی خود</strong> وارد شوید.</p>
                         </div>
                         <div class="method-box">
@@ -227,7 +227,7 @@
                                 <li>قبول دعوتنامه از <a href="https://login.tailscale.com/admin/invite/8J3czgqdayFbHXVf74yZ11">این لینک</a></li>
                                 <li>وارد کردن آدرس زیر در مرورگر:</li>
                             </ol>
-                            <div class="url">http://100.71.218.12:8000/</div>
+                            <div class="url"><a href="http://100.71.218.12:8000/">http://100.71.218.12:8000/</a></div>
                             <p>وارد شدن با <strong>نام کاربری و رمز عبور ویندوز دانشگاهی</strong></p>
                         </div>
                     </div>
@@ -252,12 +252,12 @@
                     <h3>🔗 روش‌های دسترسی</h3>
                     <div class="method-grid">
                         <div class="method-box">
-                            <h4>🏫 از داخل دانشکده</h4>
-                            <div class="url">http://172.21.129.16:3000/</div>
+                            <h4>🏫 از داخل دانشگاه</h4>
+                            <div class="url"><a href="http://172.21.129.16:3000/">http://172.21.129.16:3000/</a></div>
                         </div>
                         <div class="method-box">
                             <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
-                            <div class="url">http://100.71.218.12:3000/</div>
+                            <div class="url"><a href="http://100.71.218.12:3000/">http://100.71.218.12:3000/</a></div>
                         </div>
                     </div>
                 </div>
@@ -269,10 +269,10 @@
                 <p>برای اتصال از طریق کد پایتون (مناسب برای ساخت Agent، خودکارسازی، و افزونه Continue در VSCode):</p>
                 <pre>from ollama import Client
 
-# داخل دانشکده
+# داخل دانشگاه
 client = Client(host='http://172.21.129.16:11434')
 
-# خارج دانشکده با Tailscale
+# خارج دانشگاه با Tailscale
 # client = Client(host='http://100.71.218.12:11434')
 
 model = 'qwen3:8b'
@@ -292,7 +292,7 @@ print(response['message']['content'])</pre>
                 <ul style="margin-right: 30px; margin-bottom: 20px; line-height: 1.8;">
                     <li>🔬 اجرای پروژه‌های پژوهشی (مانند مقاله Nature: <em>"Large language models for scientific discovery in molecular property prediction"</em>)</li>
                     <li>🤖 ساخت Agentهای هوشمند برای خودکارسازی وظایف</li>
-                    <li>🔐 چت محرمانه با اطلاعات داخلی دانشگاه</li>
+                    <li>🔐 چت محرمانه </li>
                     <li>💻 کدنویسی و دیباگ با افزونه Continue در VSCode</li>
                 </ul>
 
@@ -319,7 +319,7 @@ print(response['message']['content'])</pre>
                     </table>
                 </div>
                 <div class="note" style="background: #e8f5e9; border-right-color: #4caf50; margin-top: 15px;">
-                    💡 <strong>توصیه:</strong> برای شروع، مدل <strong>Qwen3-8B</strong> یا <strong>Mistral-7B</strong> گزینه‌های مناسبی هستند. برای کارهای سنگین‌تر از <strong>Qwen3.5-27B</strong> استفاده کنید.
+                    💡 <strong>توصیه:</strong> برای شروع، مدل <strong>Qwen3-8B</strong>  گزینه‌ی مناسبی هست. برای کارهای سنگین‌تر از <strong>Qwen3.5-27B</strong> استفاده کنید.
                 </div>
             </div>
 
