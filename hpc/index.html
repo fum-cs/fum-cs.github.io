@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +27,7 @@
         .card {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             margin-bottom: 30px;
         }
@@ -106,7 +107,7 @@
         }
 
         .url {
-            background: #1e2a3a;
+            background: #fff3cd;
             color: #4ecdc4;
             padding: 12px 15px;
             border-radius: 10px;
@@ -147,7 +148,8 @@
             margin: 20px 0;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: right;
@@ -184,31 +186,53 @@
             .method-grid {
                 grid-template-columns: 1fr;
             }
+
             .header h1 {
                 font-size: 1.3rem;
             }
+
             .section {
                 padding: 15px 20px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>🚀 راهنمای استفاده از سرویس‌های محاسباتی و هوش مصنوعی</h1>
-                <p>دانشکده علوم ریاضی - گروه علوم کامپیوتر</p>
+                <h1> راهنمای استفاده از سرویس‌های محاسباتی و هوش مصنوعی</h1>
+                <p>دانشکده علوم ریاضی</p>
             </div>
 
             <div class="note">
-                📌 <strong>توجه:</strong> در حال حاضر، فقط <strong>اعضای محترم هیأت علمی و کارکنان</strong> می‌توانند از این سرویس‌ها استفاده کنند. برای دسترسی دانشجویان، متعاقباً اطلاع‌رسانی خواهد شد.
+                📌 <strong>توجه:</strong>
+                <ul>
+                    <li>
+                        روال جاری استفاده از سیتم‌های پردازش سنگین دانشکده، همان مسیری است که
+                        <a href="https://mathsci.um.ac.ir/index.php?option=com_content&view=article&id=2027&lang=fa"> در
+                            این صفحه </a>
+                        از سایت دانشکده ذکر شده است.
+                        سرویس‌های
+                        JupyterHub و مدل‌های زبانی محلی (با دو روش دسترسی از وب و API)
+                        که در ادامه توضیح داده خواهند شد،
+                        به صورت آزمایشی بر روی یک سیستم دارای کارت گرافیک ۴۰۹۰ قابل استفاده هستند.
+                    </li>
+                    <li>
+                        در حال حاضر، فقط <strong>اعضای محترم هیأت علمی و کارکنان</strong> می‌توانند از این سرویس‌ها
+                        استفاده کنند. برای دسترسی دانشجویان، متعاقباً اطلاع‌رسانی خواهد شد.
+                    </li>
+                </ul>
+
+
             </div>
 
             <!-- بخش اول: JupyterHub -->
             <div class="section">
                 <h2>📓 ۱. JupyterHub</h2>
-                <p>محیطی شبیه Google Colab برای اجرای کدهای <strong>پایتون</strong> و <strong>R</strong> با دسترسی به GPU (RTX 4090).</p>
+                <p>محیطی شبیه Google Colab برای اجرای کدهای <strong>پایتون</strong> و <strong>R</strong> با دسترسی به
+                    GPU (RTX 4090).</p>
 
                 <div class="subsection">
                     <h3>🔗 روش‌های دسترسی</h3>
@@ -220,11 +244,14 @@
                             <p>سپس با <strong>نام کاربری و رمز عبور ویندوز دانشگاهی خود</strong> وارد شوید.</p>
                         </div>
                         <div class="method-box">
-                            <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                            <h4>🌍 از خارج از دانشگاه (Tailscale)</h4>
                             <ol style="margin-right: 20px; line-height: 1.8;">
-                                <li>نصب Tailscale از <a href="https://fumdrive.um.ac.ir/index.php/s/BEomtEPGGt6teGz">این لینک</a></li>
+                                <li>نصب Tailscale از <a href="https://fumdrive.um.ac.ir/index.php/s/BEomtEPGGt6teGz">این
+                                        لینک</a></li>
                                 <li>ثبت‌نام با یک ایمیل</li>
-                                <li>قبول دعوتنامه از <a href="https://login.tailscale.com/admin/invite/8J3czgqdayFbHXVf74yZ11">این لینک</a></li>
+                                <li>قبول دعوتنامه از <a
+                                        href="https://login.tailscale.com/admin/invite/8J3czgqdayFbHXVf74yZ11">این
+                                        لینک</a></li>
                                 <li>وارد کردن آدرس زیر در مرورگر:</li>
                             </ol>
                             <div class="url"><a href="http://100.71.218.12:8000/">http://100.71.218.12:8000/</a></div>
@@ -256,7 +283,7 @@
                             <div class="url"><a href="http://172.21.129.16:3000/">http://172.21.129.16:3000/</a></div>
                         </div>
                         <div class="method-box">
-                            <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                            <h4>🌍 از خارج از دانشگاه (Tailscale)</h4>
                             <div class="url"><a href="http://100.71.218.12:3000/">http://100.71.218.12:3000/</a></div>
                         </div>
                     </div>
@@ -288,38 +315,122 @@ print(response['message']['content'])</pre>
             <!-- بخش چهارم: لیست مدل‌ها -->
             <div class="section">
                 <h2>📚 ۴. مدل‌های زبانی موجود</h2>
-                <p>حدود <strong>۱۰۰ گیگابایت</strong> مدل زبانی روی سرور نصب شده است. این مدل‌ها نسبت به مدل‌های بزرگ آنلاین (GPT-4، Claude) توانایی کمتری دارند، اما برای کارهای زیر در <strong>محیط محلی</strong> (بدون اینترنت بین‌الملل و بدون پرداخت هزینه API) مفید هستند:</p>
+                <p>حدود <strong>۱۰۰ گیگابایت</strong> مدل زبانی روی سرور قرار داده شده است. این مدل‌ها نسبت به مدل‌های بزرگ
+                    آنلاین
+                    (مانند <a href="https://chatgpt.com/">ChatGPT</a> و <a href="https://claude.ai/">Claude</a>)
+                    توانایی کمتری دارند، اما برای کارهای زیر در <strong>محیط محلی</strong> (بدون اینترنت بین‌الملل و
+                    بدون پرداخت هزینه API) مفید هستند:</p>
                 <ul style="margin-right: 30px; margin-bottom: 20px; line-height: 1.8;">
-                    <li>🔬 اجرای پروژه‌های پژوهشی (مانند مقاله Nature: <em>"Large language models for scientific discovery in molecular property prediction"</em>)</li>
+                    <li>🔬 اجرای پروژه‌های پژوهشی (مانند مقاله 
+                        Nature: <em><a href="https://www.nature.com/articles/s42256-025-00994-z">Large language models for scientific
+                            discovery</a></em>)</li>
                     <li>🤖 ساخت Agentهای هوشمند برای خودکارسازی وظایف</li>
                     <li>🔐 چت محرمانه </li>
                     <li>💻 کدنویسی و دیباگ با افزونه Continue در VSCode</li>
                 </ul>
 
-                <h3 style="margin-top: 20px;">📋 لیست مدل‌های نصب‌شده</h3>
+                <h3 style="margin-top: 20px;">📋 لیست مدل‌های دانلود شده</h3>
                 <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr><th>مدل</th><th>حجم</th><th>کاربردها</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>DeepSeek-Math-7B</strong></td><td>7B</td><td>حل مسائل ریاضی، استدلال کمی، تحلیل عددی</td></tr>
-                            <tr><td><strong>Gemma3-27B</strong></td><td>27B</td><td>وظایف عمومی، تولید متن، درک مطلب، استدلال</td></tr>
-                            <tr><td><strong>Gemma3-4B</strong></td><td>4B</td><td>سبک و سریع برای کارهای ساده</td></tr>
-                            <tr><td><strong>Qwen3-14B</strong></td><td>14B</td><td>کدنویسی، استدلال، تولید متن به زبان‌های مختلف (از جمله فارسی)</td></tr>
-                            <tr><td><strong>Qwen3-8B</strong></td><td>8B</td><td>تعادل بین سرعت و کیفیت، مناسب استفاده روزمره</td></tr>
-                            <tr><td><strong>Qwen3.5-27B</strong></td><td>27B</td><td>قوی‌ترین مدل موجود، مناسب کارهای پیچیده</td></tr>
-                            <tr><td><strong>Qwen3-VL-8B</strong></td><td>8B</td><td>تحلیل همزمان متن و تصویر</td></tr>
-                            <tr><td><strong>Llama3.2</strong></td><td>3B</td><td>سبک و سریع، پاسخ‌های آنی</td></tr>
-                            <tr><td><strong>Mistral-7B</strong></td><td>7B</td><td>همه‌فن‌حریف، مناسب طیف گسترده وظایف</td></tr>
-                            <tr><td><strong>Falcon-7B</strong></td><td>7B</td><td>تولید خلاقانه متن، داستان‌نویسی</td></tr>
-                            <tr><td><strong>Llava-13B</strong></td><td>13B</td><td>تحلیل همزمان متن و تصویر – توصیف تصاویر</td></tr>
-                            <tr><td><strong>EmbeddingGemma</strong></td><td>-</td><td>تولید بردارهای معنایی برای جستجوی شباهت</td></tr>
-                        </tbody>
-                    </table>
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; direction: rtl;">
+    <thead>
+        <tr style="background: #667eea; color: white;">
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">مدل</th>
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: center; direction: ltr">حجم</th>
+            <th style="border: 1px solid #ddd; padding: 12px; text-align: right;">کاربردها</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>qwen3.5:27b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center; direction: ltr">17 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">قوی‌ترین مدل موجود، مناسب کارهای پیچیده، استدلال عمیق، کدنویسی پیشرفته</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>gemma3:27b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">16 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">مدل قدرتمند گوگل، مناسب وظایف عمومی، تولید متن، درک مطلب</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>gpt-oss:20b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">13 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">مدل متن‌باز شبیه GPT، مناسب تولید متن، کدنویسی، تحلیل</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>qwen3:14b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">9.3 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">کدنویسی، استدلال، تولید متن به زبان‌های مختلف (از جمله فارسی)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>llava:13b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">8.0 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">تحلیل همزمان متن و تصویر – توصیف تصاویر، پاسخ به سوالات درباره تصاویر</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>qwen3-vl:8b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">6.1 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">مدل چندوظیفه‌ای (متن + تصویر) – مناسب کارهای بصری</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>qwen3:8b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">5.1 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">تعادل بین سرعت و کیفیت، مناسب برای استفاده روزمره</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>llava:7b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">4.7 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">تحلیل متن و تصویر – نسخه سبک‌تر برای پاسخگویی سریع‌تر</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>falcon:7b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">4.2 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">تولید خلاقانه متن، داستان‌نویسی، ایده‌پردازی</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>deepseek-math-7b-rl</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">4.2 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">حل مسائل ریاضی، استدلال کمی، تحلیل عددی</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>mistral:7b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">4.1 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">مدل همه‌فن‌حریف، مناسب برای طیف گسترده‌ای از وظایف</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>qwen3.5:4b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">3.4 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">سبک و سریع برای کارهای ساده و پاسخ‌های کوتاه</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>gemma3:4b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">3.3 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">نسخه سبک مدل گوگل، مناسب کارهای سریع و روزمره</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>qwen3-vl:4b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">3.3 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">تحلیل متن و تصویر – نسخه بسیار سبک</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>llama3.2</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">2.0 GB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">سبک‌ترین مدل، پاسخ‌های آنی، مناسب آزمایش سریع</td>
+        </tr>
+        <tr style="background: #f8f9fa; border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>qwen2.5-coder:1.5b</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">986 MB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">کدنویسی سریع – نسخه بسیار سبک برای کارهای ساده برنامه‌نویسی</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>embeddinggemma</strong></td>
+            <td style="border: 1px solid #ddd; padding: 10px; text-align: center;direction: ltr">621 MB</td>
+            <td style="border: 1px solid #ddd; padding: 10px;">تولید بردارهای معنایی (Embedding) برای جستجوی شباهت و بازیابی اطلاعات</td>
+        </tr>
+    </tbody>
+</table>
                 </div>
                 <div class="note" style="background: #e8f5e9; border-right-color: #4caf50; margin-top: 15px;">
-                    💡 <strong>توصیه:</strong> برای شروع، مدل <strong>Qwen3-8B</strong>  گزینه‌ی مناسبی هست. برای کارهای سنگین‌تر از <strong>Qwen3.5-27B</strong> استفاده کنید.
+                    💡 <strong>توصیه:</strong> برای شروع، مدل <strong>Qwen3-8B</strong> گزینه‌ی مناسبی هست. برای کارهای
+                    سنگین‌تر از <strong>Qwen3.5-27B</strong> استفاده کنید.
                 </div>
             </div>
 
@@ -327,9 +438,11 @@ print(response['message']['content'])</pre>
             <div class="section">
                 <h2>⚠️ نکات مهم</h2>
                 <ul style="margin-right: 30px; line-height: 1.8;">
-                    <li>این سیستم روی یک سرور با <strong>۳۲ گیگابایت RAM</strong> اجرا می‌شود و توانایی پاسخگویی همزمان به <strong>تعداد محدودی کاربر</strong> را دارد.</li>
+                    <li>این سیستم روی یک سرور با <strong>۳۲ گیگابایت RAM</strong> اجرا می‌شود و توانایی پاسخگویی همزمان
+                        به <strong>تعداد محدودی کاربر</strong> را دارد.</li>
                     <li>پس از پایان کار، از سیستم خارج شوید تا سایر همکاران نیز بتوانند استفاده کنند.</li>
-                    <li>در صورت بروز مشکل یا نیاز به راهنمایی بیشتر، با <code>m.amintoosi@um.ac.ir</code> تماس بگیرید.</li>
+                    <li>در صورت بروز مشکل یا نیاز به راهنمایی بیشتر، با <code>m.amintoosi@um.ac.ir</code> تماس بگیرید.
+                    </li>
                 </ul>
             </div>
 
@@ -339,4 +452,5 @@ print(response['message']['content'])</pre>
         </div>
     </div>
 </body>
+
 </html>
