@@ -334,6 +334,38 @@
             line-height: 2;
         }
 
+        /* استایل مخصوص نکته Tailscale */
+        .tailscale-note {
+            background: #e8f0fe;
+            border-right: 4px solid #1a73e8;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .tailscale-note strong {
+            color: #1a73e8;
+        }
+
+        .tailscale-note ul {
+            margin-right: 15px;
+            margin-top: 8px;
+            line-height: 1.8;
+        }
+
+        .ip-list {
+            direction: ltr;
+            text-align: left;
+            margin-top: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .ip-list code {
+            display: inline-block;
+            margin: 3px 0;
+        }
+
         @media (max-width: 768px) {
             .method-grid {
                 grid-template-columns: 1fr;
@@ -385,7 +417,7 @@
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>راهنمای استفاده از سرویس‌های محاسباتی و هوش مصنوعی</h1>
+                <h1>🚀 راهنمای استفاده از سرویس‌های محاسباتی و هوش مصنوعی</h1>
                 <p>دانشکده علوم ریاضی - دانشگاه فردوسی مشهد</p>
             </div>
 
@@ -436,13 +468,13 @@
                         <h3>🔗 روش‌های دسترسی</h3>
                         <div class="method-grid">
                             <div class="method-box">
-                                <h4>🏫 از داخل دانشگاه</h4>
-                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشگاه) آدرس زیر را وارد کنید:</p>
+                                <h4>🏫 از داخل دانشکده</h4>
+                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشکده) آدرس زیر را وارد کنید:</p>
                                 <div class="url"><a href="http://172.21.129.16:8000/">http://172.21.129.16:8000/</a></div>
                                 <p>سپس با <strong>نام کاربری و رمز عبور ویندوز دانشگاهی خود</strong> وارد شوید.</p>
                             </div>
                             <div class="method-box">
-                                <h4>🌍 از خارج از دانشگاه (Tailscale)</h4>
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
                                 <ol>
                                     <li>
                                         <a href="https://fumdrive.um.ac.ir/index.php/s/BEomtEPGGt6teGz">دانلود</a>
@@ -454,11 +486,30 @@
                                             لینک</a></li>
                                     <li>وارد کردن آدرس زیر در مرورگر:</li>
                                 </ol>
-                                <div class="url"><a href="http://100.71.218.12:8000/">http://100.71.218.12:8000/</a></div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:8000/">http://math-gpu-server.tailde35cf.ts.net:8000/</a>
+                                    </div>
+                                </div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از IP (جایگزین):</strong>
+                                    <div class="url">
+                                        <a href="http://100.71.218.11:8000/">http://100.71.218.11:8000/</a>
+                                        <span style="display: block; color: #888; font-size: 0.85rem; margin-top: 5px;">یا</span>
+                                        <a href="http://100.71.218.12:8000/">http://100.71.218.12:8000/</a>
+                                    </div>
+                                </div>
                                 <p>وارد شدن با <strong>نام کاربری و رمز عبور ویندوز دانشگاهی</strong></p>
-                                <p>اگر با آدرس http://100.71.218.12 پاسخ نگرفتید، آدرس http://100.71.218.11  را امتحان کنید و 
-در صورتی که با خطای عدم اعتبار دعوت‌نامه مواجه شدید، اطلاع دهید
-                                </p>
+                                
+                                <div class="tailscale-note">
+                                    🔍 <strong>نکته مهم:</strong>
+                                    <ul>
+                                        <li>هر دستگاهی که به شبکه Tailscale متصل می‌شود، یک IP منحصربه‌فرد دریافت می‌کند.</li>
+                                        <li>آدرس <strong>نام دستگاه</strong> ثابت است و تغییر نمی‌کند، بنابراین استفاده از آن توصیه می‌شود.</li>
+                                        <li>اگر با نام دستگاه به مشکل خوردید، IP صحیح سرور را از <a href="https://login.tailscale.com/admin/machines" target="_blank">پنل مدیریت Tailscale</a> پیدا کنید.</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -476,16 +527,33 @@
                         <h3>🔗 ۱. روش‌های دسترسی</h3>
                         <div class="method-grid">
                             <div class="method-box">
-                                <h4>🏫 از داخل دانشگاه</h4>
-                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشگاه) آدرس زیر را وارد کنید:</p>
+                                <h4>🏫 از داخل دانشکده</h4>
+                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشکده) آدرس زیر را وارد کنید:</p>
                                 <div class="url"><a href="http://172.21.129.16:31415/">http://172.21.129.16:31415/</a></div>
                                 <p>سپس با <strong>رمز عبور</strong> ارائه‌شده وارد شوید.</p>
                             </div>
                             <div class="method-box">
-                                <h4>🌍 از خارج از دانشگاه (Tailscale)</h4>
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
                                 <p>پس از اتصال به Tailscale، آدرس زیر را در مرورگر وارد کنید:</p>
-                                <div class="url"><a href="http://100.71.218.12:31415/">http://100.71.218.12:31415/</a></div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:31415/">http://math-gpu-server.tailde35cf.ts.net:31415/</a>
+                                    </div>
+                                </div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از IP (جایگزین):</strong>
+                                    <div class="url">
+                                        <a href="http://100.71.218.11:31415/">http://100.71.218.11:31415/</a>
+                                        <span style="display: block; color: #888; font-size: 0.85rem; margin-top: 5px;">یا</span>
+                                        <a href="http://100.71.218.12:31415/">http://100.71.218.12:31415/</a>
+                                    </div>
+                                </div>
                                 <p>وارد شدن با <strong>رمز عبور</strong> ارائه‌شده</p>
+                                
+                                <div class="tailscale-note">
+                                    🔍 <strong>نکته:</strong> اگر با نام دستگاه به مشکل خوردید، IP صحیح سرور را از <a href="https://login.tailscale.com/admin/machines" target="_blank">پنل مدیریت Tailscale</a> پیدا کنید.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -525,6 +593,8 @@
                                     در قسمت <strong>Insecure origins treated as secure</strong>، آدرس‌های زیر را اضافه کنید:
                                     <div class="code-block">
                                         http://172.21.129.16:31415<br>
+                                        http://math-gpu-server.tailde35cf.ts.net:31415<br>
+                                        http://100.71.218.11:31415<br>
                                         http://100.71.218.12:31415
                                     </div>
                                 </li>
@@ -557,7 +627,7 @@
                             <h4 style="color: #1e2a3a; margin-bottom: 10px;">📖 منابع آموزشی:</h4>
                             <ul>
                                 <li>📙 <a href="https://lean-lang.org/" target="_blank">Official Web Site</a></li>
-								<li>📘 <a href="https://leanprover-community.github.io/" target="_blank">Lean Community</a></li>
+                                <li>📘 <a href="https://leanprover-community.github.io/" target="_blank">Lean Community</a></li>
                                 <li>📗 <a href="https://www.uv.es/coslloen/Lean4/" target="_blank">An Introduction to Lean 4</a></li>
                                 <li>💻 <a href="https://live.lean-lang.org/" target="_blank">Live LEAN</a></li>
                                 <li>🎓 <a href="https://adam.math.hhu.de/" target="_blank">Lean Game Server</a></li>
@@ -593,12 +663,28 @@
                         <h3>🔗 ۱. روش‌های دسترسی از طریق مرورگر</h3>
                         <div class="method-grid">
                             <div class="method-box">
-                                <h4>🏫 از داخل دانشگاه</h4>
+                                <h4>🏫 از داخل دانشکده</h4>
                                 <div class="url"><a href="http://172.21.129.16:3000/">http://172.21.129.16:3000/</a></div>
                             </div>
                             <div class="method-box">
-                                <h4>🌍 از خارج از دانشگاه (Tailscale)</h4>
-                                <div class="url"><a href="http://100.71.218.12:3000/">http://100.71.218.12:3000/</a></div>
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:3000/">http://math-gpu-server.tailde35cf.ts.net:3000/</a>
+                                    </div>
+                                </div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از IP (جایگزین):</strong>
+                                    <div class="url">
+                                        <a href="http://100.71.218.11:3000/">http://100.71.218.11:3000/</a>
+                                        <span style="display: block; color: #888; font-size: 0.85rem; margin-top: 5px;">یا</span>
+                                        <a href="http://100.71.218.12:3000/">http://100.71.218.12:3000/</a>
+                                    </div>
+                                </div>
+                                <div class="tailscale-note" style="margin-top: 10px;">
+                                    🔍 <strong>نکته:</strong> اگر با نام دستگاه به مشکل خوردید، IP صحیح سرور را از <a href="https://login.tailscale.com/admin/machines" target="_blank">پنل مدیریت Tailscale</a> پیدا کنید.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -628,10 +714,14 @@
                         </p>
                         <pre>from ollama import Client
 
-# داخل دانشگاه
+# داخل دانشکده
 client = Client(host='http://172.21.129.16:11434')
 
-# خارج دانشگاه با Tailscale
+# خارج دانشکده با Tailscale (استفاده از نام دستگاه - توصیه شده)
+client = Client(host='http://math-gpu-server.tailde35cf.ts.net:11434')
+
+# یا استفاده از IP
+# client = Client(host='http://100.71.218.11:11434')
 # client = Client(host='http://100.71.218.12:11434')
 
 model = 'qwen3:8b'
@@ -642,6 +732,9 @@ response = client.chat(model=model, messages=[
 ])
 
 print(response['message']['content'])</pre>
+                        <div class="tailscale-note">
+                            🔍 <strong>نکته:</strong> استفاده از <strong>نام دستگاه</strong> در کد پایتون توصیه می‌شود، زیرا حتی اگر IP تغییر کند، کد شما همچنان کار خواهد کرد.
+                        </div>
                     </div>
 
                     <div class="subsection">
