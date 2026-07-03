@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای نصب و راه‌اندازی سرویس‌های HPC دانشکده علوم ریاضی</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 30px 15px;
+            color: #333;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 1.7rem; margin-bottom: 8px; }
+        .header p { font-size: 0.95rem; opacity: 0.9; }
+
+        .note {
+            background: #fff3cd;
+            border-right: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 30px;
+            border-radius: 10px;
+            color: #856404;
+        }
+        .note ul { margin-right: 20px; line-height: 1.8; }
+
+        .info-box {
+            background: #e7f3ff;
+            border-right: 4px solid #2196F3;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-right: 4px solid #ff9800;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: #e65100;
+        }
+
+        .danger-box {
+            background: #fce4ec;
+            border-right: 4px solid #f44336;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: #c62828;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-right: 4px solid #4caf50;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .tabs-container {
+            padding: 0 30px;
+            border-bottom: 2px solid #e0e0e0;
+            background: #f8f9fa;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 3px;
+            flex-wrap: wrap;
+            padding-top: 15px;
+        }
+
+        .tab-btn {
+            padding: 10px 18px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tab-btn:hover { background: #e8e8e8; color: #1e2a3a; }
+        .tab-btn.active { color: #e94560; border-bottom-color: #e94560; background: white; }
+        .tab-btn .icon { margin-left: 6px; }
+
+        .tab-content { display: none; padding: 20px 0; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section { padding: 20px 30px; border-bottom: 1px solid #eee; }
+        .section:last-child { border-bottom: none; }
+
+        .section h2 {
+            color: #0f3460;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #e94560;
+            display: inline-block;
+        }
+
+        .subsection { margin: 25px 0; }
+        .subsection h3 { color: #e94560; font-size: 1.15rem; margin-bottom: 12px; }
+        .subsection h4 { color: #0f3460; font-size: 1.05rem; margin: 15px 0 10px; }
+
+        pre {
+            background: #1e2a3a;
+            color: #4ecdc4;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            direction: ltr;
+            text-align: left;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .code-block {
+            direction: ltr;
+            text-align: left;
+            background: #1e2a3a;
+            color: #4ecdc4;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        .url {
+            background: #1e2a3a;
+            color: #4ecdc4;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            direction: ltr;
+            text-align: left;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: right; }
+        th { background: #0f3460; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+
+        .step {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #e94560;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        ul, ol { margin-right: 20px; line-height: 2; }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .footer a { color: #e94560; text-decoration: none; }
+
+        .prereq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .prereq-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+        }
+        .prereq-box h4 { color: #0f3460; margin-bottom: 8px; }
+
+        @media (max-width: 768px) {
+            .prereq-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.3rem; }
+            .section { padding: 15px 20px; }
+            .tabs-container { padding: 0 15px; }
+            .tab-btn { padding: 8px 12px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>🔧 راهنمای نصب و راه‌اندازی سرویس‌های HPC</h1>
+                <p>دانشکده علوم ریاضی - دانشگاه فردوسی مشهد</p>
+                <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.8;">نسخه ۱.۰ | تیر ۱۴۰۵</p>
+            </div>
+
+            <div class="note">
+                📌 <strong>این راهنما برای چه کسی است؟</strong>
+                <ul>
+                    <li>افرادی که مسئولیت نگهداری سرویس‌های HPC (JupyterHub، code-server، مدل‌های زبانی) را بر عهده دارند.</li>
+                    <li>پیش‌نیاز: دسترسی به سرور با کارت گرافیک <strong>RTX 4090</strong> و <strong>۳۲ گیگابایت RAM</strong>.</li>
+                    <li>سیستم‌عامل: <strong>Windows</strong> با WSL2 و Docker Desktop.</li>
+                </ul>
+            </div>
+
+            <!-- Tab ها -->
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="prereq">
+                        <span class="icon">📋</span> پیش‌نیازها
+                    </button>
+                    <button class="tab-btn" data-tab="wsl">
+                        <span class="icon">🐧</span> WSL
+                    </button>
+                    <button class="tab-btn" data-tab="docker">
+                        <span class="icon">🐳</span> Docker
+                    </button>
+                    <button class="tab-btn" data-tab="ollama">
+                        <span class="icon">🤖</span> Ollama
+                    </button>
+                    <button class="tab-btn" data-tab="services">
+                        <span class="icon">⚙️</span> سرویس‌ها
+                    </button>
+                    <button class="tab-btn" data-tab="network">
+                        <span class="icon">🌐</span> شبکه
+                    </button>
+                    <button class="tab-btn" data-tab="autostart">
+                        <span class="icon">🔄</span> شروع خودکار
+                    </button>
+                    <button class="tab-btn" data-tab="backup">
+                        <span class="icon">💾</span> پشتیبان‌گیری
+                    </button>
+                    <button class="tab-btn" data-tab="troubleshoot">
+                        <span class="icon">🔧</span> عیب‌یابی
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab: پیش‌نیازها -->
+            <div class="tab-content active" id="tab-prereq">
+                <div class="section">
+                    <h2>📋 پیش‌نیازها</h2>
+
+                    <div class="subsection">
+                        <h3>سخت‌افزار مورد نیاز</h3>
+                        <div class="prereq-grid">
+                            <div class="prereq-box">
+                                <h4>🖥️ سرور</h4>
+                                <ul>
+                                    <li>پردازنده: حداقل ۴ هسته</li>
+                                    <li>RAM: حداقل ۳۲ گیگابایت</li>
+                                    <li>کارت گرافیک: NVIDIA RTX 4090</li>
+                                    <li>حافظه: SSD برای درایو C (سیستم‌عامل)</li>
+                                    <li>حافظه: HDD/SSD برای درایو D (مدل‌ها)</li>
+                                </ul>
+                            </div>
+                            <div class="prereq-box">
+                                <h4>💻 نرم‌افزار</h4>
+                                <ul>
+                                    <li>Windows Server 2022/2025 یا Windows 10/11</li>
+                                    <li>دسترسی ادمین (Admin)</li>
+                                    <li>اتصال اینترنت پایدار</li>
+                                    <li>مرورگر Chrome یا Edge</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>حساب کاربری</h3>
+                        <ul>
+                            <li>حساب کاربری Active Directory دانشگاه با دسترسی ادمین</li>
+                            <li>نام کاربری و رمز عبور برای ورود به سرور</li>
+                            <li>آدرس ایمیل دانشگاهی برای Tailscale</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>آینه‌های (Mirror) سریع</h3>
+                        <p>برای دانلود سریع‌تر پکیج‌ها از آینه‌های زیر استفاده کنید:</p>
+                        <table>
+                            <thead>
+                                <tr><th>نوع</th><th>آینه</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>pip (Python)</td><td style="direction: ltr; text-align: left;"><code>https://pypi.tuna.tsinghua.edu.cn/simple</code></td></tr>
+                                <tr><td>CRAN (R)</td><td style="direction: ltr; text-align: left;"><code>https://cran.um.ac.ir</code></td></tr>
+                                <tr><td>Ollama (Linux)</td><td style="direction: ltr; text-align: left;"><code>https://cdn12.git.ir/softwares/ollama/ollama-linux-amd64.tar.zst</code></td></tr>
+                                <tr><td>Docker images</td><td style="direction: ltr; text-align: left;"><code>docker.devneeds.ir</code> یا <code>docker.arvancloud.ir</code></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: WSL -->
+            <div class="tab-content" id="tab-wsl">
+                <div class="section">
+                    <h2>🐧 نصب WSL2</h2>
+
+                    <div class="step">
+                        <span class="step-number">۱</span>
+                        <strong>فعال‌سازی WSL</strong>
+                        <p style="margin-top: 8px;">در PowerShell (با دسترسی ادمین) اجرا کنید:</p>
+                        <pre>wsl --install -d Ubuntu</pre>
+                        <p>پس از نصب، سیستم ری‌استارت می‌شود. پس از ری‌استارت، Ubuntu باز می‌شود و از شما نام کاربری و رمز عبور می‌خواهد.</p>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۲</span>
+                        <strong>تنظیم WSL2 به‌عنوان پیش‌فرض</strong>
+                        <pre>wsl --set-default-version 2</pre>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۳</span>
+                        <strong>تنظیم حافظه و پردازنده</strong>
+                        <p>فایل <code>.wslconfig</code> را در مسیر زیر ایجاد/ویرایش کنید:</p>
+                        <div class="url">C:\Users\&lt;نام_کاربری&gt;\.wslconfig</div>
+                        <pre>[wsl2]
+memory=24GB
+processors=6
+swap=16GB
+swapFile=D:\\temp\\wsl-swap.vhdx
+localhostForwarding=true
+nestedVirtualization=true</pre>
+                        <div class="warning-box">
+                            ⚠️ <strong>نکته:</strong> مقدار <code>memory</code> را بر اساس RAM سرور تنظیم کنید. برای سرور با ۳۲GB RAM، مقدار ۲۴GB مناسب است (۸GB برای سیستم‌عامل باقی می‌ماند).
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۴</span>
+                        <strong>بروزرسانی Ubuntu</strong>
+                        <pre>sudo apt update && sudo apt upgrade -y</pre>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۵</span>
+                        <strong>نصب ابزارهای پایه</strong>
+                        <pre>sudo apt install -y curl git build-essential cmake pkg-config</pre>
+                    </div>
+
+                    <div class="success-box">
+                        ✅ <strong>تست:</strong> اجرا کنید <code>wsl -l -v</code> — باید Ubuntu با نسخه ۲ نشان داده شود.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Docker -->
+            <div class="tab-content" id="tab-docker">
+                <div class="section">
+                    <h2>🐳 نصب Docker Desktop</h2>
+
+                    <div class="step">
+                        <span class="step-number">۱</span>
+                        <strong>دانلود Docker Desktop</strong>
+                        <p>از <a href="https://www.docker.com/products/docker-desktop/" target="_blank">سایت رسمی</a> دانلود کنید یا از فایل موجود در درایو D:</p>
+                        <pre># اگر فایل نصب در درایو E موجود است:
+# "E:\downloads\Docker Desktop Installer.exe"
+</pre>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۲</span>
+                        <strong>نصب Docker Desktop</strong>
+                        <ol>
+                            <li>فایل نصب را اجرا کنید</li>
+                            <li>گزینه <strong>"Use WSL 2 instead of Hyper-V"</strong> را انتخاب کنید</li>
+                            <li>گزینه <strong>"Add shortcut to desktop"</strong> را فعال کنید</li>
+                            <li>صب را انجام دهید و سیستم ری‌استارت کنید</li>
+                        </ol>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۳</span>
+                        <strong>تنظیم Docker Desktop</strong>
+                        <p>پس از نصب، Docker Desktop را باز کنید و به <strong>Settings → Resources → WSL Integration</strong> بروید:</p>
+                        <ol>
+                            <li>گزینه <strong>"Enable integration with my default WSL distro"</strong> را فعال کنید</li>
+                            <li>Ubuntu را از لیست انتخاب کنید</li>
+                            <li>Apply و Restart را بزنید</li>
+                        </ol>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۴</span>
+                        <strong>انتقال داده‌های Docker از C به D</strong>
+                        <p>برای صرفه‌جویی فضا در درایو C، داده‌های Docker را به درایو D منتقل کنید:</p>
+                        <ol>
+                            <li>Docker Desktop را ببندید</li>
+                            <li>در PowerShell (ادمین):</li>
+                        </ol>
+                        <pre># ایجاد پوشه مقصد
+mkdir D:\DockerData\DockerDesktopWSL
+
+# ویرایش تنظیمات Docker Desktop
+# فایل زیر را با Notepad باز کنید:
+notepad "C:\Users\&lt;نام_کاربری&gt;\AppData\Roaming\Docker\settings-store.json"
+
+# مقدار زیر را اضافه/ویرایش کنید:
+# "CustomWslDistroDir": "D:\\DockerData\\DockerDesktopWSL"</pre>
+                        <div class="info-box">
+                            💡 <strong>نکته:</strong> پس از تغییر این تنظیم، Docker Desktop را مجدداً راه‌اندازی کنید تا تغییرات اعمال شود.
+                        </div>
+                    </div>
+
+                    <div class="success-box">
+                        ✅ <strong>تست:</strong> در WSL اجرا کنید <code>docker run hello-world</code> — باید پیام موفقیت نمایش داده شود.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Ollama -->
+            <div class="tab-content" id="tab-ollama">
+                <div class="section">
+                    <h2>🤖 نصب Ollama</h2>
+
+                    <div class="step">
+                        <span class="step-number">۱</span>
+                        <strong>دانلود Ollama</strong>
+                        <p>از <a href="https://ollama.com/download" target="_blank">سایت رسمی</a> یا آینه git.ir دانلود کنید:</p>
+                        <pre># روش ۱: سایت رسمی (اگر اینترنت بین‌الملل دارید)
+# فایل نصب از https://ollama.com/download
+
+# روش ۲: آینه git.ir (سریع‌تر در ایران)
+# فایل: https://cdn12.git.ir/softwares/ollama/ollama-windows-amd64.exe</pre>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۲</span>
+                        <strong>نصب Ollama</strong>
+                        <ol>
+                            <li>فایل نصب را اجرا کنید</li>
+                            <li>مسیر نصب: پیش‌فرض (<code>C:\Users\&lt;نام_کاربری&gt;\AppData\Local\Programs\Ollama</code>)</li>
+                            <li>Ollama پس از نصب خودکار اجرا می‌شود</li>
+                        </ol>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۳</span>
+                        <strong>دانلود مدل‌ها</strong>
+                        <p>مدل‌ها را از درایو D (نسخه پشتیبان) کپی کنید یا مجدداً دانلود کنید:</p>
+                        <pre># روش ۱: کپی از درایو D (سریع‌تر)
+# مدل‌ها در: D:\ollama\models
+# کپی به: C:\Users\&lt;نام_کاربری&gt;\.ollama\models
+
+# روش ۲: دانلود مجدد
+ollama pull qwen3:8b
+ollama pull qwen3:14b
+ollama pull gemma3:4b
+ollama pull llama3.2</pre>
+                        <div class="info-box">
+                            💡 <strong>نکته:</strong> مدل‌های اصلی حدود ۱۰۰ گیگابایت فضا نیاز دارند. درایو D توصیه می‌شود.
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۴</span>
+                        <strong>تنظیم مسیر مدل‌ها (اختیاری)</strong>
+                        <p>اگر می‌خواهید مدل‌ها در درایو D ذخیره شوند، متغیر محیطی زیر را تنظیم کنید:</p>
+                        <pre># در PowerShell (ادمین):
+[Environment]::SetEnvironmentVariable("OLLAMA_MODELS", "D:\ollama\models", "User")</pre>
+                    </div>
+
+                    <div class="success-box">
+                        ✅ <strong>تست:</strong> <code>ollama run qwen3:8b</code> — یک سوال بپرسید و پاسخ بگیرید.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: سرویس‌ها -->
+            <div class="tab-content" id="tab-services">
+                <div class="section">
+                    <h2>⚙️ راه‌اندازی سرویس‌ها</h2>
+
+                    <div class="subsection">
+                        <h3>📓 JupyterHub</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>کلون/کپی فایل‌های پیکربندی</strong>
+                            <pre># در WSL:
+cd ~
+git clone &lt;آدرس_مخزن&gt; jupyterlab-gpu
+# یا کپی از درایو D:
+cp -r /mnt/d/jupyterlab-gpu ~/jupyterlab-gpu</pre>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>ساخت تصویر Docker</strong>
+                            <pre># در WSL:
+cd ~/jupyterlab-gpu
+docker build -t jupyterhub:complete -f Dockerfile .</pre>
+                            <div class="warning-box">
+                                ⚠️ <strong>زمان‌بر:</strong> ساخت تصویر ممکن است ۳۰-۶۰ دقیقه طول بکشد.
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۳</span>
+                            <strong>ایجاد فایل .env</strong>
+                            <pre># فایل ~/jupyterlab-gpu/.env:
+JUPYTER_TOKEN=&lt;توکن_امن&gt;
+POSTGRES_PASSWORD=&lt;رمز_پایگاه_داده&gt;</pre>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۴</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre># در WSL:
+cd ~/jupyterlab-gpu
+docker compose up -d
+sleep 5
+docker exec -d jupyterhub bash -c 'cd /workspace && jupyterhub -f /etc/jupyterhub/jupyterhub_config.py'</pre>
+                        </div>
+
+                        <div class="success-box">
+                            ✅ <strong>آدرس:</strong> <code>http://localhost:8000</code>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>💻 code-server (Lean)</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>کپی تصویر Docker از درایو E</strong>
+                            <pre># در WSL:
+gunzip -c /mnt/e/DockerBackup/code-server-lean-mathlib.tar.gz | docker load</pre>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>ایجاد workspace</strong>
+                            <pre># در WSL:
+mkdir -p ~/code-server/workspace
+# کپی پروژه‌ها به workspace</pre>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۳</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre># در WSL:
+docker run -d \
+  --name code-server \
+  --gpus all \
+  -p 31415:8080 \
+  -v ~/code-server/workspace:/home/coder/project \
+  -e PASSWORD=fumlean \
+  -e DEFAULT_WORKSPACE=/home/coder/project \
+  -e USER=coder \
+  --restart unless-stopped \
+  code-server-lean:mathlib</pre>
+                        </div>
+
+                        <div class="success-box">
+                            ✅ <strong>آدرس:</strong> <code>http://localhost:31415</code> | رمز: <code>fumlean</code>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>💬 Open WebUI</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre># در WSL:
+docker run -d \
+  --name open-webui \
+  -p 3000:8080 \
+  -e OLLAMA_BASE_URL=http://host.docker.internal:11434 \
+  -v open-webui:/app/backend/data \
+  --restart unless-stopped \
+  docker.devneeds.ir/openwebui/open-webui:latest</pre>
+                        </div>
+
+                        <div class="success-box">
+                            ✅ <strong>آدرس:</strong> <code>http://localhost:3000</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: شبکه -->
+            <div class="tab-content" id="tab-network">
+                <div class="section">
+                    <h2>🌐 تنظیمات شبکه و دسترسی از راه دور</h2>
+
+                    <div class="subsection">
+                        <h3>آدرس‌های سرور</h3>
+                        <table>
+                            <thead>
+                                <tr><th>سرویس</th><th>از داخل دانشکده</th><th>از خارج (Tailscale)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>JupyterHub</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8000</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8000</code></td></tr>
+                                <tr><td>code-server</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:31415</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:31415</code></td></tr>
+                                <tr><td>Open WebUI</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:3000</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:3000</code></td></tr>
+                                <tr><td>Ollama API</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:11434</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:11434</code></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>نصب Tailscale (دسترسی از خارج)</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>دانلود و نصب</strong>
+                            <p>از <a href="https://tailscale.com/download" target="_blank">سایت رسمی</a> دانلود و نصب کنید.</p>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>ثبت‌نام و اتصال</strong>
+                            <ol>
+                                <li>با ایمیل دانشگاهی ثبت‌نام کنید</li>
+                                <li>دعوت‌نامه را از مدیر سیستم بپذیرید</li>
+                                <li>اتصال را تأیید کنید</li>
+                            </ol>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۳</span>
+                            <strong>تنظیم نام دستگاه</strong>
+                            <p>در پنل Tailscale، نام دستگاه را به <code>math-gpu-server</code> تغییر دهید تا آدرس ثابت باشد.</p>
+                        </div>
+
+                        <div class="info-box">
+                            💡 <strong>نکته:</strong> استفاده از نام دستگاه به جای IP توصیه می‌شود، زیرا IP ممکن است تغییر کند.
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>پورت‌های مورد نیاز</h3>
+                        <table>
+                            <thead>
+                                <tr><th>پورت</th><th>سرویس</th><th>توضیح</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>8000</td><td>JupyterHub</td><td>رابط وب JupyterHub</td></tr>
+                                <tr><td>31415</td><td>code-server</td><td>محیط توسعه Lean</td></tr>
+                                <tr><td>3000</td><td>Open WebUI</td><td>رابط وب مدل‌های زبانی</td></tr>
+                                <tr><td>11434</td><td>Ollama</td><td>API مدل‌های زبانی</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: شروع خودکار -->
+            <div class="tab-content" id="tab-autostart">
+                <div class="section">
+                    <h2>🔄 شروع خودکار سرویس‌ها</h2>
+
+                    <div class="subsection">
+                        <h3>فایل اسکریپت یکپارچه</h3>
+                        <p>فایل <code>Start-AllServices.ps1</code> را در دسکتاپ ذخیره کنید:</p>
+                        <pre># Start-AllServices.ps1
+# راه‌اندازی خودکار تمام سرویس‌ها پس از ری‌استارت ویندوز
+
+$ErrorActionPreference = "SilentlyContinue"
+
+Write-Host "=== شروع تمام سرویس‌ها ===" -ForegroundColor Cyan
+
+# 1. Docker Desktop
+Write-Host "[1/4] Docker Desktop" -ForegroundColor White
+$docker = Get-Process "Docker Desktop" -ErrorAction SilentlyContinue
+if (-not $docker) {
+    Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+    Start-Sleep -Seconds 20
+    $retries = 0
+    while ($retries -lt 10) {
+        $ready = wsl -d Ubuntu -e bash -c "docker info >/dev/null 2>&1 &amp;&amp; echo ok" 2>$null
+        if ($ready -match "ok") { break }
+        Start-Sleep -Seconds 5
+        $retries++
+    }
+}
+Write-Host "  Docker آماده است." -ForegroundColor Green
+
+# 2. Ollama
+Write-Host "[2/4] Ollama" -ForegroundColor White
+$ollamaPath = "C:\Users\&lt;نام_کاربری&gt;\AppData\Local\Programs\Ollama\ollama.exe"
+$ollamaRunning = Get-Process "ollama" -ErrorAction SilentlyContinue
+if (-not $ollamaRunning) {
+    Start-Process $ollamaPath -ArgumentList "serve"
+    Start-Sleep -Seconds 5
+}
+Write-Host "  Ollama آماده است." -ForegroundColor Green
+
+# 3. JupyterHub
+Write-Host "[3/4] JupyterHub" -ForegroundColor White
+$jhRunning = docker ps --format '{{.Names}}' 2>$null | Select-String "^jupyterhub$"
+if (-not $jhRunning) {
+    wsl -d Ubuntu -e bash -c "
+cd ~/jupyterlab-gpu
+docker compose up -d 2>/dev/null
+sleep 5
+docker exec -d jupyterhub bash -c 'cd /workspace &amp;&amp; jupyterhub -f /etc/jupyterhub/jupyterhub_config.py'
+sleep 3
+"
+}
+Write-Host "  JupyterHub آماده است." -ForegroundColor Green
+
+# 4. code-server
+Write-Host "[4/4] code-server" -ForegroundColor White
+$csRunning = docker ps --format '{{.Names}}' 2>$null | Select-String "^code-server$"
+if (-not $csRunning) {
+    wsl -d Ubuntu -e bash -c "~/restore-code-server.sh" 2>$null
+}
+Write-Host "  code-server آماده است." -ForegroundColor Green
+
+Write-Host ""
+Write-Host "=== خلاصه ===" -ForegroundColor Cyan
+Write-Host "JupyterHub:  http://localhost:8000" -ForegroundColor Green
+Write-Host "code-server: http://localhost:31415" -ForegroundColor Green
+Write-Host "Open WebUI:  http://localhost:3000" -ForegroundColor Green
+Write-Host "Ollama API:  http://localhost:11434" -ForegroundColor Green</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>تنظیم شروع خودکار</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>ایجاد فایل BAT در پوشه Startup</strong>
+                            <pre># فایل زیر را در مسیر زیر ذخیره کنید:
+# C:\Users\&lt;نام_کاربری&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Start-AllServices.bat
+
+@echo off
+start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\&lt;نام_کاربری&gt;\Desktop\Start-AllServices.ps1"</pre>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>تست</strong>
+                            <p>فایل <code>Start-AllServices.ps1</code> را از دسکتاپ اجرا کنید و مطمئن شوید تمام سرویس‌ها راه‌اندازی می‌شوند.</p>
+                        </div>
+
+                        <div class="info-box">
+                            💡 <strong>نکته:</strong> Ollama به‌صورت خودکار با ویندوز شروع می‌شود (فایل <code>Ollama.lnk</code> در Startup موجود است).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: پشتیبان‌گیری -->
+            <div class="tab-content" id="tab-backup">
+                <div class="section">
+                    <h2>💾 پشتیبان‌گیری و بازیابی</h2>
+
+                    <div class="subsection">
+                        <h3>پشتیبان‌گیری از تصاویر Docker</h3>
+                        <pre># ذخیره تصویر JupyterHub
+docker save jupyterhub:complete | gzip > /mnt/d/DockerBackup/jupyterhub-complete.tar.gz
+
+# ذخیره تصویر code-server
+docker save code-server-lean:mathlib | gzip > /mnt/d/DockerBackup/code-server-lean-mathlib.tar.gz
+
+# ذخیره تصویر Open WebUI
+docker save docker.devneeds.ir/openwebui/open-webui:latest | gzip > /mnt/d/DockerBackup/open-webui.tar.gz</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>پشتیبان‌گیری از مدل‌ها</h3>
+                        <pre># مدل‌ها در درایو D ذخیره شده‌اند:
+# D:\ollama\models
+
+# برای پشتیبان‌گیری کامل:
+# فشرده‌سازی و کپی به درایو E:
+tar -czf /mnt/e/DockerBackup/ollama-models.tar.gz -C /mnt/d/ollama models</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>بازیابی</h3>
+                        <pre># بازیابی تصویر Docker
+gunzip -c /mnt/d/DockerBackup/jupyterhub-complete.tar.gz | docker load
+
+# بازیابی مدل‌ها
+tar -xzf /mnt/e/DockerBackup/ollama-models.tar.gz -C /mnt/d/ollama/</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: عیب‌یابی -->
+            <div class="tab-content" id="tab-troubleshoot">
+                <div class="section">
+                    <h2>🔧 عیب‌یابی</h2>
+
+                    <div class="subsection">
+                        <h3>مشکلات رایج</h3>
+
+                        <h4>Docker شروع نمی‌شود</h4>
+                        <pre># بررسی وضعیت Docker
+docker info
+
+# ری‌استارت Docker Desktop
+# از tray آیکون Docker کلیک راست → Restart
+
+# بررسی logs
+docker logs jupyterhub</pre>
+
+                        <h4>JupyterHub متصل نمی‌شود</h4>
+                        <pre># بررسی وضعیت کانتینر
+docker ps -a | grep jupyterhub
+
+# ری‌استارت کانتینر
+docker restart jupyterhub
+
+# بررسی logs
+docker logs jupyterhub --tail 50</pre>
+
+                        <h4>Ollama پاسخ نمی‌دهد</h4>
+                        <pre># بررسی وضعیت Ollama
+curl http://localhost:11434/api/version
+
+# ری‌استارت Ollama
+taskkill /f /im ollama.exe
+# سپس دوباره اجرا کنید</pre>
+
+                        <h4>مدل دانلود نمی‌شود</h4>
+                        <pre># استفاده از آینه (اگر اینترنت بین‌الملل قطع است)
+# مدل‌ها را از درایو D کپی کنید:
+xcopy "D:\ollama\models" "C:\Users\&lt;نام_کاربری&gt;\.ollama\models" /E /I</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>دستورات مفید</h3>
+                        <pre># لیست کانتینرهای در حال اجرا
+docker ps
+
+# لیست تمام کانتینرها
+docker ps -a
+
+# لیست تصاویر
+docker images
+
+# پاک‌سازی تصاویر استفاده‌نشده
+docker system prune -a
+
+# بررسی استفاده از دیسک
+docker system df
+
+# ورود به کانتینر
+docker exec -it jupyterhub bash
+
+# بررسی logs کانتینر
+docker logs -f jupyterhub</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>ارتباط با مدیر سیستم</h3>
+                        <div class="info-box">
+                            📧 <strong>ایمیل:</strong> <code>m.amintoosi@um.ac.ir</code><br>
+                            💬 <strong>بله:</strong> <code>@mamintoosi</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بخش پایانی -->
+            <div class="section" style="border-top: 2px solid #e94560;">
+                <h2>📝 خلاصه</h2>
+                <table>
+                    <thead>
+                        <tr><th>مرحله</th><th>زمان تقریبی</th><th>وضعیت</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>نصب WSL2</td><td>۱۰ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>نصب Docker Desktop</td><td>۱۵ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>نصب Ollama</td><td>۱۰ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>دانلود مدل‌ها</td><td>۱-۲ ساعت</td><td>⬜</td></tr>
+                        <tr><td>راه‌اندازی JupyterHub</td><td>۳۰-۶۰ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>راه‌اندازی code-server</td><td>۱۵ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>راه‌اندازی Open WebUI</td><td>۱۰ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>تنظیم Tailscale</td><td>۱۵ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>تنظیم شروع خودکار</td><td>۱۰ دقیقه</td><td>⬜</td></tr>
+                    </tbody>
+                </table>
+                <div class="success-box" style="margin-top: 15px;">
+                    💡 <strong>زمان کل تقریبی:</strong> ۲-۴ ساعت (بسته به سرعت اینترنت و سخت‌افزار)
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>📅 آخرین به‌روزرسانی: تیر ۱۴۰۵ | تهیه‌کننده:
+                    <a href="https://mamintoosi.github.io/">محمود امین‌طوسی</a>،
+                    دانشکده علوم ریاضی دانشگاه فردوسی مشهد،
+                    <a href="http://fumcs.github.io/">گروه علوم کامپیوتر</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('tab-' + this.getAttribute('data-tab')).classList.add('active');
+                });
+            });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabParam = urlParams.get('tab');
+            if (tabParam) {
+                const targetTab = document.querySelector(`.tab-btn[data-tab="${tabParam}"]`);
+                if (targetTab) targetTab.click();
+            }
+        });
+    </script>
+</body>
+</html>
