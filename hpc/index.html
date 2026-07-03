@@ -710,19 +710,52 @@
 
                     <div class="subsection">
                         <h3>🔌 ۳. دسترسی برنامه‌نویسی (Ollama API)</h3>
-                        <p>برای اتصال از طریق کد پایتون (مناسب برای ساخت Agent، خودکارسازی، و افزونه‌هایی مانند Continue و Cline در VSCode):
+                        <p>برای اتصال از طریق کد پایتون یا R (مناسب برای ساخت Agent، خودکارسازی، و افزونه‌هایی مانند Continue و Cline در VSCode):
                         </p>
+
+                        <div class="info-box">
+                            🔍 <strong>تفاوت اجرای محلی و از راه دور:</strong>
+                            <ul style="margin-right: 20px; margin-top: 8px; line-height: 1.8;">
+                                <li>هنگام اجرای برنامه <strong>از داخل JupyterHub</strong> (روی سرور ۴۰۹۰)، کد شما مستقیماً به Ollama متصل می‌شود و نیازی به ارسال درخواست از طریق شبکه نیست. سرعت بالاتر و تأخیر کمتری دارید.</li>
+                                <li>هنگام اجرای برنامه <strong>از کامپیوتر شخصی</strong> (در دانشکده یا از طریق Tailscale)، درخواست‌ها از طریق شبکه ارسال می‌شوند. ممکن است تأخیر جزئی وجود داشته باشد.</li>
+                            </ul>
+                        </div>
+
+                        <h4 style="margin-top: 20px; color: #667eea;">📍 آدرس سرور Ollama</h4>
+                        <table style="margin-top: 10px;">
+                            <thead>
+                                <tr>
+                                    <th>محل اجرای کد</th>
+                                    <th>آدرس Ollama</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>از داخل JupyterHub</td>
+                                    <td style="direction: ltr; text-align: left;"><code>http://host.docker.internal:11434</code> یا <code>http://172.21.129.16:11434</code></td>
+                                </tr>
+                                <tr>
+                                    <td>از کامپیوتر شخصی (داخل دانشکده)</td>
+                                    <td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:11434</code></td>
+                                </tr>
+                                <tr>
+                                    <td>از کامپیوتر شخصی (خارج از دانشکده با Tailscale)</td>
+                                    <td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:11434</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h4 style="margin-top: 25px; color: #764ba2;">🐍 نمونه کد پایتون</h4>
                         <pre>from ollama import Client
 
-# داخل دانشکده
-client = Client(host='http://172.21.129.16:11434')
+# --- از داخل JupyterHub ---
+client = Client(host='http://host.docker.internal:11434')
 
-# خارج دانشکده با Tailscale (استفاده از نام دستگاه - توصیه شده)
-client = Client(host='http://math-gpu-server.tailde35cf.ts.net:11434')
+# --- از کامپیوتر شخصی (داخل دانشکده) ---
+# client = Client(host='http://172.21.129.16:11434')
 
-# یا استفاده از IP
-# client = Client(host='http://100.71.218.11:11434')
-# client = Client(host='http://100.71.218.12:11434')
+# --- از کامپیوتر شخصی (خارج از دانشکده با Tailscale) ---
+# client = Client(host='http://math-gpu-server.tailde35cf.ts.net:11434')
 
 model = 'qwen3:8b'
 prompt = "Explain the difference between supervised and unsupervised learning in one paragraph."
@@ -732,8 +765,37 @@ response = client.chat(model=model, messages=[
 ])
 
 print(response['message']['content'])</pre>
-                        <div class="tailscale-note">
-                            🔍 <strong>نکته:</strong> استفاده از <strong>نام دستگاه</strong> در کد پایتون توصیه می‌شود، زیرا حتی اگر IP تغییر کند، کد شما همچنان کار خواهد کرد.
+
+                        <h4 style="margin-top: 25px; color: #764ba2;">📊 نمونه کد R</h4>
+                        <pre>library(ollamar)
+
+# --- از داخل JupyterHub ---
+OLLAMA_HOST &lt;- "http://host.docker.internal:11434"
+
+# --- از کامپیوتر شخصی (داخل دانشکده) ---
+# OLLAMA_HOST &lt;- "http://172.21.129.16:11434"
+
+# --- از کامپیوتر شخصی (خارج از دانشکده با Tailscale) ---
+# OLLAMA_HOST &lt;- "http://math-gpu-server.tailde35cf.ts.net:11434"
+
+model &lt;- "qwen3:8b"
+prompt &lt;- "Explain the difference between supervised and unsupervised learning in one paragraph."
+
+response &lt;- chat(
+  model = model,
+  messages = list(list(role = "user", content = prompt)),
+  output = "text",
+  host = OLLAMA_HOST
+)
+
+cat(response)</pre>
+
+                        <div class="info-box" style="margin-top: 15px;">
+                            💡 <strong>نکته R:</strong> پکیج <code>ollamar</code> آدرس سرور را به‌صورت پارامتر <code>host</code> در هر تابع دریافت می‌کند. برخلاف پایتون، متغیر محیطی <code>OLLAMA_HOST</code> را به‌صورت خودکار نمی‌خواند.
+                        </div>
+
+                        <div class="tailscale-note" style="margin-top: 15px;">
+                            🔍 <strong>نکته:</strong> استفاده از <strong>نام دستگاه Tailscale</strong> در کد توصیه می‌شود، زیرا حتی اگر IP تغییر کند، کد شما همچنان کار خواهد کرد.
                         </div>
                     </div>
 
@@ -777,6 +839,11 @@ print(response['message']['content'])</pre>
                                         <td>مدل قدرتمند گوگل، مناسب وظایف عمومی، تولید متن، درک مطلب</td>
                                     </tr>
                                     <tr>
+                                        <td><strong>Qwen3.6-27B-NVFP4</strong></td>
+                                        <td style="text-align: center; direction: ltr;">15 GB</td>
+                                        <td>نسخه بهینه‌شده Qwen 3.6 با کوانتیزه NVFP4، سریع‌تر از نسخه اصلی</td>
+                                    </tr>
+                                    <tr style="background: #f8f9fa;">
                                         <td><strong>gpt-oss:20b</strong></td>
                                         <td style="text-align: center; direction: ltr;">13 GB</td>
                                         <td>مدل متن‌باز شبیه GPT، مناسب تولید متن، کدنویسی، تحلیل</td>
@@ -813,7 +880,7 @@ print(response['message']['content'])</pre>
                                     </tr>
                                     <tr style="background: #f8f9fa;">
                                         <td><strong>deepseek-math-7b-rl</strong></td>
-                                        <td style="text-align: center; direction: ltr;">4.2 GB</td>
+                                        <td style="text-align: center; direction: ltr;">3 GB</td>
                                         <td>حل مسائل ریاضی، استدلال کمی، تحلیل عددی</td>
                                     </tr>
                                     <tr>
