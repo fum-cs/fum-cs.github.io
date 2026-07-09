@@ -641,6 +641,43 @@ docker run -d \
                             ✅ <strong>آدرس:</strong> <code>http://localhost:3000</code>
                         </div>
                     </div>
+
+                    <div class="subsection">
+                        <h3>📊 Python Shiny</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre># در WSL:
+docker run -d \
+  --name shiny \
+  -p 8050:8050 \
+  --restart unless-stopped \
+  shiny-custom:latest</pre>
+                        </div>
+
+                        <div class="success-box">
+                            ✅ <strong>آدرس:</strong> <code>http://localhost:8050</code>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🎙️ Whisper</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre># در WSL:
+docker run -d \
+  --name whisper \
+  -p 8501:8501 \
+  --gpus all \
+  --restart unless-stopped \
+  whisper-app:latest</pre>
+                        </div>
+
+                        <div class="success-box">
+                            ✅ <strong>آدرس:</strong> <code>http://localhost:8501</code>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -660,6 +697,8 @@ docker run -d \
                                 <tr><td>code-server</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:31415</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:31415</code></td></tr>
                                 <tr><td>Open WebUI</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:3000</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:3000</code></td></tr>
                                 <tr><td>Ollama API</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:11434</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:11434</code></td></tr>
+                                <tr><td>Python Shiny</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8050</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8050</code></td></tr>
+                                <tr><td>Whisper</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8501</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8501</code></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -704,6 +743,8 @@ docker run -d \
                                 <tr><td>31415</td><td>code-server</td><td>محیط توسعه Lean</td></tr>
                                 <tr><td>3000</td><td>Open WebUI</td><td>رابط وب مدل‌های زبانی</td></tr>
                                 <tr><td>11434</td><td>Ollama</td><td>API مدل‌های زبانی</td></tr>
+                                <tr><td>8050</td><td>Python Shiny</td><td>اپلیکیشن‌های تعاملی وب</td></tr>
+                                <tr><td>8501</td><td>Whisper</td><td>تبدیل گفتار به متن</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -717,42 +758,46 @@ docker run -d \
 
                     <div class="subsection">
                         <h3>فایل اسکریپت یکپارچه</h3>
-                        <p>فایل <code>Start-AllServices.ps1</code> را در دسکتاپ ذخیره کنید:</p>
-                        <pre># Start-AllServices.ps1
+                        <p>فایل <code>Start-AllServices.ps1</code> در درایو D ذخیره شده است:</p>
+                        <pre># مسیر فایل: D:\Start-AllServices.ps1
 # راه‌اندازی خودکار تمام سرویس‌ها پس از ری‌استارت ویندوز
 
 $ErrorActionPreference = "SilentlyContinue"
 
-Write-Host "=== شروع تمام سرویس‌ها ===" -ForegroundColor Cyan
+# --- Docker Desktop (با بازیابی کامل در صورت خرابی) ---
+$dockerReady = $false
+$checkOutput = wsl -d Ubuntu -e bash -c "docker info >/dev/null 2>&1 &amp;&amp; echo ok" 2>$null
+if ($checkOutput -match "ok") { $dockerReady = $true }
 
-# 1. Docker Desktop
-Write-Host "[1/4] Docker Desktop" -ForegroundColor White
-$docker = Get-Process "Docker Desktop" -ErrorAction SilentlyContinue
-if (-not $docker) {
+if (-not $dockerReady) {
+    taskkill /f /im "Docker Desktop.exe" 2>$null | Out-Null
+    taskkill /f /im "com.docker.backend.exe" 2>$null | Out-Null
+    Start-Sleep -Seconds 3
+    wsl --shutdown
+    Start-Sleep -Seconds 3
+    Stop-Service -Name "com.docker.service" -Force -ErrorAction SilentlyContinue
+    Start-Sleep -Seconds 5
+    Start-Service -Name "com.docker.service" -ErrorAction SilentlyContinue
+    Start-Sleep -Seconds 5
     Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
-    Start-Sleep -Seconds 20
+    # انتظار تا آماده شدن Docker (حداکثر ۱۰۰ ثانیه)
     $retries = 0
-    while ($retries -lt 10) {
+    while ($retries -lt 20) {
         $ready = wsl -d Ubuntu -e bash -c "docker info >/dev/null 2>&1 &amp;&amp; echo ok" 2>$null
         if ($ready -match "ok") { break }
         Start-Sleep -Seconds 5
         $retries++
     }
 }
-Write-Host "  Docker آماده است." -ForegroundColor Green
 
-# 2. Ollama
-Write-Host "[2/4] Ollama" -ForegroundColor White
-$ollamaPath = "C:\Users\&lt;نام_کاربری&gt;\AppData\Local\Programs\Ollama\ollama.exe"
+# --- Ollama ---
 $ollamaRunning = Get-Process "ollama" -ErrorAction SilentlyContinue
 if (-not $ollamaRunning) {
-    Start-Process $ollamaPath -ArgumentList "serve"
+    Start-Process "C:\Users\&lt;نام_کاربری&gt;\AppData\Local\Programs\Ollama\ollama.exe" -ArgumentList "serve"
     Start-Sleep -Seconds 5
 }
-Write-Host "  Ollama آماده است." -ForegroundColor Green
 
-# 3. JupyterHub
-Write-Host "[3/4] JupyterHub" -ForegroundColor White
+# --- JupyterHub ---
 $jhRunning = docker ps --format '{{.Names}}' 2>$null | Select-String "^jupyterhub$"
 if (-not $jhRunning) {
     wsl -d Ubuntu -e bash -c "
@@ -760,47 +805,73 @@ cd ~/jupyterlab-gpu
 docker compose up -d 2>/dev/null
 sleep 5
 docker exec -d jupyterhub bash -c 'cd /workspace &amp;&amp; jupyterhub -f /etc/jupyterhub/jupyterhub_config.py'
-sleep 3
-"
+sleep 3"
 }
-Write-Host "  JupyterHub آماده است." -ForegroundColor Green
 
-# 4. code-server
-Write-Host "[4/4] code-server" -ForegroundColor White
+# --- Open WebUI ---
+$owRunning = docker ps --format '{{.Names}}' 2>$null | Select-String "^open-webui$"
+if (-not $owRunning) {
+    wsl -d Ubuntu -e bash -c "
+docker run -d --name open-webui -p 3000:8080 \
+  -e OLLAMA_BASE_URL=http://host.docker.internal:11434 \
+  -v open-webui:/app/backend/data \
+  --restart unless-stopped \
+  docker.devneeds.ir/openwebui/open-webui:latest 2>/dev/null"
+}
+
+# --- Python Shiny ---
+$shRunning = docker ps --format '{{.Names}}' 2>$null | Select-String "^shiny$"
+if (-not $shRunning) {
+    wsl -d Ubuntu -e bash -c "
+docker run -d --name shiny -p 8050:8050 \
+  --restart unless-stopped \
+  shiny-custom:latest 2>/dev/null"
+}
+
+# --- Whisper ---
+$whRunning = docker ps --format '{{.Names}}' 2>$null | Select-String "^whisper$"
+if (-not $whRunning) {
+    wsl -d Ubuntu -e bash -c "
+docker run -d --name whisper -p 8501:8501 \
+  --gpus all \
+  --restart unless-stopped \
+  whisper-app:latest 2>/dev/null"
+}
+
+# --- code-server (Lean) ---
 $csRunning = docker ps --format '{{.Names}}' 2>$null | Select-String "^code-server$"
 if (-not $csRunning) {
     wsl -d Ubuntu -e bash -c "~/restore-code-server.sh" 2>$null
 }
-Write-Host "  code-server آماده است." -ForegroundColor Green
 
-Write-Host ""
-Write-Host "=== خلاصه ===" -ForegroundColor Cyan
-Write-Host "JupyterHub:  http://localhost:8000" -ForegroundColor Green
-Write-Host "code-server: http://localhost:31415" -ForegroundColor Green
-Write-Host "Open WebUI:  http://localhost:3000" -ForegroundColor Green
-Write-Host "Ollama API:  http://localhost:11434" -ForegroundColor Green</pre>
+# --- خلاصه ---
+Write-Host "JupyterHub:    http://localhost:8000"
+Write-Host "code-server:   http://localhost:31415"
+Write-Host "Open WebUI:    http://localhost:3000"
+Write-Host "Python Shiny:  http://localhost:8050"
+Write-Host "Whisper:       http://localhost:8501"
+Write-Host "Ollama API:    http://localhost:11434"</pre>
                     </div>
 
                     <div class="subsection">
                         <h3>تنظیم شروع خودکار</h3>
                         <div class="step">
                             <span class="step-number">۱</span>
-                            <strong>ایجاد فایل BAT در پوشه Startup</strong>
-                            <pre># فایل زیر را در مسیر زیر ذخیره کنید:
-# C:\Users\&lt;نام_کاربری&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Start-AllServices.bat
-
-@echo off
-start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\&lt;نام_کاربری&gt;\Desktop\Start-AllServices.ps1"</pre>
+                            <strong>فایل BAT در پوشه Startup</strong>
+                            <p>فایل زیر در مسیر Startup قرار دارد:</p>
+                            <div class="code-block">C:\Users\&lt;نام_کاربری&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Start-AllServices.bat</div>
+                            <pre>@echo off
+start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\Start-AllServices.ps1"</pre>
                         </div>
 
                         <div class="step">
                             <span class="step-number">۲</span>
                             <strong>تست</strong>
-                            <p>فایل <code>Start-AllServices.ps1</code> را از دسکتاپ اجرا کنید و مطمئن شوید تمام سرویس‌ها راه‌اندازی می‌شوند.</p>
+                            <p>فایل <code>D:\Start-AllServices.ps1</code> را اجرا کنید و مطمئن شوید تمام سرویس‌ها راه‌اندازی می‌شوند.</p>
                         </div>
 
                         <div class="info-box">
-                            💡 <strong>نکته:</strong> Ollama به‌صورت خودکار با ویندوز شروع می‌شود (فایل <code>Ollama.lnk</code> در Startup موجود است).
+                            💡 <strong>نکته:</strong> اسکریپت به‌صورت خودکار Docker را در صورت خرابی بازیابی می‌کند (شامل wsl --shutdown، ری‌استارت سرویس، و اجرای مجدد Docker Desktop).
                         </div>
                     </div>
                 </div>
@@ -820,7 +891,13 @@ docker save jupyterhub:complete | gzip > /mnt/d/DockerBackup/jupyterhub-complete
 docker save code-server-lean:mathlib | gzip > /mnt/d/DockerBackup/code-server-lean-mathlib.tar.gz
 
 # ذخیره تصویر Open WebUI
-docker save docker.devneeds.ir/openwebui/open-webui:latest | gzip > /mnt/d/DockerBackup/open-webui.tar.gz</pre>
+docker save docker.devneeds.ir/openwebui/open-webui:latest | gzip > /mnt/d/DockerBackup/open-webui.tar.gz
+
+# ذخیره تصویر Python Shiny
+docker save shiny-custom:latest | gzip > /mnt/d/DockerBackup/shiny-custom.tar.gz
+
+# ذخیره تصویر Whisper
+docker save whisper-app:latest | gzip > /mnt/d/DockerBackup/whisper-app.tar.gz</pre>
                     </div>
 
                     <div class="subsection">
@@ -935,6 +1012,8 @@ docker logs -f jupyterhub</pre>
                         <tr><td>راه‌اندازی JupyterHub</td><td>۳۰-۶۰ دقیقه</td><td>⬜</td></tr>
                         <tr><td>راه‌اندازی code-server</td><td>۱۵ دقیقه</td><td>⬜</td></tr>
                         <tr><td>راه‌اندازی Open WebUI</td><td>۱۰ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>راه‌اندازی Python Shiny</td><td>۱۰ دقیقه</td><td>⬜</td></tr>
+                        <tr><td>راه‌اندازی Whisper</td><td>۱۵ دقیقه</td><td>⬜</td></tr>
                         <tr><td>تنظیم Tailscale</td><td>۱۵ دقیقه</td><td>⬜</td></tr>
                         <tr><td>تنظیم شروع خودکار</td><td>۱۰ دقیقه</td><td>⬜</td></tr>
                     </tbody>

@@ -453,6 +453,12 @@
                     <button class="tab-btn" data-tab="ollama">
                         <span class="icon">💬</span> مدل‌های زبانی
                     </button>
+                    <button class="tab-btn" data-tab="shiny">
+                        <span class="icon">📊</span> Python Shiny
+                    </button>
+                    <button class="tab-btn" data-tab="whisper">
+                        <span class="icon">🎙️</span> Whisper
+                    </button>
                 </div>
             </div>
 
@@ -930,11 +936,103 @@ cat(response)</pre>
                 </div>
             </div>
 
+            <!-- Tab Python Shiny -->
+            <div class="tab-content" id="tab-shiny">
+                <div class="section">
+                    <h2>📊 Python Shiny</h2>
+                    <p>ساخت اپلیکیشن‌های تعاملی وب با <strong>Python Shiny</strong> — مناسب برای داشبوردهای داده، ابزارهای بصری و نمایش نتایج پژوهشی.</p>
+
+                    <div class="subsection">
+                        <h3>🔗 روش‌های دسترسی</h3>
+                        <div class="method-grid">
+                            <div class="method-box">
+                                <h4>🏫 از داخل دانشکده</h4>
+                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشکده) آدرس زیر را وارد کنید:</p>
+                                <div class="url"><a href="http://172.21.129.16:8050/">http://172.21.129.16:8050/</a></div>
+                            </div>
+                            <div class="method-box">
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:8050/">http://math-gpu-server.tailde35cf.ts.net:8050/</a>
+                                    </div>
+                                </div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از IP (جایگزین):</strong>
+                                    <div class="url">
+                                        <a href="http://100.71.218.11:8050/">http://100.71.218.11:8050/</a>
+                                        <span style="display: block; color: #888; font-size: 0.85rem; margin-top: 5px;">یا</span>
+                                        <a href="http://100.71.218.12:8050/">http://100.71.218.12:8050/</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🎯 کاربردها</h3>
+                        <ul style="margin-right: 20px; line-height: 1.8;">
+                            <li>📊 ساخت <strong>داشبوردهای تعاملی</strong> برای تحلیل داده</li>
+                            <li>🔬 نمایش <strong>نتایج پژوهشی</strong> به صورت بصری</li>
+                            <li>📈 ایجاد <strong>ابزارهای بصری</strong> برای مدل‌سازی و شبیه‌سازی</li>
+                            <li>🖥️ استقرار اپلیکیشن‌های وب سبک بدون نیاز به زیرساخت پیچیده</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Whisper -->
+            <div class="tab-content" id="tab-whisper">
+                <div class="section">
+                    <h2>🎙️ Whisper (تبدیل گفتار به متن)</h2>
+                    <p>سرویس <strong>تبدیل گفتار به متن</strong> با استفاده از مدل Whisper — مناسب برای زیرنویس خودکار ویدیوها، ترجمه گفتار و پردازش صوتی.</p>
+
+                    <div class="subsection">
+                        <h3>🔗 روش‌های دسترسی</h3>
+                        <div class="method-grid">
+                            <div class="method-box">
+                                <h4>🏫 از داخل دانشکده</h4>
+                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشکده) آدرس زیر را وارد کنید:</p>
+                                <div class="url"><a href="http://172.21.129.16:8501/">http://172.21.129.16:8501/</a></div>
+                            </div>
+                            <div class="method-box">
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:8501/">http://math-gpu-server.tailde35cf.ts.net:8501/</a>
+                                    </div>
+                                </div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از IP (جایگزین):</strong>
+                                    <div class="url">
+                                        <a href="http://100.71.218.11:8501/">http://100.71.218.11:8501/</a>
+                                        <span style="display: block; color: #888; font-size: 0.85rem; margin-top: 5px;">یا</span>
+                                        <a href="http://100.71.218.12:8501/">http://100.71.218.12:8501/</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🎯 کاربردها</h3>
+                        <ul style="margin-right: 20px; line-height: 1.8;">
+                            <li>📝 <strong>زیرنویس خودکار</strong> ویدیوهای آموزشی و سمینارها</li>
+                            <li>🌍 <strong>ترجمه گفتار</strong> از زبان‌های مختلف به فارسی/انگلیسی</li>
+                            <li>🔬 <strong>پردازش گفتار</strong> برای پروژه‌های پژوهشی</li>
+                            <li>🎙️ تبدیل <strong>فایل‌های صوتی</strong> به متن قابل ویرایش و جستجو</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <!-- بخش نکات پایانی (مشترک) -->
             <div class="section" style="border-top: 2px solid #667eea;">
                 <h2>⚠️ نکات مهم</h2>
                 <ul style="margin-right: 30px; line-height: 1.8;">
-                    <li>سیستم‌های JupyterHub و code-server روی یک سرور با <strong>۳۲ گیگابایت RAM</strong> و <strong>کارت گرافیک RTX 4090</strong> اجرا می‌شوند.</li>
+                    <li>سیستم‌های JupyterHub، code-server، Python Shiny و Whisper روی یک سرور با <strong>۳۲ گیگابایت RAM</strong> و <strong>کارت گرافیک RTX 4090</strong> اجرا می‌شوند.</li>
                     <li>مدل‌های زبانی (Ollama) از GPU برای پردازش استفاده می‌کنند و توانایی پاسخگویی همزمان به <strong>تعداد محدودی کاربر</strong> را دارند.</li>
                     <li>پس از پایان کار، از سیستم خارج شوید تا سایر همکاران نیز بتوانند استفاده کنند.</li>
                     <li>در صورت بروز مشکل یا نیاز به راهنمایی بیشتر، با <code>m.amintoosi@um.ac.ir</code> تماس بگیرید.</li>
