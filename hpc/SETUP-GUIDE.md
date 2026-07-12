@@ -225,7 +225,7 @@ nohup python3 ~/jupyterlab-gpu/ldap_proxy.py > /tmp/ldap_proxy.log 2>&1 &
 #### Option A: From backup image
 
 ```bash
-gunzip -c /mnt/e/DockerBackup/jupyterhub-complete.tar.gz | docker load
+gunzip -c /mnt/e/HPC-Backup/jupyterhub-complete.tar.gz | docker load
 ```
 
 #### Option B: Build from Dockerfile
@@ -273,7 +273,7 @@ docker exec -d jupyterhub bash -c 'cd /workspace && jupyterhub -f /etc/jupyterhu
 #### Restore from backup
 
 ```bash
-gunzip -c /mnt/e/DockerBackup/code-server-lean-mathlib.tar.gz | docker load
+gunzip -c /mnt/e/HPC-Backup/code-server-lean-mathlib.tar.gz | docker load
 ```
 
 #### Start code-server
@@ -380,6 +380,22 @@ This script:
 3. Copies updated config if available
 4. Starts JupyterHub process
 
+### code-server Restore Script
+
+Location: `~/restore-code-server.sh`
+
+This script is called by `Start-AllServices.ps1` and handles:
+1. Checking if code-server container exists and is running
+2. Verifying volume mounts are working (not tmpfs)
+3. Recreating container if mounts are broken
+4. Retrying once if first attempt fails
+
+**Key features:**
+- Automatically detects broken bind mounts
+- Verifies files are visible in the workspace
+- Retries once if Docker Desktop WSL2 integration is slow
+- Provides clear error messages if manual intervention needed
+
 ---
 
 ## 6. Backup and Restore
@@ -388,40 +404,35 @@ This script:
 
 | Item | Backup Location | Size |
 |------|-----------------|------|
-| JupyterHub image | `/mnt/e/DockerBackup/jupyterhub-complete.tar.gz` | ~16 GB |
-| code-server image | `/mnt/e/DockerBackup/code-server-lean-mathlib.tar.gz` | ~1.3 GB |
-| Open WebUI image | `/mnt/e/DockerBackup/open-webui.tar.gz` | ~9.8 GB |
-| Whisper image | `/mnt/e/DockerBackup/whisper-summarizer.tar.gz` | ~24 GB |
-| Ollama models | `/mnt/d/ollama/models` | ~100 GB |
+| JupyterHub image | `/mnt/e/HPC-Backup/jupyterhub-complete.tar.gz` | ~5 GB |
+| code-server image | `/mnt/e/HPC-Backup/code-server-lean-mathlib.tar.gz` | ~1.3 GB |
+| Open WebUI image | `/mnt/e/HPC-Backup/open-webui.tar.gz` | ~1.6 GB |
+| Whisper image | `/mnt/e/HPC-Backup/whisper-summarizer.tar.gz` | ~7.3 GB |
+| Shiny image | `/mnt/e/HPC-Backup/shiny-server.tar.gz` | ~0.7 GB |
+| Ollama models | `/mnt/e/ollama/models` (separate copy) | ~100 GB |
 | code-server workspace | `/home/amin/code-server/workspace/` | ~5 GB |
 | JupyterHub workspace | `/home/amin/jupyterlab-gpu/work/` | varies |
+| PowerShell startup script | `/mnt/e/HPC-Backup/Start-AllServices.ps1.bak` | ~9 KB |
+| Batch startup file | `/mnt/e/HPC-Backup/Start-AllServices.bat.bak` | ~0.2 KB |
+| JupyterHub startup script | `/mnt/e/HPC-Backup/start-jupyterhub.sh.bak` | ~1 KB |
+| code-server restore script | `/mnt/e/HPC-Backup/restore-code-server.sh.bak` | ~3.7 KB |
+| LDAP proxy script | `/mnt/e/HPC-Backup/ldap_proxy.py.bak` | ~1.3 KB |
+| Whisper API script | `/mnt/e/HPC-Backup/whisper_api_auth.py.bak` | ~15 KB |
+| JupyterHub env file | `/mnt/e/HPC-Backup/jupyterhub-env.bak` | ~0.1 KB |
+| Docker Compose config | `/mnt/e/HPC-Backup/docker-compose.yml.bak` | ~0.8 KB |
 
 ### Backup Commands
 
 ```bash
-# Backup Docker images
-docker save jupyterhub:complete | gzip > /mnt/e/DockerBackup/jupyterhub-complete.tar.gz
-docker save code-server-lean:mathlib | gzip > /mnt/e/DockerBackup/code-server-lean-mathlib.tar.gz
-docker save docker.devneeds.ir/openwebui/open-webui:latest | gzip > /mnt/e/DockerBackup/open-webui.tar.gz
-docker save whisper-summarizer:fastapi | gzip > /mnt/e/DockerBackup/whisper-summarizer.tar.gz
-docker save shiny-server-shiny | gzip > /mnt/e/DockerBackup/shiny-server.tar.gz
-
-# Backup Ollama models
-tar -czf /mnt/e/DockerBackup/ollama-models.tar.gz -C /mnt/d/ollama models
+# Run the automated backup script
+bash /mnt/e/HPC-Backup/backup-all.sh
 ```
 
 ### Restore Commands
 
 ```bash
-# Restore Docker images
-gunzip -c /mnt/e/DockerBackup/jupyterhub-complete.tar.gz | docker load
-gunzip -c /mnt/e/DockerBackup/code-server-lean-mathlib.tar.gz | docker load
-gunzip -c /mnt/e/DockerBackup/open-webui.tar.gz | docker load
-gunzip -c /mnt/e/DockerBackup/whisper-summarizer.tar.gz | docker load
-gunzip -c /mnt/e/DockerBackup/shiny-server.tar.gz | docker load
-
-# Restore Ollama models
-tar -xzf /mnt/e/DockerBackup/ollama-models.tar.gz -C /mnt/d/ollama/
+# Run the automated restore script
+bash /mnt/e/HPC-Backup/restore-all.sh
 ```
 
 ---
@@ -449,12 +460,29 @@ Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 
 ### code-server shows empty folders
 
-The volume mount must point to the correct workspace:
+**Root cause:** After Docker Desktop restarts, bind mounts from the WSL2 filesystem can silently resolve to tmpfs, making files invisible.
+
+**Solution:** The `restore-code-server.sh` script handles this automatically:
+
+```bash
+# The script checks if mount is broken (tmpfs or empty workspace)
+# If broken, it recreates the container with correct mounts
+# If still broken after first attempt, it retries once
+~/restore-code-server.sh
+```
+
+**Manual fix if needed:**
 
 ```bash
 docker stop code-server && docker rm code-server
 # Re-run with correct -v path
+~/restore-code-server.sh
 ```
+
+**Key points:**
+- The script verifies the mount is working by checking files are visible
+- It retries once if the first attempt fails (Docker Desktop WSL2 integration may need time)
+- If still broken, try: `wsl --shutdown`, restart Docker Desktop, then re-run the script
 
 ### Whisper login fails
 
@@ -491,13 +519,6 @@ D:\
 ├── setup\
 │   ├── Restart-JupyterHub.ps1     # Legacy JupyterHub starter
 │   └── Restore-CodeServer.ps1     # Legacy code-server starter
-├── DockerBackup\
-│   ├── jupyterhub-complete.tar.gz
-│   ├── code-server-lean-mathlib.tar.gz
-│   ├── open-webui.tar.gz
-│   ├── whisper-summarizer.tar.gz
-│   ├── shiny-server.tar.gz
-│   └── ollama-models.tar.gz
 └── ollama\models\                 # Ollama model files
 
 E:\
@@ -506,8 +527,20 @@ E:\
 │       ├── index.html             # User guide (Persian)
 │       ├── install-manual.html    # Admin guide (Persian)
 │       └── SETUP-GUIDE.md         # This file
-├── DockerBackup\
-│   └── JupyterHub-Backup-*\       # Timestamped backups
+├── HPC-Backup\
+│   ├── backup-all.sh              # Automated backup script
+│   ├── restore-all.sh             # Automated restore script
+│   ├── *.tar.gz                   # Docker image backups
+│   └── *.bak                      # Configuration backups
+│       ├── Start-AllServices.ps1.bak
+│       ├── Start-AllServices.bat.bak
+│       ├── start-jupyterhub.sh.bak
+│       ├── restore-code-server.sh.bak
+│       ├── ldap_proxy.py.bak
+│       ├── whisper_api_auth.py.bak
+│       ├── jupyterhub-env.bak
+│       └── docker-compose.yml.bak
+├── ollama\models\                 # Ollama models (primary copy)
 └── whisper-models\                # Whisper model files
 
 /home/amin\
@@ -521,6 +554,7 @@ E:\
 │   ├── hub\
 │   │   └── jupyterhub_config.py   # JupyterHub config (persistent)
 │   └── work\                      # JupyterHub user data
+├── restore-code-server.sh         # code-server restore/fix script
 ├── code-server\
 │   ├── workspace\                 # Lean project files
 │   └── Dockerfile.lean            # code-server image build
@@ -550,4 +584,48 @@ E:\
 
 ---
 
-*Last updated: July 2026*
+*Last updated: July 12, 2026*
+
+---
+
+## Appendix: Backup Procedure
+
+### When to Backup
+
+- Before major system changes (Windows updates, Docker updates)
+- After making configuration changes
+- Periodically (weekly recommended)
+- Before reinstalling services
+
+### Running Backup
+
+```bash
+# Run the automated backup script
+bash /mnt/e/HPC-Backup/backup-all.sh
+```
+
+This script backs up:
+1. Docker images (JupyterHub, code-server, Open WebUI, Whisper, Shiny)
+2. Configuration files (startup scripts, environment files, etc.)
+3. PowerShell and batch startup files
+
+### Backup Verification
+
+After running backup, verify files exist:
+
+```bash
+ls -lh /mnt/e/HPC-Backup/*.tar.gz
+ls -lh /mnt/e/HPC-Backup/*.bak
+```
+
+### Restoring from Backup
+
+```bash
+# Run the automated restore script
+bash /mnt/e/HPC-Backup/restore-all.sh
+```
+
+This script restores:
+1. Docker images from tar.gz files
+2. Configuration files to their original locations
+3. Startup scripts to Windows and WSL locations
