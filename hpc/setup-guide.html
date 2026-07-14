@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>راهنمای راه‌اندازی و نگهداری سرویس‌های HPC دانشکده علوم ریاضی</title>
+    <title>راهنمای نصب، راه‌اندازی و نگهداری سرویس‌های HPC دانشکده علوم ریاضی</title>
     <style>
         * {
             margin: 0;
@@ -387,16 +387,16 @@
     <div class="container">
         <div class="card">
             <div class="header">
-                <h1>🔧 راهنمای راه‌اندازی و نگهداری سرویس‌های HPC</h1>
+                <h1>🔧 راهنمای نصب، راه‌اندازی و نگهداری سرویس‌های HPC</h1>
                 <p>دانشکده علوم ریاضی - دانشگاه فردوسی مشهد</p>
-                <span class="badge">نسخه ۱.۱ | تیر ۱۴۰۵</span>
+                <span class="badge">نسخه ۲.۰ | تیر ۱۴۰۵</span>
             </div>
 
             <div class="note">
                 📌 <strong>این راهنما برای چه کسی است؟</strong>
                 <ul>
-                    <li>مدیران سیستم و افرادی که مسئولیت نگهداری سرویس‌های HPC را بر عهده دارند.</li>
-                    <li>شامل دستورات کامل راه‌اندازی، پشتیبان‌گیری و عیب‌یابی سرویس‌ها.</li>
+                    <li>مدیران سیستم و افرادی که مسئولیت نصب، راه‌اندازی و نگهداری سرویس‌های HPC را بر عهده دارند.</li>
+                    <li>شامل دستورات کامل نصب نرم‌افزارها، راه‌اندازی سرویس‌ها، پشتیبان‌گیری و عیب‌یابی.</li>
                     <li>برای راهنمای استفاده کاربران، به <a href="index.html">صفحه راهنمای کاربری</a> مراجعه کنید.</li>
                 </ul>
             </div>
@@ -416,8 +416,14 @@
                     <button class="tab-btn" data-tab="docker">
                         <span class="icon">🐳</span> Docker
                     </button>
+                    <button class="tab-btn" data-tab="ollama">
+                        <span class="icon">🤖</span> Ollama
+                    </button>
                     <button class="tab-btn" data-tab="services">
                         <span class="icon">⚙️</span> سرویس‌ها
+                    </button>
+                    <button class="tab-btn" data-tab="network">
+                        <span class="icon">🌐</span> شبکه
                     </button>
                     <button class="tab-btn" data-tab="autostart">
                         <span class="icon">🔄</span> شروع خودکار
@@ -494,14 +500,13 @@
                             ├── <span class="folder">setup\</span><br>
                             │   ├── <span class="file">Restart-JupyterHub.ps1</span><br>
                             │   └── <span class="file">Restore-CodeServer.ps1</span><br>
-                            └── <span class="folder">ollama\models\</span> — مدل‌های Ollama<br>
+                            ├── <span class="folder">ollama\models\</span> — مدل‌های Ollama<br>
+                            └── <span class="folder">temp\</span><br>
                             <br>
                             <span class="folder">E:\</span><br>
                             ├── <span class="folder">MAT\hpc\</span><br>
                             │   ├── <span class="file">index.html</span> — راهنمای کاربری<br>
-                            │   ├── <span class="file">install-manual.html</span> — راهنمای نصب<br>
-                            │   ├── <span class="file">setup-guide.html</span> — این فایل<br>
-                            │   └── <span class="file">SETUP-GUIDE.md</span><br>
+                            │   └── <span class="file">setup-guide.html</span> — این فایل<br>
                             ├── <span class="folder">HPC-Backup\</span><br>
                             │   ├── <span class="file">backup-all.sh</span><br>
                             │   ├── <span class="file">restore-all.sh</span><br>
@@ -521,6 +526,23 @@
                             ├── <span class="folder">code-server\workspace\</span><br>
                             └── <span class="folder">shiny-server\app\</span>
                         </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>آدرس‌های سرور</h3>
+                        <table>
+                            <thead>
+                                <tr><th>سرویس</th><th>از داخل دانشکده</th><th>از خارج (Tailscale)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>JupyterHub</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8000</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8000</code></td></tr>
+                                <tr><td>code-server</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:31415</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:31415</code></td></tr>
+                                <tr><td>Open WebUI</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:3000</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:3000</code></td></tr>
+                                <tr><td>Ollama API</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:11434</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:11434</code></td></tr>
+                                <tr><td>Python Shiny</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8050</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8050</code></td></tr>
+                                <tr><td>Whisper</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8501</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8501</code></td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -559,10 +581,20 @@
                     <div class="subsection">
                         <h3>نرم‌افزارهای مورد نیاز</h3>
                         <ul>
+                            <li><strong>Windows</strong> Server 2022/2025 یا Windows 10/11</li>
                             <li><strong>WSL2</strong> با Ubuntu 24.04</li>
                             <li><strong>Docker Desktop</strong> (با پشتیبانی WSL2)</li>
                             <li><strong>Ollama</strong> (نسخه ویندوز)</li>
                             <li><strong>Tailscale</strong> (برای دسترسی از راه دور)</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>حساب کاربری</h3>
+                        <ul>
+                            <li>حساب کاربری Active Directory دانشگاه با دسترسی ادمین</li>
+                            <li>نام کاربری و رمز عبور برای ورود به سرور</li>
+                            <li>آدرس ایمیل دانشگاهی برای Tailscale</li>
                         </ul>
                     </div>
 
@@ -629,7 +661,7 @@ swap=16GB
 swapFile=D:\\temp\\wsl-swap.vhdx
 localhostForwarding=true</pre>
                         <div class="warning-box">
-                            ⚠️ <strong>نکته:</strong> مقدار <code>memory</code> را بر اساس RAM سرور تنظیم کنید. برای سرور با ۳۲GB RAM، مقدار ۲۴GB مناسب است.
+                            ⚠️ <strong>نکته:</strong> مقدار <code>memory</code> را بر اساس RAM سرور تنظیم کنید. برای سرور با ۳۲GB RAM، مقدار ۲۴GB مناسب است (۸GB برای سیستم‌عامل باقی می‌ماند).
                         </div>
                     </div>
 
@@ -658,6 +690,7 @@ sudo apt install -y curl git build-essential cmake pkg-config</pre>
                         <ol>
                             <li>فایل نصب را اجرا کنید</li>
                             <li>گزینه <strong>"Use WSL 2 instead of Hyper-V"</strong> را انتخاب کنید</li>
+                            <li>گزینه <strong>"Add shortcut to desktop"</strong> را فعال کنید</li>
                             <li>سیستم را ری‌استارت کنید</li>
                         </ol>
                     </div>
@@ -687,6 +720,64 @@ mkdir D:\DockerData\DockerDesktopWSL
 
                     <div class="success-box">
                         ✅ <strong>تست:</strong> در WSL اجرا کنید <code>docker run hello-world</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Ollama -->
+            <div class="tab-content" id="tab-ollama">
+                <div class="section">
+                    <h2>🤖 نصب Ollama</h2>
+
+                    <div class="step">
+                        <span class="step-number">۱</span>
+                        <strong>دانلود Ollama</strong>
+                        <p>از <a href="https://ollama.com/download" target="_blank">سایت رسمی</a> یا آینه git.ir دانلود کنید:</p>
+                        <pre># روش ۱: سایت رسمی (اگر اینترنت بین‌الملل دارید)
+# فایل نصب از https://ollama.com/download
+
+# روش ۲: آینه git.ir (سریع‌تر در ایران)
+# فایل: https://cdn12.git.ir/softwares/ollama/ollama-windows-amd64.exe</pre>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۲</span>
+                        <strong>نصب Ollama</strong>
+                        <ol>
+                            <li>فایل نصب را اجرا کنید</li>
+                            <li>مسیر نصب: پیش‌فرض (<code>C:\Users\&lt;نام_کاربری&gt;\AppData\Local\Programs\Ollama</code>)</li>
+                            <li>Ollama پس از نصب خودکار اجرا می‌شود</li>
+                        </ol>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۳</span>
+                        <strong>دانلود مدل‌ها</strong>
+                        <p>مدل‌ها را از درایو D (نسخه پشتیبان) کپی کنید یا مجدداً دانلود کنید:</p>
+                        <pre># روش ۱: کپی از درایو D (سریع‌تر)
+# مدل‌ها در: D:\ollama\models
+# کپی به: C:\Users\&lt;نام_کاربری&gt;\.ollama\models
+
+# روش ۲: دانلود مجدد
+ollama pull qwen3:8b
+ollama pull qwen3:14b
+ollama pull gemma3:4b
+ollama pull llama3.2</pre>
+                        <div class="info-box">
+                            💡 <strong>نکته:</strong> مدل‌های اصلی حدود ۱۰۰ گیگابایت فضا نیاز دارند. درایو D توصیه می‌شود.
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۴</span>
+                        <strong>تنظیم مسیر مدل‌ها (اختیاری)</strong>
+                        <p>اگر می‌خواهید مدل‌ها در درایو D ذخیره شوند، متغیر محیطی زیر را تنظیم کنید:</p>
+                        <pre># در PowerShell (ادمین):
+[Environment]::SetEnvironmentVariable("OLLAMA_MODELS", "D:\ollama\models", "User")</pre>
+                    </div>
+
+                    <div class="success-box">
+                        ✅ <strong>تست:</strong> <code>ollama run qwen3:8b</code> — یک سوال بپرسید و پاسخ بگیرید.
                     </div>
                 </div>
             </div>
@@ -933,6 +1024,69 @@ LDAP_PORT=1389              # پورت پروکسی</pre>
                 </div>
             </div>
 
+            <!-- Tab: شبکه -->
+            <div class="tab-content" id="tab-network">
+                <div class="section">
+                    <h2>🌐 تنظیمات شبکه و دسترسی از راه دور</h2>
+
+                    <div class="subsection">
+                        <h3>پورت‌های مورد نیاز</h3>
+                        <table>
+                            <thead>
+                                <tr><th>پورت</th><th>سرویس</th><th>توضیح</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>8000</td><td>JupyterHub</td><td>رابط وب JupyterHub</td></tr>
+                                <tr><td>31415</td><td>code-server</td><td>محیط توسعه Lean</td></tr>
+                                <tr><td>3000</td><td>Open WebUI</td><td>رابط وب مدل‌های زبانی</td></tr>
+                                <tr><td>11434</td><td>Ollama</td><td>API مدل‌های زبانی</td></tr>
+                                <tr><td>8050</td><td>Python Shiny</td><td>اپلیکیشن‌های تعاملی وب</td></tr>
+                                <tr><td>8501</td><td>Whisper</td><td>تبدیل گفتار به متن</td></tr>
+                                <tr><td>1389</td><td>LDAP Proxy</td><td>پروکسی احراز هویت</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>نصب Tailscale (دسترسی از خارج)</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>دانلود و نصب</strong>
+                            <p>از <a href="https://tailscale.com/download" target="_blank">سایت رسمی</a> یا <a href="https://fumdrive.um.ac.ir/index.php/s/BEomtEPGGt6teGz">لینک دانشگاه</a> دانلود و نصب کنید.</p>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>ثبت‌نام و اتصال</strong>
+                            <ol>
+                                <li>با ایمیل دانشگاهی ثبت‌نام کنید</li>
+                                <li>دعوت‌نامه را از <a href="https://login.tailscale.com/admin/invite/V1ygTC1rU8QbHXVf74yZ11">این لینک</a> بپذیرید</li>
+                                <li>اتصال را تأیید کنید</li>
+                            </ol>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۳</span>
+                            <strong>تنظیم نام دستگاه</strong>
+                            <p>در پنل Tailscale، نام دستگاه را به <code>math-gpu-server</code> تغییر دهید تا آدرس ثابت باشد.</p>
+                        </div>
+
+                        <div class="info-box">
+                            💡 <strong>نکته:</strong> استفاده از نام دستگاه به جای IP توصیه می‌شود، زیرا IP ممکن است تغییر کند. نام دستگاه ثابت است و تغییر نمی‌کند.
+                        </div>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>نکته مهم:</strong>
+                            <ul>
+                                <li>هر دستگاهی که به شبکه Tailscale متصل می‌شود، یک IP منحصربه‌فرد دریافت می‌کند.</li>
+                                <li>آدرس <strong>نام دستگاه</strong> ثابت است و تغییر نمی‌کند.</li>
+                                <li>اگر با نام دستگاه به مشکل خوردید، IP صحیح سرور را از <a href="https://login.tailscale.com/admin/machines" target="_blank">پنل مدیریت Tailscale</a> پیدا کنید.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tab: شروع خودکار -->
             <div class="tab-content" id="tab-autostart">
                 <div class="section">
@@ -1042,7 +1196,14 @@ start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\
 
                     <div class="subsection">
                         <h3>دستورات پشتیبان‌گیری</h3>
-                        <pre># اجرای اسکریپت پشتیبان‌گیری خودکار
+                        <pre># ذخیره تصاویر Docker
+docker save jupyterhub:complete | gzip > /mnt/e/HPC-Backup/jupyterhub-complete.tar.gz
+docker save code-server-lean:mathlib | gzip > /mnt/e/HPC-Backup/code-server-lean-mathlib.tar.gz
+docker save docker.devneeds.ir/openwebui/open-webui:latest | gzip > /mnt/e/HPC-Backup/open-webui.tar.gz
+docker save shiny-custom:latest | gzip > /mnt/e/HPC-Backup/shiny-custom.tar.gz
+docker save whisper-app:latest | gzip > /mnt/e/HPC-Backup/whisper-app.tar.gz
+
+# اجرای اسکریپت پشتیبان‌گیری خودکار
 bash /mnt/e/HPC-Backup/backup-all.sh
 
 # بررسی فایل‌های پشتیبان
@@ -1052,11 +1213,11 @@ ls -lh /mnt/e/HPC-Backup/*.bak</pre>
 
                     <div class="subsection">
                         <h3>دستورات بازیابی</h3>
-                        <pre># اجرای اسکریپت بازیابی خودکار
-bash /mnt/e/HPC-Backup/restore-all.sh
+                        <pre># بازیابی تصویر Docker
+gunzip -c /mnt/e/HPC-Backup/jupyterhub-complete.tar.gz | docker load
 
-# یا بازیابی دستی تصویر خاص
-gunzip -c /mnt/e/HPC-Backup/jupyterhub-complete.tar.gz | docker load</pre>
+# یا اجرای اسکریپت بازیابی خودکار
+bash /mnt/e/HPC-Backup/restore-all.sh</pre>
                     </div>
 
                     <div class="warning-box">
@@ -1126,6 +1287,23 @@ docker inspect whisper-summarizer --format '{{.Config.Env}}'
 # ری‌استارت با متغیرهای صحیح
 docker stop whisper-summarizer && docker rm whisper-summarizer
 # سپس دوباره با دستورات صحیح راه‌اندازی کنید</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Ollama پاسخ نمی‌دهد</h3>
+                        <pre># بررسی وضعیت Ollama
+curl http://localhost:11434/api/version
+
+# ری‌استارت Ollama
+taskkill /f /im ollama.exe
+# سپس دوباره اجرا کنید</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>مدل دانلود نمی‌شود</h3>
+                        <pre># استفاده از آینه (اگر اینترنت بین‌الملل قطع است)
+# مدل‌ها را از درایو D کپی کنید:
+xcopy "D:\ollama\models" "C:\Users\&lt;نام_کاربری&gt;\.ollama\models" /E /I</pre>
                     </div>
 
                     <div class="subsection">
@@ -1214,6 +1392,11 @@ docker system prune -a             # حذف تصاویر استفاده‌نشد
                             <td>⬜</td>
                         </tr>
                         <tr>
+                            <td>تنظیم Tailscale</td>
+                            <td>۱۵ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
                             <td>تنظیم شروع خودکار</td>
                             <td>۱۰ دقیقه</td>
                             <td>⬜</td>
@@ -1231,14 +1414,13 @@ docker system prune -a             # حذف تصاویر استفاده‌نشد
             </div>
 
             <div class="footer">
-                <p>📅 آخرین به‌روزرسانی: ۱۲ تیر ۱۴۰۵ | تهیه‌کننده:
+                <p>📅 آخرین به‌روزرسانی: تیر ۱۴۰۵ | تهیه‌کننده:
                     <a href="https://mamintoosi.github.io/">محمود امین‌طوسی</a>،
                     دانشکده علوم ریاضی دانشگاه فردوسی مشهد
                 </p>
                 <p style="margin-top: 10px;">
                     <a href="index.html">راهنمای کاربری</a> |
-                    <a href="install-manual.html">راهنمای نصب</a> |
-                    <a href="setup-guide.html">راهنمای راه‌اندازی</a>
+                    <a href="setup-guide.html">راهنمای نصب و راه‌اندازی</a>
                 </p>
             </div>
         </div>
