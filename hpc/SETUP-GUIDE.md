@@ -15,12 +15,13 @@ Complete instructions for setting up all Docker-based services on a new system o
    - [4.1 WSL2](#41-wsl2)
    - [4.2 Docker Desktop](#42-docker-desktop)
    - [4.3 Ollama](#43-ollama)
-   - [4.4 LDAP Proxy](#44-ldap-proxy)
-   - [4.5 JupyterHub](#45-jupyterhub)
-   - [4.6 code-server (Lean)](#46-code-server-lean)
-   - [4.7 Open WebUI](#47-open-webui)
-   - [4.8 Python Shiny](#48-python-shiny)
-   - [4.9 Whisper Transcription](#49-whisper-transcription)
+   - [4.4 LDAP Connection](#44-ldap-connection)
+   - [4.5 LDAP Proxy](#45-ldap-proxy)
+   - [4.6 JupyterHub](#46-jupyterhub)
+   - [4.7 code-server (Lean)](#47-code-server-lean)
+   - [4.8 Open WebUI](#48-open-webui)
+   - [4.9 Python Shiny](#49-python-shiny)
+   - [4.10 Whisper Transcription](#410-whisper-transcription)
 5. [Auto-Start on Boot](#5-auto-start-on-boot)
 6. [Backup and Restore](#6-backup-and-restore)
 7. [Troubleshooting](#7-troubleshooting)
@@ -154,7 +155,81 @@ Set model storage to D: drive (optional):
 [Environment]::SetEnvironmentVariable("OLLAMA_MODELS", "D:\ollama\models", "User")
 ```
 
-### 4.4 LDAP Proxy
+### 4.4 LDAP Connection
+
+The university uses Microsoft Active Directory (AD) for authentication. All services (JupyterHub, Whisper) authenticate users against this AD server.
+
+#### University AD Server Details
+
+| Parameter | Value |
+|-----------|-------|
+| **Server IP** | `172.20.9.29` |
+| **Port** | `389` (LDAP) |
+| **Domain** | `SAD` |
+| **Base DN** | `DC=SAD,DC=UM,DC=AC,DC=IR` |
+| **Bind DN Template** | `SAD\{username}` |
+
+#### How LDAP Authentication Works
+
+```
+┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
+│   User Browser  │ ───> │  Docker Container│ ───> │  LDAP Proxy     │
+│   (JupyterHub)  │      │  (JupyterHub)    │      │  (WSL Host)     │
+└─────────────────┘      └─────────────────┘      └─────────────────┘
+                                                           │
+                                                           ▼
+                                                   ┌─────────────────┐
+                                                   │  University AD  │
+                                                   │  172.20.9.29:389│
+                                                   └─────────────────┘
+```
+
+**Why a proxy is needed:**
+- Docker Desktop containers cannot directly reach the university's internal LDAP server
+- The LDAP proxy runs on the WSL host and forwards LDAP traffic
+- Containers connect to the proxy using the WSL host IP
+
+#### Finding the WSL Host IP
+
+The WSL host IP changes after each restart. Find it with:
+
+```bash
+# In WSL:
+hostname -I | awk '{print $1}'
+
+# Or check the Docker gateway IP:
+docker network inspect bridge | grep Gateway
+```
+
+Common WSL host IP: `172.28.148.211` (may vary)
+
+#### Testing LDAP Connectivity
+
+```bash
+# Test from WSL (direct connection to university AD):
+ldapsearch -x -H ldap://172.20.9.29 -b "DC=SAD,DC=UM,DC=AC,DC=IR" -D "SAD\username" -W "(sAMAccountName=username)"
+
+# Test via proxy (after starting LDAP proxy):
+ldapsearch -x -H ldap://localhost:1389 -b "DC=SAD,DC=UM,DC=AC,DC=IR" -D "SAD\username" -W "(sAMAccountName=username)"
+```
+
+#### LDAP Configuration for Services
+
+**JupyterHub Configuration:**
+```python
+c.LDAPAuthenticator.server_address = '172.28.148.211'  # WSL host IP
+c.LDAPAuthenticator.server_port = 1389                  # LDAP proxy port
+c.LDAPAuthenticator.bind_dn_template = 'SAD\\{username}'
+c.LDAPAuthenticator.user_search_base = 'DC=SAD,DC=UM,DC=AC,DC=IR'
+```
+
+**Whisper Container Environment Variables:**
+```bash
+LDAP_SERVER=172.28.148.211  # WSL host IP
+LDAP_PORT=1389              # LDAP proxy port
+```
+
+### 4.5 LDAP Proxy
 
 The LDAP proxy is required because Docker Desktop containers cannot reach the university's internal LDAP server directly. The proxy runs on the WSL host and forwards LDAP traffic.
 
@@ -220,7 +295,7 @@ Start the proxy:
 nohup python3 ~/jupyterlab-gpu/ldap_proxy.py > /tmp/ldap_proxy.log 2>&1 &
 ```
 
-### 4.5 JupyterHub
+### 4.6 JupyterHub
 
 #### Option A: From backup image
 
@@ -268,7 +343,7 @@ sleep 5
 docker exec -d jupyterhub bash -c 'cd /workspace && jupyterhub -f /etc/jupyterhub/jupyterhub_config.py'
 ```
 
-### 4.6 code-server (Lean)
+### 4.7 code-server (Lean)
 
 #### Restore from backup
 
@@ -295,7 +370,7 @@ docker run -d \
 
 **Note:** The workspace at `/home/amin/code-server/workspace/` must contain the Lean project files (`lean_tutorial/`, `mathlib4/`, etc.).
 
-### 4.7 Open WebUI
+### 4.8 Open WebUI
 
 ```bash
 docker run -d \
@@ -309,7 +384,7 @@ docker run -d \
 
 Login: Register with your email, then admin approves at `m.amintoosi@um.ac.ir`.
 
-### 4.8 Python Shiny
+### 4.9 Python Shiny
 
 ```bash
 docker run -d \
@@ -321,7 +396,7 @@ docker run -d \
   shiny-server-shiny
 ```
 
-### 4.9 Whisper Transcription
+### 4.10 Whisper Transcription
 
 ```bash
 # Install ldap3 in container (required for LDAP auth)

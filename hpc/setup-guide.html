@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای راه‌اندازی و نگهداری سرویس‌های HPC دانشکده علوم ریاضی</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 30px 15px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-right: 4px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 30px;
+            border-radius: 10px;
+            color: #856404;
+        }
+
+        .note ul {
+            margin-right: 20px;
+            line-height: 1.8;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-right: 4px solid #2196F3;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-right: 4px solid #ff9800;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: #e65100;
+        }
+
+        .danger-box {
+            background: #fce4ec;
+            border-right: 4px solid #f44336;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: #c62828;
+        }
+
+        .success-box {
+            background: #e8f5e9;
+            border-right: 4px solid #4caf50;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .tabs-container {
+            padding: 0 30px;
+            border-bottom: 2px solid #e0e0e0;
+            background: #f8f9fa;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 3px;
+            flex-wrap: wrap;
+            padding-top: 15px;
+        }
+
+        .tab-btn {
+            padding: 10px 18px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tab-btn:hover {
+            background: #e8e8e8;
+            color: #1e2a3a;
+        }
+
+        .tab-btn.active {
+            color: #0d9488;
+            border-bottom-color: #0d9488;
+            background: white;
+        }
+
+        .tab-btn .icon {
+            margin-left: 6px;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            color: #0f3460;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #0d9488;
+            display: inline-block;
+        }
+
+        .subsection {
+            margin: 25px 0;
+        }
+
+        .subsection h3 {
+            color: #0d9488;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+        }
+
+        .subsection h4 {
+            color: #0f3460;
+            font-size: 1.05rem;
+            margin: 15px 0 10px;
+        }
+
+        pre {
+            background: #1e2a3a;
+            color: #4ecdc4;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            direction: ltr;
+            text-align: left;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .code-block {
+            direction: ltr;
+            text-align: left;
+            background: #1e2a3a;
+            color: #4ecdc4;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        .url {
+            background: #1e2a3a;
+            color: #4ecdc4;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            direction: ltr;
+            text-align: left;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: right;
+        }
+
+        th {
+            background: #0d9488;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #0d9488;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        ul,
+        ol {
+            margin-right: 20px;
+            line-height: 2;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .footer a {
+            color: #0d9488;
+            text-decoration: none;
+        }
+
+        .prereq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .prereq-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .prereq-box h4 {
+            color: #0f3460;
+            margin-bottom: 8px;
+        }
+
+        .file-tree {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            direction: ltr;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .file-tree .folder {
+            color: #0d9488;
+            font-weight: bold;
+        }
+
+        .file-tree .file {
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .prereq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .section {
+                padding: 15px 20px;
+            }
+
+            .tabs-container {
+                padding: 0 15px;
+            }
+
+            .tab-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>🔧 راهنمای راه‌اندازی و نگهداری سرویس‌های HPC</h1>
+                <p>دانشکده علوم ریاضی - دانشگاه فردوسی مشهد</p>
+                <span class="badge">نسخه ۱.۱ | تیر ۱۴۰۵</span>
+            </div>
+
+            <div class="note">
+                📌 <strong>این راهنما برای چه کسی است؟</strong>
+                <ul>
+                    <li>مدیران سیستم و افرادی که مسئولیت نگهداری سرویس‌های HPC را بر عهده دارند.</li>
+                    <li>شامل دستورات کامل راه‌اندازی، پشتیبان‌گیری و عیب‌یابی سرویس‌ها.</li>
+                    <li>برای راهنمای استفاده کاربران، به <a href="index.html">صفحه راهنمای کاربری</a> مراجعه کنید.</li>
+                </ul>
+            </div>
+
+            <!-- Tab ها -->
+            <div class="tabs-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="overview">
+                        <span class="icon">📋</span> نمای کلی
+                    </button>
+                    <button class="tab-btn" data-tab="prereq">
+                        <span class="icon">📦</span> پیش‌نیازها
+                    </button>
+                    <button class="tab-btn" data-tab="wsl">
+                        <span class="icon">🐧</span> WSL
+                    </button>
+                    <button class="tab-btn" data-tab="docker">
+                        <span class="icon">🐳</span> Docker
+                    </button>
+                    <button class="tab-btn" data-tab="services">
+                        <span class="icon">⚙️</span> سرویس‌ها
+                    </button>
+                    <button class="tab-btn" data-tab="autostart">
+                        <span class="icon">🔄</span> شروع خودکار
+                    </button>
+                    <button class="tab-btn" data-tab="backup">
+                        <span class="icon">💾</span> پشتیبان‌گیری
+                    </button>
+                    <button class="tab-btn" data-tab="troubleshoot">
+                        <span class="icon">🔧</span> عیب‌یابی
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab: نمای کلی -->
+            <div class="tab-content active" id="tab-overview">
+                <div class="section">
+                    <h2>📋 نمای کلی سرویس‌ها</h2>
+
+                    <div class="subsection">
+                        <h3>سرویس‌های موجود</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>سرویس</th>
+                                    <th>پورت</th>
+                                    <th>توضیح</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>JupyterHub</strong></td>
+                                    <td style="direction: ltr; text-align: left;">8000</td>
+                                    <td>محیط پایتون/R با GPU</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>code-server</strong></td>
+                                    <td style="direction: ltr; text-align: left;">31415</td>
+                                    <td>محیط توسعه Lean</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Open WebUI</strong></td>
+                                    <td style="direction: ltr; text-align: left;">3000</td>
+                                    <td>رابط وب مدل‌های زبانی</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Python Shiny</strong></td>
+                                    <td style="direction: ltr; text-align: left;">8050</td>
+                                    <td>اپلیکیشن‌های تعاملی</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Whisper</strong></td>
+                                    <td style="direction: ltr; text-align: left;">8501</td>
+                                    <td>تبدیل گفتار به متن</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Ollama API</strong></td>
+                                    <td style="direction: ltr; text-align: left;">11434</td>
+                                    <td>API مدل‌های زبانی</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>LDAP Proxy</strong></td>
+                                    <td style="direction: ltr; text-align: left;">1389</td>
+                                    <td>پروکسی احراز هویت</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>ساختار فایل‌ها</h3>
+                        <div class="file-tree">
+                            <span class="folder">D:\</span><br>
+                            ├── <span class="file">Start-AllServices.ps1</span> — اسکریپت یکپارچه راه‌اندازی<br>
+                            ├── <span class="folder">setup\</span><br>
+                            │   ├── <span class="file">Restart-JupyterHub.ps1</span><br>
+                            │   └── <span class="file">Restore-CodeServer.ps1</span><br>
+                            └── <span class="folder">ollama\models\</span> — مدل‌های Ollama<br>
+                            <br>
+                            <span class="folder">E:\</span><br>
+                            ├── <span class="folder">MAT\hpc\</span><br>
+                            │   ├── <span class="file">index.html</span> — راهنمای کاربری<br>
+                            │   ├── <span class="file">install-manual.html</span> — راهنمای نصب<br>
+                            │   ├── <span class="file">setup-guide.html</span> — این فایل<br>
+                            │   └── <span class="file">SETUP-GUIDE.md</span><br>
+                            ├── <span class="folder">HPC-Backup\</span><br>
+                            │   ├── <span class="file">backup-all.sh</span><br>
+                            │   ├── <span class="file">restore-all.sh</span><br>
+                            │   ├── <span class="file">*.tar.gz</span> — پشتیبان تصاویر<br>
+                            │   └── <span class="file">*.bak</span> — پشتیبان پیکربندی‌ها<br>
+                            └── <span class="folder">ollama\models\</span><br>
+                            <br>
+                            <span class="folder">/home/amin\</span><br>
+                            ├── <span class="folder">jupyterlab-gpu\</span><br>
+                            │   ├── <span class="file">start-jupyterhub.sh</span><br>
+                            │   ├── <span class="file">ldap_proxy.py</span><br>
+                            │   ├── <span class="file">whisper_api_auth.py</span><br>
+                            │   ├── <span class="file">.env</span><br>
+                            │   ├── <span class="file">Dockerfile</span><br>
+                            │   └── <span class="folder">work\</span> — داده کاربران<br>
+                            ├── <span class="file">restore-code-server.sh</span><br>
+                            ├── <span class="folder">code-server\workspace\</span><br>
+                            └── <span class="folder">shiny-server\app\</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: پیش‌نیازها -->
+            <div class="tab-content" id="tab-prereq">
+                <div class="section">
+                    <h2>📦 پیش‌نیازها</h2>
+
+                    <div class="subsection">
+                        <h3>سخت‌افزار مورد نیاز</h3>
+                        <div class="prereq-grid">
+                            <div class="prereq-box">
+                                <h4>🖥️ حداقل</h4>
+                                <ul>
+                                    <li>پردازنده: ۴ هسته</li>
+                                    <li>RAM: ۳۲ گیگابایت</li>
+                                    <li>کارت گرافیک: RTX 3060 (12 GB)</li>
+                                    <li>حافظه C: SSD 256 GB</li>
+                                    <li>حافظه D: HDD/SSD 200 GB</li>
+                                </ul>
+                            </div>
+                            <div class="prereq-box">
+                                <h4>💼 پیشنهادی</h4>
+                                <ul>
+                                    <li>پردازنده: ۸+ هسته</li>
+                                    <li>RAM: ۶۴ گیگابایت</li>
+                                    <li>کارت گرافیک: RTX 4090 (24 GB)</li>
+                                    <li>حافظه C: SSD 512 GB</li>
+                                    <li>حافظه D: SSD 500 GB</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>نرم‌افزارهای مورد نیاز</h3>
+                        <ul>
+                            <li><strong>WSL2</strong> با Ubuntu 24.04</li>
+                            <li><strong>Docker Desktop</strong> (با پشتیبانی WSL2)</li>
+                            <li><strong>Ollama</strong> (نسخه ویندوز)</li>
+                            <li><strong>Tailscale</strong> (برای دسترسی از راه دور)</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>آینه‌های (Mirror) سریع</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>نوع</th>
+                                    <th>آینه</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>pip (Python)</td>
+                                    <td style="direction: ltr; text-align: left;"><code>https://pypi.tuna.tsinghua.edu.cn/simple</code></td>
+                                </tr>
+                                <tr>
+                                    <td>CRAN (R)</td>
+                                    <td style="direction: ltr; text-align: left;"><code>https://cran.um.ac.ir</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Docker images</td>
+                                    <td style="direction: ltr; text-align: left;"><code>docker.devneeds.ir</code> یا <code>docker.arvancloud.ir</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Ollama (Linux)</td>
+                                    <td style="direction: ltr; text-align: left;"><code>https://cdn12.git.ir/softwares/ollama/ollama-linux-amd64.tar.zst</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: WSL -->
+            <div class="tab-content" id="tab-wsl">
+                <div class="section">
+                    <h2>🐧 نصب و پیکربندی WSL2</h2>
+
+                    <div class="step">
+                        <span class="step-number">۱</span>
+                        <strong>فعال‌سازی WSL</strong>
+                        <p style="margin-top: 8px;">در PowerShell (با دسترسی ادمین) اجرا کنید:</p>
+                        <pre>wsl --install -d Ubuntu</pre>
+                        <p>پس از نصب، سیستم ری‌استارت می‌شود. پس از ری‌استارت، Ubuntu باز می‌شود و از شما نام کاربری و رمز عبور می‌خواهد.</p>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۲</span>
+                        <strong>تنظیم WSL2 به‌عنوان پیش‌فرض</strong>
+                        <pre>wsl --set-default-version 2</pre>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۳</span>
+                        <strong>تنظیم حافظه و پردازنده</strong>
+                        <p>فایل <code>.wslconfig</code> را در مسیر زیر ایجاد/ویرایش کنید:</p>
+                        <div class="url">C:\Users\amin\.wslconfig</div>
+                        <pre>[wsl2]
+memory=24GB
+processors=6
+swap=16GB
+swapFile=D:\\temp\\wsl-swap.vhdx
+localhostForwarding=true</pre>
+                        <div class="warning-box">
+                            ⚠️ <strong>نکته:</strong> مقدار <code>memory</code> را بر اساس RAM سرور تنظیم کنید. برای سرور با ۳۲GB RAM، مقدار ۲۴GB مناسب است.
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۴</span>
+                        <strong>بروزرسانی Ubuntu و نصب ابزارها</strong>
+                        <pre>sudo apt update && sudo apt upgrade -y
+sudo apt install -y curl git build-essential cmake pkg-config</pre>
+                    </div>
+
+                    <div class="success-box">
+                        ✅ <strong>تست:</strong> اجرا کنید <code>wsl -l -v</code> — باید Ubuntu با نسخه ۲ نشان داده شود.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Docker -->
+            <div class="tab-content" id="tab-docker">
+                <div class="section">
+                    <h2>🐳 نصب و پیکربندی Docker Desktop</h2>
+
+                    <div class="step">
+                        <span class="step-number">۱</span>
+                        <strong>دانلود و نصب Docker Desktop</strong>
+                        <p>از <a href="https://www.docker.com/products/docker-desktop/" target="_blank">سایت رسمی</a> دانلود کنید.</p>
+                        <ol>
+                            <li>فایل نصب را اجرا کنید</li>
+                            <li>گزینه <strong>"Use WSL 2 instead of Hyper-V"</strong> را انتخاب کنید</li>
+                            <li>سیستم را ری‌استارت کنید</li>
+                        </ol>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۲</span>
+                        <strong>تنظیم WSL Integration</strong>
+                        <p>Docker Desktop → Settings → Resources → WSL Integration:</p>
+                        <ol>
+                            <li>گزینه <strong>"Enable integration with my default WSL distro"</strong> را فعال کنید</li>
+                            <li>Ubuntu را انتخاب کنید</li>
+                            <li>Apply و Restart را بزنید</li>
+                        </ol>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">۳</span>
+                        <strong>انتقال داده‌ها به درایو D (اختیاری)</strong>
+                        <pre># ایجاد پوشه
+mkdir D:\DockerData\DockerDesktopWSL
+
+# ویرایش فایل تنظیمات Docker Desktop
+# مسیر: C:\Users\amin\AppData\Roaming\Docker\settings-store.json
+# اضافه کردن:
+# "CustomWslDistroDir": "D:\\DockerData\\DockerDesktopWSL"</pre>
+                    </div>
+
+                    <div class="success-box">
+                        ✅ <strong>تست:</strong> در WSL اجرا کنید <code>docker run hello-world</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: سرویس‌ها -->
+            <div class="tab-content" id="tab-services">
+                <div class="section">
+                    <h2>⚙️ راه‌اندازی سرویس‌ها</h2>
+
+                    <div class="subsection">
+                        <h3>📓 JupyterHub</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>بازیابی تصویر از پشتیبان</strong>
+                            <pre>gunzip -c /mnt/e/HPC-Backup/jupyterhub-complete.tar.gz | docker load</pre>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre>cd ~/jupyterlab-gpu
+docker run -d --name jupyterhub --gpus all -p 8000:8000 \
+  -v ~/jupyterlab-gpu/work:/workspace \
+  -v /mnt/d/DockerBackup:/datasets:ro \
+  --env-file ~/jupyterlab-gpu/.env \
+  jupyterhub:complete sleep infinity
+
+sleep 5
+docker exec -d jupyterhub bash -c 'cd /workspace && jupyterhub -f /etc/jupyterhub/jupyterhub_config.py'</pre>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>💻 code-server (Lean)</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>بازیابی تصویر</strong>
+                            <pre>gunzip -c /mnt/e/HPC-Backup/code-server-lean-mathlib.tar.gz | docker load</pre>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>راه‌اندازی با اسکریپت بازیابی</strong>
+                            <pre># استفاده از اسکریپت بازیابی خودکار
+~/restore-code-server.sh</pre>
+                            <div class="info-box">
+                                💡 <strong>نکته:</strong> اسکریپت <code>restore-code-server.sh</code> به‌صورت خودکار مشکل mount شکسته را تشخیص و رفع می‌کند.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>💬 Open WebUI</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre>docker run -d \
+  --name open-webui \
+  -p 3000:8080 \
+  -e OLLAMA_BASE_URL=http://host.docker.internal:11434 \
+  -v open-webui:/app/backend/data \
+  --restart unless-stopped \
+  docker.devneeds.ir/openwebui/open-webui:latest</pre>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>📊 Python Shiny</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre>docker run -d \
+  --name shiny-server \
+  -p 8050:8050 \
+  -v /home/amin/shiny-server/app:/app/app \
+  -v /mnt/d/shiny-data:/app/data \
+  --restart unless-stopped \
+  shiny-server-shiny</pre>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🎙️ Whisper</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre>docker run -d --name whisper-summarizer --gpus all -p 8501:8501 \
+  -v /mnt/d/whisper-models/faster-whisper-medium:/models/faster-whisper-medium:ro \
+  -v /mnt/e/whisper-models/faster-whisper-large-v3:/models/faster-whisper-large-v3:ro \
+  -v /mnt/e/MAT/S2T:/mnt/e/MAT/S2T:rw \
+  -e WHISPER_MODEL=/models/faster-whisper-medium \
+  -e OLLAMA_HOST=http://172.21.129.16:11434 \
+  -e OLLAMA_MODEL=qwen3:8b \
+  -e LDAP_SERVER=172.28.148.211 \
+  -e LDAP_PORT=1389 \
+  --restart unless-stopped \
+  whisper-summarizer:fastapi
+
+# نصب ldap3 و راه‌اندازی
+docker exec whisper-summarizer pip3 install --break-system-packages ldap3
+docker exec -d whisper-summarizer python3 /app/api.py</pre>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🔗 LDAP Connection</h3>
+                        <div class="info-box">
+                            💡 <strong>اطلاعات سرور LDAP دانشگاه:</strong>
+                            <table style="margin-top: 10px;">
+                                <thead>
+                                    <tr>
+                                        <th>پارامتر</th>
+                                        <th>مقدار</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>آدرس سرور</td>
+                                        <td style="direction: ltr; text-align: left;"><code>172.20.9.29</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>پورت</td>
+                                        <td style="direction: ltr; text-align: left;"><code>389</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>دامنه</td>
+                                        <td style="direction: ltr; text-align: left;"><code>SAD</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Base DN</td>
+                                        <td style="direction: ltr; text-align: left;"><code>DC=SAD,DC=UM,DC=AC,DC=IR</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>الگوی Bind DN</td>
+                                        <td style="direction: ltr; text-align: left;"><code>SAD\{username}</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="warning-box">
+                            ⚠️ <strong>چرا به پروکسی نیاز است؟</strong>
+                            <ul>
+                                <li>کانتینرهای Docker Desktop نمی‌توانند مستقیماً به سرور LDAP دانشگاه متصل شوند</li>
+                                <li>پروکسی LDAP روی میزبان WSL اجرا می‌شود و ترافیک LDAP را انتقال می‌دهد</li>
+                                <li>کانتینرها از طریق IP میزبان WSL به پروکسی متصل می‌شوند</li>
+                            </ul>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>پیدا کردن IP میزبان WSL</strong>
+                            <pre># در WSL:
+hostname -I | awk '{print $1}'
+
+# یا بررسی IP دروازه Docker:
+docker network inspect bridge | grep Gateway</pre>
+                            <div class="info-box">
+                                💡 <strong>IP رایج میزبان WSL:</strong> <code>172.28.148.211</code> (ممکن است تغییر کند)
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>تست اتصال LDAP</strong>
+                            <pre># تست مستقیم به AD دانشگاه:
+ldapsearch -x -H ldap://172.20.9.29 -b "DC=SAD,DC=UM,DC=AC,DC=IR" -D "SAD\username" -W "(sAMAccountName=username)"
+
+# تست از طریق پروکسی (پس از راه‌اندازی):
+ldapsearch -x -H ldap://localhost:1389 -b "DC=SAD,DC=UM,DC=AC,DC=IR" -D "SAD\username" -W "(sAMAccountName=username)"</pre>
+                        </div>
+
+                        <div class="step">
+                            <span class="step-number">۳</span>
+                            <strong>ایجاد و راه‌اندازی LDAP Proxy</strong>
+                            <pre># فایل proxy در: ~/jupyterlab-gpu/ldap_proxy.py
+# راه‌اندازی:
+nohup python3 ~/jupyterlab-gpu/ldap_proxy.py > /tmp/ldap_proxy.log 2>&1 &</pre>
+                        </div>
+
+                        <div class="subsection">
+                            <h4>پیکربندی LDAP برای سرویس‌ها</h4>
+                            <p><strong>JupyterHub:</strong></p>
+                            <pre>c.LDAPAuthenticator.server_address = '172.28.148.211'  # IP میزبان WSL
+c.LDAPAuthenticator.server_port = 1389                  # پورت پروکسی
+c.LDAPAuthenticator.bind_dn_template = 'SAD\\{username}'
+c.LDAPAuthenticator.user_search_base = 'DC=SAD,DC=UM,DC=AC,DC=IR'</pre>
+                            <p><strong>Whisper Container:</strong></p>
+                            <pre>LDAP_SERVER=172.28.148.211  # IP میزبان WSL
+LDAP_PORT=1389              # پورت پروکسی</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: شروع خودکار -->
+            <div class="tab-content" id="tab-autostart">
+                <div class="section">
+                    <h2>🔄 شروع خودکار سرویس‌ها</h2>
+
+                    <div class="subsection">
+                        <h3>اسکریپت یکپارچه راه‌اندازی</h3>
+                        <p>فایل <code>D:\Start-AllServices.ps1</code> تمام سرویس‌ها را به‌صورت خودکار راه‌اندازی می‌کند:</p>
+                        <ol>
+                            <li>بررسی و بازیابی Docker Desktop</li>
+                            <li>راه‌اندازی Ollama</li>
+                            <li>راه‌اندازی JupyterHub</li>
+                            <li>راه‌اندازی Open WebUI</li>
+                            <li>راه‌اندازی Python Shiny</li>
+                            <li>راه‌اندازی Whisper</li>
+                            <li>بررسی و بازیابی code-server</li>
+                        </ol>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>فایل BAT در پوشه Startup</h3>
+                        <p>فایل زیر در مسیر Startup قرار دارد و پس از هر ری‌استارت ویندوز اجرا می‌شود:</p>
+                        <div class="code-block">C:\Users\amin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Start-AllServices.bat</div>
+                        <pre>@echo off
+start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\Start-AllServices.ps1"</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>اسکریپت بازیابی code-server</h3>
+                        <p>اسکریپت <code>~/restore-code-server.sh</code> مشکل mount شکسته پس از ری‌استارت Docker را حل می‌کند:</p>
+                        <ul>
+                            <li>بررسی وضعیت mount (tmpfs یا خالی)</li>
+                            <li>بازسازی کانتینر در صورت خرابی</li>
+                            <li>تلاش مجدد در صورت شکست اول</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        💡 <strong>نکته:</strong> پس از ری‌استارت ویندوز، تمام سرویس‌ها به‌صورت خودکار راه‌اندازی می‌شوند. برای بررسی وضعیت، <code>docker ps</code> را اجرا کنید.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: پشتیبان‌گیری -->
+            <div class="tab-content" id="tab-backup">
+                <div class="section">
+                    <h2>💾 پشتیبان‌گیری و بازیابی</h2>
+
+                    <div class="subsection">
+                        <h3>محل پشتیبان‌ها</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>آیتم</th>
+                                    <th>محل پشتیبان</th>
+                                    <th>حجم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>تصویر JupyterHub</td>
+                                    <td style="direction: ltr; text-align: left;"><code>/mnt/e/HPC-Backup/jupyterhub-complete.tar.gz</code></td>
+                                    <td>~5 GB</td>
+                                </tr>
+                                <tr>
+                                    <td>تصویر code-server</td>
+                                    <td style="direction: ltr; text-align: left;"><code>/mnt/e/HPC-Backup/code-server-lean-mathlib.tar.gz</code></td>
+                                    <td>~1.3 GB</td>
+                                </tr>
+                                <tr>
+                                    <td>تصویر Open WebUI</td>
+                                    <td style="direction: ltr; text-align: left;"><code>/mnt/e/HPC-Backup/open-webui.tar.gz</code></td>
+                                    <td>~1.6 GB</td>
+                                </tr>
+                                <tr>
+                                    <td>تصویر Whisper</td>
+                                    <td style="direction: ltr; text-align: left;"><code>/mnt/e/HPC-Backup/whisper-summarizer.tar.gz</code></td>
+                                    <td>~7.3 GB</td>
+                                </tr>
+                                <tr>
+                                    <td>تصویر Shiny</td>
+                                    <td style="direction: ltr; text-align: left;"><code>/mnt/e/HPC-Backup/shiny-server.tar.gz</code></td>
+                                    <td>~0.7 GB</td>
+                                </tr>
+                                <tr>
+                                    <td>مدل‌های Ollama</td>
+                                    <td style="direction: ltr; text-align: left;"><code>/mnt/e/ollama/models</code></td>
+                                    <td>~100 GB</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>فایل‌های پشتیبان پیکربندی</h3>
+                        <ul>
+                            <li><code>Start-AllServices.ps1.bak</code> — اسکریپت راه‌اندازی</li>
+                            <li><code>Start-AllServices.bat.bak</code> — فایل BAT</li>
+                            <li><code>start-jupyterhub.sh.bak</code> — اسکریپت JupyterHub</li>
+                            <li><code>restore-code-server.sh.bak</code> — اسکریپت بازیابی code-server</li>
+                            <li><code>ldap_proxy.py.bak</code> — اسکریپت LDAP Proxy</li>
+                            <li><code>whisper_api_auth.py.bak</code> — اسکریپت Whisper API</li>
+                            <li><code>jupyterhub-env.bak</code> — متغیرهای محیطی</li>
+                            <li><code>docker-compose.yml.bak</code> — تنظیمات Docker Compose</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>دستورات پشتیبان‌گیری</h3>
+                        <pre># اجرای اسکریپت پشتیبان‌گیری خودکار
+bash /mnt/e/HPC-Backup/backup-all.sh
+
+# بررسی فایل‌های پشتیبان
+ls -lh /mnt/e/HPC-Backup/*.tar.gz
+ls -lh /mnt/e/HPC-Backup/*.bak</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>دستورات بازیابی</h3>
+                        <pre># اجرای اسکریپت بازیابی خودکار
+bash /mnt/e/HPC-Backup/restore-all.sh
+
+# یا بازیابی دستی تصویر خاص
+gunzip -c /mnt/e/HPC-Backup/jupyterhub-complete.tar.gz | docker load</pre>
+                    </div>
+
+                    <div class="warning-box">
+                        ⚠️ <strong>زمان‌بندی پشتیبان‌گیری:</strong>
+                        <ul>
+                            <li>قبل از تغییرات عمده سیستم</li>
+                            <li>پس از تغییر پیکربندی</li>
+                            <li>به‌صورت هفتگی (توصیه شده)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: عیب‌یابی -->
+            <div class="tab-content" id="tab-troubleshoot">
+                <div class="section">
+                    <h2>🔧 عیب‌یابی</h2>
+
+                    <div class="subsection">
+                        <h3>Docker Desktop شروع نمی‌شود</h3>
+                        <pre># ری‌استارت کامل
+taskkill /f /im "Docker Desktop.exe"
+taskkill /f /im "com.docker.backend.exe"
+wsl --shutdown
+Stop-Service -Name "com.docker.service" -Force
+Start-Sleep -Seconds 5
+Start-Service -Name "com.docker.service"
+Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>code-server پوشه خالی نشان می‌دهد</h3>
+                        <div class="danger-box">
+                            <strong>علت:</strong> پس از ری‌استارت Docker، mount ممکن است به tmpfs تبدیل شود.
+                        </div>
+                        <pre># استفاده از اسکریپت بازیابی خودکار
+~/restore-code-server.sh
+
+# یا بازیابی دستی
+docker stop code-server && docker rm code-server
+~/restore-code-server.sh</pre>
+                        <div class="info-box">
+                            💡 <strong>نکته:</strong> اسکریپت <code>restore-code-server.sh</code> به‌صورت خودکار مشکل را تشخیص و رفع می‌کند.
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>JupyterHub خطای LDAP می‌دهد</h3>
+                        <pre># بررسی وضعیت LDAP Proxy
+ps aux | grep ldap_proxy
+
+# ری‌استارت proxy
+nohup python3 ~/jupyterlab-gpu/ldap_proxy.py > /tmp/ldap_proxy.log 2>&1 &
+
+# ری‌استارت JupyterHub
+docker restart jupyterhub</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Whisper ورود ناموفق دارد</h3>
+                        <pre># بررسی LDAP Proxy
+ps aux | grep ldap_proxy
+
+# بررسی متغیرهای محیطی
+docker inspect whisper-summarizer --format '{{.Config.Env}}'
+
+# ری‌استارت با متغیرهای صحیح
+docker stop whisper-summarizer && docker rm whisper-summarizer
+# سپس دوباره با دستورات صحیح راه‌اندازی کنید</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>دستورات مفید</h3>
+                        <pre># لیست کانتینرها
+docker ps                          # در حال اجرا
+docker ps -a                       # تمام کانتینرها
+
+# بررسی logs
+docker logs <container-name> --tail 50
+docker logs -f <container-name>    # نمایش زنده
+
+# ورود به کانتینر
+docker exec -it <container> bash
+
+# پاک‌سازی
+docker system df                   # استفاده از دیسک
+docker system prune -a             # حذف تصاویر استفاده‌نشده</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>ارتباط با مدیر سیستم</h3>
+                        <div class="info-box">
+                            📧 <strong>ایمیل:</strong> <code>m.amintoosi@um.ac.ir</code><br>
+                            💬 <strong>بله:</strong> <code>@mamintoosi</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بخش پایانی -->
+            <div class="section" style="border-top: 2px solid #0d9488;">
+                <h2>📝 خلاصه</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>مرحله</th>
+                            <th>زمان تقریبی</th>
+                            <th>وضعیت</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>نصب WSL2</td>
+                            <td>۱۰ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>نصب Docker Desktop</td>
+                            <td>۱۵ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>نصب Ollama</td>
+                            <td>۱۰ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>دانلود مدل‌ها</td>
+                            <td>۱-۲ ساعت</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>راه‌اندازی JupyterHub</td>
+                            <td>۳۰-۶۰ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>راه‌اندازی code-server</td>
+                            <td>۱۵ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>راه‌اندازی Open WebUI</td>
+                            <td>۱۰ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>راه‌اندازی Python Shiny</td>
+                            <td>۱۰ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>راه‌اندازی Whisper</td>
+                            <td>۱۵ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>تنظیم شروع خودکار</td>
+                            <td>۱۰ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                        <tr>
+                            <td>تنظیم پشتیبان‌گیری</td>
+                            <td>۱۵ دقیقه</td>
+                            <td>⬜</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="success-box" style="margin-top: 15px;">
+                    💡 <strong>زمان کل تقریبی:</strong> ۲-۴ ساعت (بسته به سرعت اینترنت و سخت‌افزار)
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>📅 آخرین به‌روزرسانی: ۱۲ تیر ۱۴۰۵ | تهیه‌کننده:
+                    <a href="https://mamintoosi.github.io/">محمود امین‌طوسی</a>،
+                    دانشکده علوم ریاضی دانشگاه فردوسی مشهد
+                </p>
+                <p style="margin-top: 10px;">
+                    <a href="index.html">راهنمای کاربری</a> |
+                    <a href="install-manual.html">راهنمای نصب</a> |
+                    <a href="setup-guide.html">راهنمای راه‌اندازی</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('tab-' + this.getAttribute('data-tab')).classList.add('active');
+                });
+            });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabParam = urlParams.get('tab');
+            if (tabParam) {
+                const targetTab = document.querySelector(`.tab-btn[data-tab="${tabParam}"]`);
+                if (targetTab) targetTab.click();
+            }
+        });
+    </script>
+</body>
+</html>
