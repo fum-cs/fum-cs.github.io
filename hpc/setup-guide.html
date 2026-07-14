@@ -705,16 +705,69 @@ mkdir D:\DockerData\DockerDesktopWSL
                         </div>
                         <div class="step">
                             <span class="step-number">۲</span>
+                            <strong>ساخت تصویر جدید با NativeAuthenticator</strong>
+                            <pre>cd ~/jupyterlab-gpu
+docker build -t jupyterhub:multi-auth -f Dockerfile.jupyterhub .</pre>
+                            <div class="info-box">
+                                💡 <strong>نکته:</strong> این تصویر شامل LDAP + NativeAuthenticator برای کاربران بدون حساب LDAP است.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">۳</span>
                             <strong>راه‌اندازی</strong>
                             <pre>cd ~/jupyterlab-gpu
 docker run -d --name jupyterhub --gpus all -p 8000:8000 \
   -v ~/jupyterlab-gpu/work:/workspace \
   -v /mnt/d/DockerBackup:/datasets:ro \
   --env-file ~/jupyterlab-gpu/.env \
-  jupyterhub:complete sleep infinity
+  jupyterhub:multi-auth sleep infinity
 
 sleep 5
 docker exec -d jupyterhub bash -c 'cd /workspace && jupyterhub -f /etc/jupyterhub/jupyterhub_config.py'</pre>
+                        </div>
+
+                        <div class="subsection">
+                            <h4>مدیریت کاربران بدون حساب LDAP</h4>
+                            <div class="warning-box">
+                                ⚠️ <strong>روش استفاده:</strong>
+                                <ul>
+                                    <li><strong>کاربران LDAP:</strong> با نام کاربری و رمز عبور دانشگاه وارد می‌شوند (خودکار)</li>
+                                    <li><strong>کاربران بدون LDAP:</strong> روی "Sign up" کلیک کرده و با ایمیل/رمز عبور ثبت‌نام می‌کنند</li>
+                                    <li><strong>تأیید مدیر:</strong> مدیر باید ثبت‌نام کاربران جدید را تأیید کند</li>
+                                </ul>
+                            </div>
+
+                            <div class="step">
+                                <span class="step-number">۱</span>
+                                <strong>تنظیمات امنیتی</strong>
+                                <pre># در فایل jupyterhub_config.py:
+c.NativeAuthenticator.enable_signup = True
+c.NativeAuthenticator.confirm_admin_app = True  # تأیید مدیر الزامی
+c.NativeAuthenticator.allowed_failed_logins = 5
+c.NativeAuthenticator.minimum_password_length = 8</pre>
+                            </div>
+
+                            <div class="step">
+                                <span class="step-number">۲</span>
+                                <strong>مدیریت کاربران</strong>
+                                <p>برای تأیید کاربران جدید از پنل مدیریت استفاده کنید:</p>
+                                <div class="url"><a href="http://localhost:8888/">http://localhost:8888/</a></div>
+                                <p>این پنل نشان می‌دهد:</p>
+                                <ul>
+                                    <li>کاربران در انتظار تأیید</li>
+                                    <li>کاربران تأیید شده</li>
+                                    <li>امکان تأیید یا رد هر درخواست</li>
+                                </ul>
+                            </div>
+
+                            <div class="info-box">
+                                💡 <strong>آدرس‌های مهم:</strong>
+                                <ul>
+                                    <li>ثبت‌نام کاربران: <code>http://localhost:8000/hub/signup</code></li>
+                                    <li>پنل تأیید مدیر: <code>http://localhost:8888/</code></li>
+                                    <li>پنل اصلی JupyterHub: <code>http://localhost:8000/hub/admin</code></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
