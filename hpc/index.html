@@ -459,6 +459,9 @@
                     <button class="tab-btn" data-tab="whisper">
                         <span class="icon">🎙️</span> Whisper
                     </button>
+                    <button class="tab-btn" data-tab="latex2lean">
+                        <span class="icon">📐</span> LaTeX → Lean
+                    </button>
                 </div>
             </div>
 
@@ -1028,11 +1031,49 @@ cat(response)</pre>
                 </div>
             </div>
 
+            <!-- Tab LaTeX → Lean -->
+            <div class="tab-content" id="tab-latex2lean">
+                <div class="section">
+                    <h2>📐 LaTeX → Lean Bridge</h2>
+                    <p>ترجمه اثبات‌های ریاضی از <strong>LaTeX</strong> به کد <strong>Lean 4</strong> و بررسی صحت آن با هسته Lean.</p>
+
+                    <div class="subsection">
+                        <h3>🔗 روش‌های دسترسی</h3>
+                        <div class="method-grid">
+                            <div class="method-box">
+                                <h4>🏫 از داخل دانشکده</h4>
+                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشکده) آدرس زیر را وارد کنید:</p>
+                                <div class="url"><a href="http://172.21.129.16:8200/">http://172.21.129.16:8200/</a></div>
+                            </div>
+                            <div class="method-box">
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:8200/">http://math-gpu-server.tailde35cf.ts.net:8200/</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🎯 کاربردها</h3>
+                        <ul style="margin-right: 20px; line-height: 1.8;">
+                            <li>📐 ترجمه <strong>اثبات‌های ریاضی</strong> از LaTeX به Lean 4</li>
+                            <li>✅ <strong>بررسی صحت</strong> اثبات‌ها با هسته Lean</li>
+                            <li>📚 استفاده از <strong>کتابخانه Mathlib</strong> برای اثبات‌های پیچیده</li>
+                            <li>🎓 آموزش <strong>ریاضیات رسمی</strong> به دانشجویان</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <!-- بخش نکات پایانی (مشترک) -->
             <div class="section" style="border-top: 2px solid #667eea;">
                 <h2>⚠️ نکات مهم</h2>
                 <ul style="margin-right: 30px; line-height: 1.8;">
-                    <li>سیستم‌های JupyterHub، code-server، Python Shiny و Whisper روی یک سرور با <strong>۳۲ گیگابایت RAM</strong> و <strong>کارت گرافیک RTX 4090</strong> اجرا می‌شوند.</li>
+                    <li>سیستم‌های JupyterHub، code-server، Python Shiny، Whisper و LaTeX → Lean روی یک سرور با <strong>۳۲ گیگابایت RAM</strong> و <strong>کارت گرافیک RTX 4090</strong> اجرا می‌شوند.</li>
                     <li>مدل‌های زبانی (Ollama) از GPU برای پردازش استفاده می‌کنند و توانایی پاسخگویی همزمان به <strong>تعداد محدودی کاربر</strong> را دارند.</li>
                     <li>پس از پایان کار، از سیستم خارج شوید تا سایر همکاران نیز بتوانند استفاده کنند.</li>
                     <li>در صورت بروز مشکل یا نیاز به راهنمایی بیشتر، با <code>m.amintoosi@um.ac.ir</code> تماس بگیرید.</li>
