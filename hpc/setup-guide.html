@@ -493,6 +493,11 @@
                                     <td style="direction: ltr; text-align: left;">1389</td>
                                     <td>پروکسی احراز هویت</td>
                                 </tr>
+                                <tr>
+                                    <td><strong>TorchLean</strong></td>
+                                    <td style="direction: ltr; text-align: left;">31416</td>
+                                    <td>شبکه‌های عصبی در Lean 4</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -529,6 +534,11 @@
                             │   └── <span class="folder">work\</span> — داده کاربران<br>
                             ├── <span class="file">restore-code-server.sh</span><br>
                             ├── <span class="folder">code-server\workspace\</span><br>
+                            ├── <span class="folder">torchlean-server\</span><br>
+                            │   ├── <span class="file">start-torchlean.sh</span><br>
+                            │   ├── <span class="file">stop-torchlean.sh</span><br>
+                            │   ├── <span class="file">Dockerfile</span><br>
+                            │   └── <span class="folder">workspace\</span><br>
                             └── <span class="folder">shiny-server\app\</span>
                         </div>
                     </div>
@@ -547,6 +557,7 @@
                                 <tr><td>Python Shiny</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8050</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8050</code></td></tr>
                                 <tr><td>Whisper</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8501</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8501</code></td></tr>
                                 <tr><td>LaTeX → Lean</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8200</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8200</code></td></tr>
+                                <tr><td>TorchLean</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:31416</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:31416</code></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -887,6 +898,43 @@ c.NativeAuthenticator.minimum_password_length = 8</pre>
                     </div>
 
                     <div class="subsection">
+                        <h3>🔥 TorchLean</h3>
+                        <div class="step">
+                            <span class="step-number">۱</span>
+                            <strong>راه‌اندازی</strong>
+                            <pre>cd ~/torchlean-server
+./start-torchlean.sh</pre>
+                            <div class="info-box">
+                                💡 <strong>نکته:</strong> تصویر Docker شامل Lean 4.32.0 + TorchLean + کش Mathlib است. برای بازسازی تصویر، فایل <code>Dockerfile</code> را ویرایش کرده و <code>docker build</code> اجرا کنید.
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">۲</span>
+                            <strong>تست سریع</strong>
+                            <pre># ورود به کانتینر
+docker exec -it torchlean-server bash
+
+# اجرای مثال MLP
+export PATH=/home/coder/.elan/bin:$PATH
+export LD_LIBRARY_PATH=/home/coder/.elan/toolchains/leanprover--lean4---v4.32.0/lib:$LD_LIBRARY_PATH
+cd /home/coder/TorchLean
+.lake/build/bin/torchlean quickstart_mlp --device cpu --steps 10</pre>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">۳</span>
+                            <strong>مدیریت سرویس</strong>
+                            <pre># توقف
+~/torchlean-server/stop-torchlean.sh
+
+# ری‌استارت
+docker restart torchlean-server
+
+# بررسی وضعیت
+docker ps | grep torchlean</pre>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
                         <h3>💬 Open WebUI</h3>
                         <div class="step">
                             <span class="step-number">۱</span>
@@ -1049,6 +1097,7 @@ LDAP_PORT=1389              # پورت پروکسی</pre>
                                 <tr><td>8050</td><td>Python Shiny</td><td>اپلیکیشن‌های تعاملی وب</td></tr>
                                 <tr><td>8501</td><td>Whisper</td><td>تبدیل گفتار به متن</td></tr>
                                 <tr><td>8200</td><td>LaTeX → Lean</td><td>ترجمه اثبات LaTeX به Lean 4</td></tr>
+                                <tr><td>31416</td><td>TorchLean</td><td>شبکه‌های عصبی در Lean 4</td></tr>
                                 <tr><td>1389</td><td>LDAP Proxy</td><td>پروکسی احراز هویت</td></tr>
                             </tbody>
                         </table>
@@ -1110,6 +1159,7 @@ LDAP_PORT=1389              # پورت پروکسی</pre>
                             <li>راه‌اندازی Python Shiny</li>
                             <li>راه‌اندازی Whisper</li>
                             <li>بررسی و بازیابی code-server</li>
+                            <li>بررسی و بازیابی TorchLean</li>
                         </ol>
                     </div>
 
@@ -1129,6 +1179,21 @@ start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\
                             <li>بازسازی کانتینر در صورت خرابی</li>
                             <li>تلاش مجدد در صورت شکست اول</li>
                         </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>اسکریپت بازیابی TorchLean</h3>
+                        <p>اسکریپت <code>~/torchlean-server/start-torchlean.sh</code> سرویس TorchLean را راه‌اندازی یا بازیابی می‌کند:</p>
+                        <ul>
+                            <li>بررسی وضعیت کانتینر</li>
+                            <li>بازیابی mount در صورت خرابی</li>
+                            <li>تلاش مجدد در صورت شکست اول</li>
+                        </ul>
+                        <pre># راه‌اندازی TorchLean
+~/torchlean-server/start-torchlean.sh
+
+# توقف TorchLean
+~/torchlean-server/stop-torchlean.sh</pre>
                     </div>
 
                     <div class="info-box">
@@ -1183,6 +1248,11 @@ start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\
                                     <td style="direction: ltr; text-align: left;"><code>/mnt/e/ollama/models</code></td>
                                     <td>~100 GB</td>
                                 </tr>
+                                <tr>
+                                    <td>تصویر TorchLean</td>
+                                    <td style="direction: ltr; text-align: left;"><code>/mnt/e/HPC-Backup/torchlean-with-cache.tar.gz</code></td>
+                                    <td>~30 GB</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -1198,6 +1268,8 @@ start /min powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\
                             <li><code>whisper_api_auth.py.bak</code> — اسکریپت Whisper API</li>
                             <li><code>jupyterhub-env.bak</code> — متغیرهای محیطی</li>
                             <li><code>docker-compose.yml.bak</code> — تنظیمات Docker Compose</li>
+                            <li><code>start-torchlean.sh.bak</code> — اسکریپت راه‌اندازی TorchLean</li>
+                            <li><code>stop-torchlean.sh.bak</code> — اسکریپت توقف TorchLean</li>
                         </ul>
                     </div>
 
@@ -1209,6 +1281,7 @@ docker save code-server-lean:mathlib | gzip > /mnt/e/HPC-Backup/code-server-lean
 docker save docker.devneeds.ir/openwebui/open-webui:latest | gzip > /mnt/e/HPC-Backup/open-webui.tar.gz
 docker save shiny-custom:latest | gzip > /mnt/e/HPC-Backup/shiny-custom.tar.gz
 docker save whisper-app:latest | gzip > /mnt/e/HPC-Backup/whisper-app.tar.gz
+docker save torchlean-with-cache:latest | gzip > /mnt/e/HPC-Backup/torchlean-with-cache.tar.gz
 
 # اجرای اسکریپت پشتیبان‌گیری خودکار
 bash /mnt/e/HPC-Backup/backup-all.sh
@@ -1281,6 +1354,33 @@ nohup python3 ~/jupyterlab-gpu/ldap_proxy.py > /tmp/ldap_proxy.log 2>&1 &
 
 # ری‌استارت JupyterHub
 docker restart jupyterhub</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>TorchLean کار نمی‌کند</h3>
+                        <pre># بررسی وضعیت کانتینر
+docker ps | grep torchlean
+
+# ری‌استارت TorchLean
+docker restart torchlean-server
+
+# یا بازیابی کامل
+docker stop torchlean-server && docker rm torchlean-server
+~/torchlean-server/start-torchlean.sh
+
+# بررسی logs
+docker logs torchlean-server --tail 50</pre>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>TorchLean خطای libc++ می‌دهد</h3>
+                        <pre># متغیرهای محیطی مورد نیاز
+export PATH=/home/coder/.elan/bin:$PATH
+export LD_LIBRARY_PATH=/home/coder/.elan/toolchains/leanprover--lean4---v4.32.0/lib:$LD_LIBRARY_PATH
+
+# اجرا با متغیرهای صحیح
+cd /home/coder/TorchLean
+.lake/build/bin/torchlean quickstart_mlp --device cpu --steps 5</pre>
                     </div>
 
                     <div class="subsection">

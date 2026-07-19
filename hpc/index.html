@@ -435,8 +435,11 @@
                         به صورت آزمایشی بر روی یک سیستم دارای کارت گرافیک ۴۰۹۰ قابل استفاده هستند.
                     </li>
                     <li>
-                        در حال حاضر، فقط <strong>اعضای محترم هیأت علمی و کارکنان</strong> می‌توانند از این سرویس‌ها
-                        استفاده کنند. برای دسترسی دانشجویان، متعاقباً اطلاع‌رسانی خواهد شد.
+                        در حال حاضر، برای استفاده از JupyterLab اعضای محترم هیأت علمی و کارکنان می‌توانند با حساب کاربری ویندوز دانشگاه خود وارد شوند.
+						دانشجویان تحصیلات تکمیلی از بخش Sign up  در درگاه ورود ژوپیترلب، اقدام به ثبت نام نموده و سپس به کاربر @mamintoosi‌ در بله، اطلاع دهند تا حساب آنها فعال شود.
+                    </li>
+                    <li>
+                        سرویس‌های <strong>Python Shiny</strong> و <strong>Whisper</strong> در حال حاضر غیرفعال هستند.
                     </li>
                 </ul>
             </div>
@@ -453,14 +456,20 @@
                     <button class="tab-btn" data-tab="ollama">
                         <span class="icon">💬</span> مدل‌های زبانی
                     </button>
+                    <!-- Shiny & Whisper disabled temporarily -->
+                    <!--
                     <button class="tab-btn" data-tab="shiny">
                         <span class="icon">📊</span> Python Shiny
                     </button>
                     <button class="tab-btn" data-tab="whisper">
                         <span class="icon">🎙️</span> Whisper
                     </button>
+                    -->
                     <button class="tab-btn" data-tab="latex2lean">
                         <span class="icon">📐</span> LaTeX → Lean
+                    </button>
+                    <button class="tab-btn" data-tab="torchlean">
+                        <span class="icon">🔥</span> TorchLean
                     </button>
                 </div>
             </div>
@@ -939,7 +948,8 @@ cat(response)</pre>
                 </div>
             </div>
 
-            <!-- Tab Python Shiny -->
+            <!-- Tab Python Shiny (disabled temporarily) -->
+            <!--
             <div class="tab-content" id="tab-shiny">
                 <div class="section">
                     <h2>📊 Python Shiny</h2>
@@ -984,8 +994,10 @@ cat(response)</pre>
                     </div>
                 </div>
             </div>
+            -->
 
-            <!-- Tab Whisper -->
+            <!-- Tab Whisper (disabled temporarily) -->
+            <!--
             <div class="tab-content" id="tab-whisper">
                 <div class="section">
                     <h2>🎙️ Whisper (تبدیل گفتار به متن)</h2>
@@ -1030,6 +1042,7 @@ cat(response)</pre>
                     </div>
                 </div>
             </div>
+            -->
 
             <!-- Tab LaTeX → Lean -->
             <div class="tab-content" id="tab-latex2lean">
@@ -1065,6 +1078,90 @@ cat(response)</pre>
                             <li>📚 استفاده از <strong>کتابخانه Mathlib</strong> برای اثبات‌های پیچیده</li>
                             <li>🎓 آموزش <strong>ریاضیات رسمی</strong> به دانشجویان</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab TorchLean -->
+            <div class="tab-content" id="tab-torchlean">
+                <div class="section">
+                    <h2>🔥 TorchLean (شبکه‌های عصبی در Lean 4)</h2>
+                    <p>چارچوب <strong>TorchLean</strong> برای نوشتن، اجرا، بازرسی و اثبات برنامه‌های شبکه عصبی در Lean 4 — شامل تانسورهای تایپ‌شده، اتومگرد، آموزش مدل و پشتیبانی CUDA.</p>
+
+                    <div class="subsection">
+                        <h3>🔗 روش‌های دسترسی</h3>
+                        <div class="method-grid">
+                            <div class="method-box">
+                                <h4>🏫 از داخل دانشکده</h4>
+                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشکده) آدرس زیر را وارد کنید:</p>
+                                <div class="url"><a href="http://172.21.129.16:31416/">http://172.21.129.16:31416/</a></div>
+                                <p>سپس با رمز عبور وارد شوید.</p>
+                            </div>
+                            <div class="method-box">
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:31416/">http://math-gpu-server.tailde35cf.ts.net:31416/</a>
+                                    </div>
+                                </div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از IP (جایگزین):</strong>
+                                    <div class="url">
+                                        <a href="http://100.71.218.11:31416/">http://100.71.218.11:31416/</a>
+                                        <span style="display: block; color: #888; font-size: 0.85rem; margin-top: 5px;">یا</span>
+                                        <a href="http://100.71.218.12:31416/">http://100.71.218.12:31416/</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🔑 رمز عبور</h3>
+                        <div class="url" style="display: inline-block;">fumtorchlean</div>
+                        <div class="note" style="margin-top: 10px;">
+                            ⚠️ <strong>توجه:</strong> رمز عبور به‌صورت دوره‌ای تغییر خواهد کرد. در صورت عدم دسترسی، مجدداً درخواست دهید.
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🎯 کاربردها</h3>
+                        <ul style="margin-right: 20px; line-height: 1.8;">
+                            <li>🔥 نوشتن و اجرای <strong>شبکه‌های عصبی</strong> (MLP, CNN, Transformer, ResNet, GPT2) در Lean 4</li>
+                            <li>✅ <strong>اثبات صحت</strong> ریاضی مدل‌ها و بهینه‌سازها با هسته Lean</li>
+                            <li>🧮 پشتیبانی از <strong>اتومگرد</strong> (autograd) و <strong>آموزش مدل</strong> (training loops)</li>
+                            <li>🖥️ اجرای مثال‌های آماده: <code>lake exe torchlean quickstart_mlp</code></li>
+                            <li>📚 استفاده از <strong>Mathlib</strong> برای اثبات‌های ریاضی پیچیده</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🚀 شروع سریع</h3>
+                        <p>پس از ورود به محیط code-server، ترمینال را باز کنید و دستورات زیر را اجرا کنید:</p>
+                        <pre>cd TorchLean
+
+# اجرای مثال MLP ساده (CPU)
+lake exe torchlean quickstart_mlp --device cpu --steps 10
+
+# ساخت مدل دلخواه
+lake exe torchlean --help</pre>
+                        <div class="info-box">
+                            💡 <strong>نکته فنی:</strong> این نسخه با <strong>Lean 4.32.0</strong> و <strong>TorchLean</strong> ساخته شده و شامل کش Mathlib (۱۱۲۳ فایل olean) است. پشتیبانی CUDA بومی نیاز به بازسازی تصویر Docker با CUDA toolkit دارد.
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>📚 منابع آموزشی</h3>
+                        <div class="resource-box">
+                            <ul>
+                                <li>📖 <a href="https://lean-dojo.github.io/TorchLean/" target="_blank">TorchLean Home</a></li>
+                                <li>📘 <a href="https://lean-dojo.github.io/TorchLean/installation/" target="_blank">Installation Guide</a></li>
+                                <li>📗 <a href="https://lean-dojo.github.io/TorchLean/blueprint/" target="_blank">User Guide</a></li>
+                                <li>💻 <a href="https://lean-dojo.github.io/TorchLean/examples/" target="_blank">Examples</a></li>
+                                <li>🎓 <a href="https://lean-dojo.github.io/TorchLean/docs/" target="_blank">API Reference</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
