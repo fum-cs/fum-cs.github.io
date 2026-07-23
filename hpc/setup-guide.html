@@ -479,6 +479,11 @@
                                     <td>تبدیل گفتار به متن</td>
                                 </tr>
                                 <tr>
+                                    <td><strong>Research Idea Scout</strong></td>
+                                    <td style="direction: ltr; text-align: left;">8502</td>
+                                    <td>ایده‌یاب پژوهشی</td>
+                                </tr>
+                                <tr>
                                     <td><strong>LaTeX → Lean</strong></td>
                                     <td style="direction: ltr; text-align: left;">8200</td>
                                     <td>ترجمه اثبات LaTeX به Lean 4</td>
@@ -539,7 +544,13 @@
                             │   ├── <span class="file">stop-torchlean.sh</span><br>
                             │   ├── <span class="file">Dockerfile</span><br>
                             │   └── <span class="folder">workspace\</span><br>
-                            └── <span class="folder">shiny-server\app\</span>
+                            └── <span class="folder">shiny-server\app\</span><br>
+                            <span class="folder">/mnt/e/MAT/ResearchIdeaScout\</span><br>
+                            ├── <span class="file">github_scout.py</span> — برنامه اصلی<br>
+                            ├── <span class="file">Dockerfile</span> — فایل Docker<br>
+                            ├── <span class="file">requirements.txt</span> — وابستگی‌ها<br>
+                            ├── <span class="file">config.json</span> — پیکربندی<br>
+                            └── <span class="folder">src\</span> — ماژول‌های کمکی
                         </div>
                     </div>
 
@@ -556,6 +567,7 @@
                                 <tr><td>Ollama API</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:11434</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:11434</code></td></tr>
                                 <tr><td>Python Shiny</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8050</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8050</code></td></tr>
                                 <tr><td>Whisper</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8501</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8501</code></td></tr>
+                                <tr><td>Research Idea Scout</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8502</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8502</code></td></tr>
                                 <tr><td>LaTeX → Lean</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:8200</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:8200</code></td></tr>
                                 <tr><td>TorchLean</td><td style="direction: ltr; text-align: left;"><code>http://172.21.129.16:31416</code></td><td style="direction: ltr; text-align: left;"><code>http://math-gpu-server.tailde35cf.ts.net:31416</code></td></tr>
                             </tbody>
@@ -1096,6 +1108,7 @@ LDAP_PORT=1389              # پورت پروکسی</pre>
                                 <tr><td>11434</td><td>Ollama</td><td>API مدل‌های زبانی</td></tr>
                                 <tr><td>8050</td><td>Python Shiny</td><td>اپلیکیشن‌های تعاملی وب</td></tr>
                                 <tr><td>8501</td><td>Whisper</td><td>تبدیل گفتار به متن</td></tr>
+                                <tr><td>8502</td><td>Research Idea Scout</td><td>ایده‌یاب پژوهشی</td></tr>
                                 <tr><td>8200</td><td>LaTeX → Lean</td><td>ترجمه اثبات LaTeX به Lean 4</td></tr>
                                 <tr><td>31416</td><td>TorchLean</td><td>شبکه‌های عصبی در Lean 4</td></tr>
                                 <tr><td>1389</td><td>LDAP Proxy</td><td>پروکسی احراز هویت</td></tr>

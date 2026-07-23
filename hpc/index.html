@@ -439,7 +439,7 @@
 						دانشجویان تحصیلات تکمیلی از بخش Sign up  در درگاه ورود ژوپیترهاب، اقدام به ثبت نام نموده و سپس به کاربر @mamintoosi‌ در بله، اطلاع دهند تا حساب آنها فعال شود.
                     </li>
                     <li>
-                        سرویس‌های <strong>Python Shiny</strong>، <strong>Whisper</strong> و <strong>TorchLean</strong> در حال حاضر غیرفعال هستند.
+                        سرویس‌های <strong>Python Shiny</strong>، <strong>Whisper</strong>، <strong>TorchLean</strong> و <strong>LaTeX → Lean</strong> در حال حاضر غیرفعال هستند.
                     </li>
                 </ul>
             </div>
@@ -455,6 +455,9 @@
                     </button>
                     <button class="tab-btn" data-tab="ollama">
                         <span class="icon">💬</span> مدل‌های زبانی
+                    </button>
+                    <button class="tab-btn" data-tab="research-scout">
+                        <span class="icon">🔬</span> Research Idea Scout
                     </button>
                     <!-- Shiny & Whisper disabled temporarily -->
                     <!--
@@ -954,6 +957,64 @@ cat(response)</pre>
                 </div>
             </div>
 
+            <!-- Tab Research Idea Scout -->
+            <div class="tab-content" id="tab-research-scout">
+                <div class="section">
+                    <h2>🔬 Research Idea Scout (ایده‌یاب پژوهشی)</h2>
+                    <p>ابزار هوش مصنوعی برای کشف مخزن‌های اخیر GitHub و تولید ایده‌های پژوهشی با استفاده از مدل‌های زبانی محلی و جستجوی arxiv-sanity.</p>
+
+                    <div class="subsection">
+                        <h3>🔗 روش‌های دسترسی</h3>
+                        <div class="method-grid">
+                            <div class="method-box">
+                                <h4>🏫 از داخل دانشکده</h4>
+                                <p>در مرورگر سیستم اداری خود (متصل به شبکه دانشکده) آدرس زیر را وارد کنید:</p>
+                                <div class="url"><a href="http://172.21.129.16:8502/">http://172.21.129.16:8502/</a></div>
+                            </div>
+                            <div class="method-box">
+                                <h4>🌍 از خارج از دانشکده (Tailscale)</h4>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از نام دستگاه (توصیه شده):</strong>
+                                    <div class="url">
+                                        <a href="http://math-gpu-server.tailde35cf.ts.net:8502/">http://math-gpu-server.tailde35cf.ts.net:8502/</a>
+                                    </div>
+                                </div>
+                                <div style="margin: 15px 0;">
+                                    <strong>🔹 استفاده از IP (جایگزین):</strong>
+                                    <div class="url">
+                                        <a href="http://100.71.218.11:8502/">http://100.71.218.11:8502/</a>
+                                        <span style="display: block; color: #888; font-size: 0.85rem; margin-top: 5px;">یا</span>
+                                        <a href="http://100.71.218.12:8502/">http://100.71.218.12:8502/</a>
+                                    </div>
+                                </div>
+                                <div class="tailscale-note" style="margin-top: 10px;">
+                                    🔍 <strong>نکته:</strong> اگر با نام دستگاه به مشکل خوردید، IP صحیح سرور را از <a href="https://login.tailscale.com/admin/machines" target="_blank">پنل مدیریت Tailscale</a> پیدا کنید.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>🎯 کاربردها</h3>
+                        <ul style="margin-right: 20px; line-height: 1.8;">
+                            <li>🔍 کشف <strong>مخزن‌های اخیر GitHub</strong> در زمینه یادگیری ماشین، بینایی ماشین و بهینه‌سازی ترکیبی</li>
+                            <li>📄 جستجوی <strong>مقالات arxiv-sanity</strong> برای یافتن مقالات مرتبط</li>
+                            <li>🤖 تولید <strong>ایده‌های پژوهشی</strong> با استفاده از مدل‌های زبانی محلی (LM Studio یا Ollama)</li>
+                            <li>📊 مدیریت و مشاهده <strong>تاریخچه ایده‌ها</strong> تولید شده</li>
+                            <li>📅 زمان‌بندی <strong>اجرای خودکار</strong> روزانه</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>⚙️ تنظیمات</h3>
+                        <p>برای تغییر تنظیمات (مانند پرسش جستجو، مدل زبانی، و زمان‌بندی)، از طریق رابط وب اقدام کنید یا فایل <code>config.json</code> را ویرایش نمایید.</p>
+                        <div class="info-box" style="margin-top: 15px;">
+                            💡 <strong>نکته:</strong> این سرویس از مدل‌های زبانی محلی (Ollama یا LM Studio) برای تولید ایده‌ها استفاده می‌کند. برای عملکرد بهتر، از مدل‌های بزرگتر استفاده کنید.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tab Python Shiny (disabled temporarily) -->
             <!--
             <div class="tab-content" id="tab-shiny">
@@ -1050,7 +1111,8 @@ cat(response)</pre>
             </div>
             -->
 
-            <!-- Tab LaTeX → Lean -->
+            <!-- Tab LaTeX → Lean (disabled temporarily) -->
+            <!--
             <div class="tab-content" id="tab-latex2lean">
                 <div class="section">
                     <h2>📐 LaTeX → Lean Bridge</h2>
@@ -1087,6 +1149,7 @@ cat(response)</pre>
                     </div>
                 </div>
             </div>
+            -->
 
             <!-- Tab TorchLean (disabled temporarily - permission issues) -->
             <!--
@@ -1186,7 +1249,7 @@ lake exe torchlean --help</pre>
             </div>
 
             <div class="footer">
-                <p>📅 آخرین به‌روزرسانی:۳۱ تیر ۱۴۰۵ | تهیه‌کننده:
+                <p>📅 آخرین به‌روزرسانی:۱ مرداد ۱۴۰۵ | تهیه‌کننده:
                     <a href="https://mamintoosi.github.io/">محمود امین‌طوسی</a>،
                     دانشکده علوم ریاضی دانشگاه فردوسی مشهد،
                     <a href="http://fumcs.github.io/">گروه علوم کامپیوتر</a>
